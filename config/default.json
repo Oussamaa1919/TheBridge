@@ -1,0 +1,6 @@
+{
+  "mongoURI":"mongodb+srv://ouss1234:ouss123456@thebridge.kqrakpz.mongodb.net/?retryWrites=true&w=majority",
+  "jwtSecret":"mysecrettoken",
+  "githubToken":"fbb74f4fc47f92119af32dd59bc3daca41398ee2"
+
+}
