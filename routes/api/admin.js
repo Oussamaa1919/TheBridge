@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const auth = require('../../middleware/auth');
+const adminauth = require('../../middleware/adminauth');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
@@ -13,7 +13,7 @@ const Admin = require('../../models/Admin');
 // @route    GET api/auth
 // @desc     Get user by token
 // @access   Private
-router.get('/', auth, async (req, res) => {
+router.get('/', adminauth, async (req, res) => {
   try {
     const admin = await Admin.findById(req.admin.id).select('-password');
     res.json(admin);

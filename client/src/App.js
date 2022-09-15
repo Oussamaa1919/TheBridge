@@ -20,6 +20,7 @@ import { LOGOUT } from './actions/types';
 import Events from './components/events/Events'
 import Training from './components/trainings/Training';
 
+
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -60,6 +61,7 @@ const  App = () => {
         <Route path="profile/:id" element={<Profile />} />
         <Route path="events" element={<Events />} />
         <Route path="training" element={<Training />} />
+        
         <Route
           path="dashboard"
           element={<PrivateRoute component={Dashboard} />}
