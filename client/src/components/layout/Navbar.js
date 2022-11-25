@@ -6,6 +6,27 @@ import { logout } from '../../actions/auth';
 
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   const authLinks = (
+    
+      <Fragment>
+      <div className='navbar-left'>
+
+      <h1>
+        <Link to="/" className='logo'>
+          <img  src={require('../../img/the-bridge-logo.png')}/>
+        </Link>
+      </h1>
+      </div>
+
+      <div className="search-box">
+      <img src={require('../../img/search.png')} />
+      <input type="text" placeholder="Search" />
+     </div>
+
+     
+
+     
+      
+      <div className='navbar-center'>
     <ul>
       <li>
         <Link to="/profiles">
@@ -38,35 +59,43 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         </Link>
       </li>
       
-      <li>
+     <li>
         <a onClick={logout} href="#!">
           <i className="fas fa-sign-out-alt" />{' '}
           <span className="hide-sm">Logout</span>
         </a>
       </li>
     </ul>
+    </div>
+    </Fragment>
   );
 
   const guestLinks = (
-    <ul>
-      
-      <li>
-        <Link to="/register"><i className="fas fa-regular fa-user-plus"></i>{' '}Register</Link>
-      </li>
-      <li>
-        <Link to="/login"><i className="fas fa-regular fa-arrow-right "></i> {' '}Login</Link>
-      </li>
-    </ul>
+    
+   
+    <div className='main-wavy'>
+    <div className='wavy'>  
+    <span style={{ '--i':1 }}>T</span>
+    <span style={{ '--i':2 }}>H</span>
+    <span style={{ '--i':3 }}>E</span>
+    <span style={{ '--i':4 }}>B</span>
+    <span style={{ '--i':6 }}>R</span>
+    <span style={{ '--i':7 }}>I</span>
+    <span style={{ '--i':8}}>D</span>
+    <span style={{ '--i':9}}>G</span>
+    <span style={{ '--i':10 }}>E</span>
+    </div>
+  </div>
+   
+   
+    
+    
   );
 
   return (
-    <nav className="navbar bg-dark">
-      <h1>
-        <Link to="/">
-          <i className="fas fa-code" /> The Bridge
-        </Link>
-      </h1>
-      <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+    <nav className='navbar bg-dark' >  
+       
+      <Fragment>{isAuthenticated ? authLinks  : guestLinks }</Fragment>
     </nav>
   );
 };
