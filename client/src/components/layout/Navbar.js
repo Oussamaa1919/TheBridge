@@ -72,7 +72,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
 
   const guestLinks = (
     
-   
+     
     <div className='main-wavy'>
     <div className='wavy'>  
     <span style={{ '--i':1 }}>T</span>

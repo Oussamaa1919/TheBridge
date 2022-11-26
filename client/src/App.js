@@ -56,11 +56,20 @@ const  App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
-        <Route path="profiles" element={<Profiles />} />
-        <Route path="profile/:id" element={<Profile />} />
-        <Route path="events" element={<Events />} />
-        <Route path="training" element={<Training />} />
         
+        <Route
+          path="profile/:id"
+          element={<PrivateRoute component={Profile} />} />
+        <Route 
+          path="events"
+          element={<PrivateRoute component={Events}/>} />
+        <Route
+          path="training"
+          element={<PrivateRoute component={Training} />} />
+        <Route 
+          path="profiles" 
+          element={<PrivateRoute component={Profiles} />}
+          />
         <Route
           path="dashboard"
           element={<PrivateRoute component={Dashboard} />}
