@@ -5,24 +5,32 @@ import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 
+
+
+
 const PostItem = ({
   addLike,
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  profile:{profile},
+  post: { _id, text, name,avatar, user, likes, comments, date },
   showActions
 }) => (
-  <div className="post bg-white p-1 my-1">
-    <div>
+  <div className="post">
+    <div className='post-author'>
       <Link to={`/profile/${user}`}>
-        <img className="round-img" src={avatar} alt="" />
-        <h4>{name}</h4>
+        <img  src={avatar} alt="" />
       </Link>
+      <div>
+        <h1>{name}</h1>
+        <small>{profile.status}</small>
+        <small className="post-date">Posted on {formatDate(date)}</small>
+      </div>
     </div>
     <div>
       <p className="my-1">{text}</p>
-      <p className="post-date">Posted on {formatDate(date)}</p>
+      
 
       {showActions && (
         <Fragment>
@@ -72,11 +80,14 @@ PostItem.propTypes = {
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
-  showActions: PropTypes.bool
+  showActions: PropTypes.bool,
+  profile:PropTypes.object.isRequired
+  
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  profile:state.profile
 });
 
 export default connect(mapStateToProps, { addLike, removeLike, deletePost })(

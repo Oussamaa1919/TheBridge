@@ -12,8 +12,8 @@ const PostForm = ({ addPost }) => {
   
 
   return (
-    <div class="create-post">
-    <div class="create-post-input">
+    <div className="create-post">
+    <div className="create-post-input">
       <img src={user}/>
       <textarea rows="2"
        name='text'
@@ -25,7 +25,7 @@ const PostForm = ({ addPost }) => {
 
        </textarea>
     </div>
-    <div class="create-post-links">
+    <div className="create-post-links">
       <li><img src={photo}/>Photo</li>
       <li><img src={video}/>Video</li>
       <li><img src={event}/>Event</li>
