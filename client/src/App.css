@@ -242,19 +242,26 @@ a{
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
-  padding: 0 2rem;
-  margin-top: 6rem;
+  padding: 0 12rem;
+  margin-top: 1.3rem;
   margin-bottom: 3rem;
 }
 /*-------------- left-sidebar ------------------*/
 .left-sidebar{
   flex-basis: 25%;
   align-self: flex-start;
-  position: sticky;
+  position: fixed;
   top: 73px;
+  background: #fff;
+  margin-left:20px ;
 }
 .sidebar-profile-box{
   background: #fff;
+}
+.sidebar-profile-box img{
+  width: 350px;
+  background: #fff;
+  padding: 4px;
 }
 .sidebar-profile-info{
   padding: 0 25px;

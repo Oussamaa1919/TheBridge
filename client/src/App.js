@@ -19,6 +19,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { LOGOUT } from './actions/types';
 import Events from './components/events/Events'
 import Training from './components/trainings/Training';
+import LeftSideBar from './components/layout/LeftSideBar';
 
 
 // Redux
@@ -50,8 +51,11 @@ const  App = () => {
   return ( 
     <Provider store={store}>
     <Router>
+    
       <Navbar />
+      <LeftSideBar />
       <Alert />
+      
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="register" element={<Register />} />
@@ -93,7 +97,9 @@ const  App = () => {
         <Route path="posts" element={<PrivateRoute component={Posts} />} />
         <Route path="posts/:id" element={<PrivateRoute component={Post} />} />
         <Route path="/*" element={<NotFound />} />
+       
       </Routes>
+      
     </Router>
   </Provider>
 );

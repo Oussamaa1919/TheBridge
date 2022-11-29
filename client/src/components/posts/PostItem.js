@@ -33,7 +33,7 @@ const PostItem = ({
       
 
       {showActions && (
-        <Fragment>
+        <Fragment >
           <button
             onClick={() => addLike(_id)}
             type="button"
