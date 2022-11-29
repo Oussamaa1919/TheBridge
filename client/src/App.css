@@ -252,7 +252,7 @@ a{
   align-self: flex-start;
   position: fixed;
   top: 73px;
-  background: #fff;
+  
   margin-left:20px ;
 }
 .sidebar-profile-box{
@@ -265,6 +265,7 @@ a{
 }
 .sidebar-profile-info{
   padding: 0 25px;
+  background: #fff;
 }
 .sidebar-profile-info img{
   width: 90px;
@@ -297,9 +298,11 @@ a{
   color: #045be6;
 }
 .sidebar-profile-link{
+  margin-top: -20px;
   display: flex;
   align-items: center;
   border-top: 1px solid #ccc;
+  background: #fff;
 }
 .sidebar-profile-link span {
   flex-basis: 50%;
@@ -330,7 +333,7 @@ a{
   font-weight: 500;
   margin: 20px 0 10px;
 }
-.sidebar-activity a{
+.sidebar-activity li{
   display: flex;
   align-items: center;
   font-size: 12px;

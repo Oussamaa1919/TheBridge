@@ -60,10 +60,10 @@ const  App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
-        
         <Route
           path="profile/:id"
           element={<PrivateRoute component={Profile} />} />
+
         <Route 
           path="events"
           element={<PrivateRoute component={Events}/>} />
