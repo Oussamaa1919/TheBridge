@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
-
+import LeftSideBar from '../layout/LeftSideBar';
 
 
 
@@ -17,6 +17,8 @@ const PostItem = ({
   post: { _id, text, name,avatar, user, likes, comments, date },
   showActions
 }) => (
+  <div>
+    <LeftSideBar />
   <div className="post">
     <div className='post-author'>
       <Link to={`/profile/${user}`}>
@@ -24,7 +26,7 @@ const PostItem = ({
       </Link>
       <div>
         <h1>{name}</h1>
-        <small>{profile.status}</small>
+        <small>{profile && profile.status}</small>
         <small className="post-date">Posted on {formatDate(date)}</small>
       </div>
     </div>
@@ -67,6 +69,7 @@ const PostItem = ({
         </Fragment>
       )}
     </div>
+  </div>
   </div>
 );
 

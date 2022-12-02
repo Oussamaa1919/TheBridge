@@ -1,41 +1,51 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import coverpic from '../../img/cover-pic.png'
 import itmes from '../../img/items.png'
 import premuim from '../../img/premium.png'
 import skillicon from '../../img/skills-icon.png'
+import { getCurrentProfile} from '../../actions/profile';
+
+
+  
 
 const LeftSideBar = ({ 
-  profile:{profile},
-  isAuthenticated,
-  auth: {user},
-}) => {
-  if (isAuthenticated) {
+  profile: { profile },
+  getCurrentProfile,
+  auth: { user },
+  }) => {
+    useEffect(() => {
+      getCurrentProfile();
+    }, [getCurrentProfile]);
+  
+  
+
+  {
     return ( 
       
       <div className='left-sidebar'>
         <div className='sidebar-profile-box'>
-          <img src={coverpic} />
+          <img src={coverpic} alt=''/>
         </div>
         <div className='sidebar-profile-info'>
-          <img src={user &&  user.avatar}/>
-          <h1>{ user && user.name}</h1>
-          <h3>{profile.status}</h3>
+          <img src={user && user.avatar } alt=""/>
+          <h1>{user && user.name}</h1>
+          <h3>{profile && profile.status} </h3>
           <ul>
-            <li>Company:<span>{profile.company}</span></li>
-            <li>Location:<span>@{profile.location}</span></li>
+            <li>Company:<span>{profile && profile.company}</span></li>
+            <li>Location:<span>@location</span></li>
             <li>Email:<span>{user && user.email}</span></li>           
           </ul>
         </div> 
         <div className='sidebar-profile-link'>
-        <span><img src={itmes} /></span>
-        <span><img src={premuim} /></span>
+        <span><img src={itmes} alt='' /></span>
+        <span><img src={premuim} alt=''/></span>
         </div>
-          <div className='sidebar-activity'>
+        <div className='sidebar-activity'>
             <h3>Skills</h3>
             <ul>
-        {profile.skills.slice(0,profile.skills.lenght).map((skill, index) => (
+        {profile &&profile.skills.slice(0,profile.skills.lenght).map((skill, index) => (
           <li key={index} className='text-primary'>
             <img src={skillicon}/> {skill}
           </li>
@@ -59,9 +69,9 @@ LeftSideBar.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  getCurrentProfile: PropTypes.func.isRequired,
   profile: state.profile,
-  auth: state.auth, 
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps)(LeftSideBar);
+export default connect(mapStateToProps,{ getCurrentProfile})(LeftSideBar);

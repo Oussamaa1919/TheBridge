@@ -19,7 +19,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { LOGOUT } from './actions/types';
 import Events from './components/events/Events'
 import Training from './components/trainings/Training';
-import LeftSideBar from './components/layout/LeftSideBar';
+
 
 
 // Redux
@@ -53,7 +53,7 @@ const  App = () => {
     <Router>
     
       <Navbar />
-      <LeftSideBar />
+      
       <Alert />
       
       <Routes>
