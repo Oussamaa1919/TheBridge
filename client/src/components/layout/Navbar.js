@@ -13,13 +13,13 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
 
       <h1>
         <Link to="/" className='logo'>
-          <img  src={require('../../img/the-bridge-logo.png')}/>
+          <img  src={require('../../img/the-bridge-logo.png')} alt=''/>
         </Link>
       </h1>
       </div>
 
       <div className="search-box">
-      <img src={require('../../img/search.png')} />
+      <img src={require('../../img/search.png') } alt=''/>
       <input type="text" placeholder="Search" />
      </div>
 
@@ -32,38 +32,38 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       <li>
         <Link to="/profiles">
         <i class="fas fa-solid fa-address-card" /> {' '}
-          Internors
+         <span> Internors </span>
           </Link>
       </li>
       <li>
         <Link to="/posts">
         <i class="fas fa-solid fa-language"/> {' '}
-          Posts
+         <span> Posts</span>
           </Link>
       </li>
       <li>
         <Link to="/training">
         <i class="fas fa-solid fa-award" /> {' '}
-          <span className="hide-sm">Trainings</span>
+          <span >Trainings</span>
         </Link>
       </li>
       <li>
         <Link to="/events">
         <i class="fas fa-solid fa-calendar" /> {' '}
-          <span className="hide-sm">Events</span>
+          <span >Events</span>
         </Link>
       </li>
       <li>
         <Link to="/dashboard">
           <i className="fas fa-user" />{' '}
-          <span className="hide-sm">Dashboard</span>
+          <span >Dashboard</span>
         </Link>
       </li>
       
      <li>
         <a onClick={logout} href="#!">
           <i className="fas fa-sign-out-alt" />{' '}
-          <span className="hide-sm">Logout</span>
+          <span >Logout</span>
         </a>
       </li>
     </ul>

@@ -6,6 +6,8 @@ import user from '../../img/user-1.png';
 import photo from '../../img/photo.png';
 import video from '../../img/video.png';
 import event from '../../img/event.png';
+
+
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
   
@@ -14,7 +16,7 @@ const PostForm = ({ addPost }) => {
   return (
     <div className="create-post">
     <div className="create-post-input">
-      <img src={user}/>
+      <img src={user} alt=''/>
       <textarea rows="2"
        name='text'
        placeholder="Write a post"
@@ -24,11 +26,13 @@ const PostForm = ({ addPost }) => {
        >
 
        </textarea>
+       
     </div>
+    
     <div className="create-post-links">
-      <li><img src={photo}/>Photo</li>
-      <li><img src={video}/>Video</li>
-      <li><img src={event}/>Event</li>
+      <li><img src={photo} alt=''/>Photo</li>
+      <li><img src={video} alt=''/>Video</li>
+      <li><img src={event} alt=''/>Event</li>
       <li>
       <form 
       onSubmit={e => {

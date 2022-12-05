@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
-import LeftSideBar from '../layout/LeftSideBar';
 
+import post from '../../img/post-image-1.png';
 
 
 const PostItem = ({
@@ -33,40 +33,51 @@ const PostItem = ({
     </div>
     <div>
       <p className="my-1">{text}</p>
-      
+      <img className='post-img' src={post} alt=''/>
 
       {showActions && (
         <Fragment >
+          <div className='post-activity'>
+          <img className='post-activity-user-icon'  src={avatar} alt="" />
+          
           <button
             onClick={() => addLike(_id)}
             type="button"
-            className="btn btn-light"
-          >
+            className="btn-like"
+          > 
             <i className="fas fa-thumbs-up" />{' '}
-            <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+            
+            <span>Like</span>
           </button>
+          
+          
           <button
             onClick={() => removeLike(_id)}
             type="button"
-            className="btn btn-light"
-          >
+            className="btn-like"
+          > 
             <i className="fas fa-thumbs-down" />
+            <span>Unlike</span>
           </button>
-          <Link to={`/posts/${_id}`} className="btn btn-primary">
-            Discussion{' '}
-            {comments.length > 0 && (
-              <span className="comment-count">{comments.length}</span>
-            )}
+          
+          
+          <Link to={`/posts/${_id}`} className="btn-like">
+          <i class="fas fa-solid fa-comment"></i>
+            Comments{' '}
+            
           </Link>
+          
           {!auth.loading && user === auth.user._id && (
             <button
               onClick={() => deletePost(_id)}
               type="button"
-              className="btn btn-danger"
+              className="btn-like"
             >
               <i className="fas fa-times" />
+              <span>Delete</span>
             </button>
           )}
+          </div>
         </Fragment>
       )}
     </div>
