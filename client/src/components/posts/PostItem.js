@@ -18,8 +18,9 @@ const PostItem = ({
   showActions
 }) => (
   <div>
-    <LeftSideBar />
+    
   <div className="post">
+  
     <div className='post-author'>
       <Link to={`/profile/${user}`}>
         <img  src={avatar} alt="" />

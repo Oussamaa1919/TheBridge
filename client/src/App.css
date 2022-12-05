@@ -245,18 +245,23 @@ a{
   padding: 0 12rem;
   margin-top: 1.3rem;
   margin-bottom: 3rem;
+  flex-wrap: wrap;
+  
 }
 /*-------------- left-sidebar ------------------*/
 .left-sidebar{
   flex-basis: 25%;
   align-self: flex-start;
-  position: fixed;
   top: 73px;
+  position: sticky;
+  float: left;
+  margin-left: 20px;
   
-  margin-left:-380px ;
 }
+
 .sidebar-profile-box{
   background: #fff;
+  
 }
 .sidebar-profile-box img{
   width: 350px;
@@ -476,8 +481,21 @@ margin: 20px 0 10px;
 .main-content{
   flex-basis: 47%;
 }
+.posts{
+  max-width: 1000px;
+  
+  overflow: hidden;
+  padding: 0 19rem 0rem 3rem;
+  margin-top: 1.3rem;
+  margin-bottom: 3rem;
+  
+
+  
+  
+}
 .create-post{
   background: #fff;
+  
 }
 .create-post-input{
   padding: 20px 25px 10px;

@@ -6,6 +6,8 @@ import itmes from '../../img/items.png'
 import premuim from '../../img/premium.png'
 import skillicon from '../../img/skills-icon.png'
 import { getCurrentProfile} from '../../actions/profile';
+import languageicon from '../../img/language-icon.png'
+import hashtagicon from '../../img/hashtag.png'
 
 
   
@@ -18,11 +20,10 @@ const LeftSideBar = ({
     useEffect(() => {
       getCurrentProfile();
     }, [getCurrentProfile]);
-  
-  
-
   {
     return ( 
+      
+
       
       <div className='left-sidebar'>
         <div className='sidebar-profile-box'>
@@ -47,10 +48,30 @@ const LeftSideBar = ({
             <ul>
         {profile &&profile.skills.slice(0,profile.skills.lenght).map((skill, index) => (
           <li key={index} className='text-primary'>
-            <img src={skillicon}/> {skill}
+            <img src={skillicon } alt='' /> {skill}
           </li>
         ))}
       </ul>
+      <h3>Languages</h3>
+            <ul>
+        {profile && profile.languages.slice(0,profile.languages.lenght).map((language, index) => (
+          <li key={index} className='text-primary'>
+            <img src={languageicon} alt= ''/> {language}
+          </li>
+        ))}
+      </ul>
+      <h3>Hashtags</h3>
+            <ul>
+        {profile && profile.hashtags.slice(0,profile.hashtags.lenght).map((hashtag, index) => (
+          <li key={index} className='text-primary'>
+            <img src={hashtagicon} alt= ''/> {hashtag}
+          </li>
+        ))}
+      </ul>
+
+      
+
+      
           </div>
 
 

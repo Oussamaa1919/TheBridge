@@ -4,21 +4,27 @@ import { connect } from 'react-redux';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
 import { getPosts } from '../../actions/post';
-
+import LeftSideBar from '../layout/LeftSideBar';
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
   return (
-    <section className="container">
+    <div>
+       <LeftSideBar />
+    <section className="posts">
+     
+      
       <PostForm />
-      <div className="posts">
+      <div >
         {posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
       </div>
     </section>
+    </div>
+    
   );
 };
 
