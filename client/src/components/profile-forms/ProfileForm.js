@@ -14,6 +14,8 @@ const initialState = {
   website: '',
   location: '',
   status: '',
+  languages:'',
+  hashtags:'',
   skills: '',
   githubusername: '',
   bio: '',
@@ -51,9 +53,15 @@ const ProfileForm = ({
       for (const key in profile.social) {
         if (key in profileData) profileData[key] = profile.social[key];
       }
-      // the skills may be an array from our API response
+      // the skills/languages/hashtags may be an array from our API response
       if (Array.isArray(profileData.skills))
         profileData.skills = profileData.skills.join(', ');
+        
+        if (Array.isArray(profileData.languages))
+        profileData.languages = profileData.languages.join(', ');
+
+        if (Array.isArray(profileData.hashtags))
+        profileData.hashtags = profileData.hashtags.join(', ');
       // set local state with the profileData
       setFormData(profileData);
     }
@@ -64,6 +72,8 @@ const ProfileForm = ({
     website,
     location,
     status,
+    languages,
+    hashtags,
     skills,
     githubusername,
     bio,
@@ -145,6 +155,30 @@ const ProfileForm = ({
           />
           <small className="form-text">
             City & state suggested (eg. Boston, MA)
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Languages"
+            name="languages"
+            value={languages}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            Please use comma separated values (eg. Frensh,English,Arabic...)
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Hashtags"
+            name="hashtags"
+            value={hashtags}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            Please use comma separated values (eg. HTML,CSS,Job,Internship)
           </small>
         </div>
         <div className="form-group">

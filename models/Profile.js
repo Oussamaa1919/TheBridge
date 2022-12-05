@@ -18,6 +18,14 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  languages: {
+    type: [String],
+    required: true
+  },
+  hashtags: {
+    type: [String],
+    required: true
+  },
   skills: {
     type: [String],
     required: true

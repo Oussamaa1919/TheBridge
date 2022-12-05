@@ -40,6 +40,8 @@ router.post(
   auth,
   check('status', 'Status is required').notEmpty(),
   check('skills', 'Skills is required').notEmpty(),
+  check('languages', 'languages is required').notEmpty(),
+  check('hashtags', 'hashtags is required').notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -50,6 +52,8 @@ router.post(
     const {
       website,
       skills,
+      languages,
+      hashtags,
       youtube,
       twitter,
       instagram,
@@ -69,6 +73,14 @@ router.post(
       skills: Array.isArray(skills)
         ? skills
         : skills.split(',').map((skill) => ' ' + skill.trim()),
+       
+        languages: Array.isArray(languages)
+        ? languages
+        : languages.split(',').map((language) => ' ' + language.trim()),
+        
+        hashtags: Array.isArray(hashtags)
+        ? hashtags
+        : hashtags.split(',').map((hashtag) => ' ' + hashtag.trim()),
       ...rest
     };
 
