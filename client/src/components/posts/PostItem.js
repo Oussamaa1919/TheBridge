@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
-
+import thumb from '../../img/thumbsup.png';
 import post from '../../img/post-image-1.png';
 
 
@@ -24,6 +24,7 @@ const PostItem = ({
     <div className='post-author'>
       <Link to={`/profile/${user}`}>
         <img  src={avatar} alt="" />
+        
       </Link>
       <div>
         <h1>{name}</h1>
@@ -34,7 +35,15 @@ const PostItem = ({
     <div>
       <p className="my-1">{text}</p>
       <img className='post-img' src={post} alt=''/>
-
+      <div className='post-stats'>
+        <div>
+        <img src={thumb} alt=''/>
+        
+        </div>
+        <div>
+        <span className="comment-count">{comments.length} comments</span>
+        </div>
+      </div>
       {showActions && (
         <Fragment >
           <div className='post-activity'>
