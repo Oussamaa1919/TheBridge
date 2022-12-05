@@ -377,6 +377,9 @@ a{
   align-self: flex-start;
   position: sticky;
   top: 73px;
+  float: right;
+  margin-right: 20px;
+  max-width: 400px;
 }
 .sidebar-news{
   background: #fff;
@@ -486,7 +489,7 @@ margin: 20px 0 10px;
   max-width: 1000px;
   
   overflow: hidden;
-  padding: 0 19rem 0rem 3rem;
+  padding: 0rem 1rem 0rem 1rem;
   margin-top: 1.3rem;
   margin-bottom: 3rem;
   

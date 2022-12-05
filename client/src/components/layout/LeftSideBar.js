@@ -73,15 +73,8 @@ const LeftSideBar = ({
             <img src={hashtagicon} alt= ''/> {hashtag}
           </li>
         ))}
-      </ul>
-
-      
-
-      
-          </div>
-
-
-
+      </ul>      
+      </div>
       </div>
      
     )

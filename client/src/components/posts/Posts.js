@@ -5,6 +5,7 @@ import PostItem from './PostItem';
 import PostForm from './PostForm';
 import { getPosts } from '../../actions/post';
 import LeftSideBar from '../layout/LeftSideBar';
+import RightSideBar from '../layout/RightSideBar';
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
     getPosts();
@@ -12,6 +13,7 @@ const Posts = ({ getPosts, post: { posts } }) => {
 
   return (
     <div>
+      <RightSideBar />
        <LeftSideBar />
     <section className="posts">
      
