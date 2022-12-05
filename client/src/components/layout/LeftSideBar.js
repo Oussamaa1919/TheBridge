@@ -52,6 +52,10 @@ const LeftSideBar = ({
           </li>
         ))}
       </ul>
+      </div>
+      <div className='sidebar-activity'>
+
+      
       <h3>Languages</h3>
             <ul>
         {profile && profile.languages.slice(0,profile.languages.lenght).map((language, index) => (
@@ -60,6 +64,8 @@ const LeftSideBar = ({
           </li>
         ))}
       </ul>
+      </div>
+      <div className='sidebar-activity'>
       <h3>Hashtags</h3>
             <ul>
         {profile && profile.hashtags.slice(0,profile.hashtags.lenght).map((hashtag, index) => (
