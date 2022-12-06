@@ -36,11 +36,13 @@ const PostItem = ({
       <p className="my-1">{text}</p>
       <img className='post-img' src={post} alt=''/>
       <div className='post-stats'>
-        <div>
+        <div className='like-stats'>
         <img src={thumb} alt=''/>
-        
+        <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         </div>
+        
         <div>
+
         <span className="comment-count">{comments.length} comments</span>
         </div>
       </div>
@@ -72,7 +74,7 @@ const PostItem = ({
           
           <Link to={`/posts/${_id}`} className="btn-like">
           <i class="fas fa-solid fa-comment"></i>
-            Comments{' '}
+            Comment{' '}
             
           </Link>
           

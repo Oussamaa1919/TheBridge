@@ -652,7 +652,10 @@ margin-right: -5px;
   display: flex;
   align-items: center;
 }
-
+.like-stats span{
+  margin-top: 3px;
+  margin-left: 3px ;
+}
 .post-activity-user-icon{
 width: 30px;
 border-radius: 50%;
