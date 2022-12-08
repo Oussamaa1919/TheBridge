@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-
+import user from '../../img/user-1.png'
 
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+  const profileMenu = document.getElementById('profileMenu');
+   function toggleMenu(){
+    profileMenu.classList.toggle("open-menu");
+   }
+  
   const authLinks = (
     
       <Fragment>
@@ -68,8 +73,23 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       </li>
     </ul>
     </div>
-
-
+    <div className="navbar-right">
+      <div className="online">
+        <img src={user} className="nav-profile-img" onClick={()=>toggleMenu()}  alt=''/>
+      </div>
+    </div>
+    
+    <div class="profile-menu-wrap" id="profileMenu">
+      <div class="profile-menu">
+        <div class="user-info">
+          <img src={user} alt='' />
+          <div>
+            <h3>Rayan Walton</h3>
+            <a href="profile.html">See your Profile</a>
+          </div>
+        </div>
+        </div>
+        </div>
     </Fragment>
   );
 
