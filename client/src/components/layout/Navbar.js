@@ -65,12 +65,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         </Link>
       </li>
       
-     <li>
-        <a onClick={logout} href="#!">
-          <i className="fas fa-sign-out-alt" />{' '}
-          <span >Logout</span>
-        </a>
-      </li>
+     
     </ul>
     </div>
     <div className="navbar-right">
@@ -90,6 +85,11 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
             </Link>
           </div>
         </div>
+        <hr/>
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt" />{' '}
+          <span >Logout</span>
+        </a>
         </div>
         </div>
     </Fragment>
