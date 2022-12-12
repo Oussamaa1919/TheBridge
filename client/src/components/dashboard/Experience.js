@@ -19,10 +19,7 @@ const Experience = ({ experience, deleteExperience }) => {
       <img src={del}alt='' onClick={() => deleteExperience(exp._id)}  className='exp-del'/>
       <b>{exp.company}</b>
       <b>{formatDate(exp.from)} - {exp.to ? formatDate(exp.to) : 'Now'}</b>
-      <p>{exp.description}</p>
-      
-      
-        
+      <p>{exp.description}</p>  
         </div>
           </div>
               </div>
