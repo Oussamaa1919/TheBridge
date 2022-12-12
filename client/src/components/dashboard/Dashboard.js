@@ -6,6 +6,9 @@ import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import cover from '../../img/cover-pic.png'
+import RightSideBar from '../layout/RightSideBar';
+
 
 const Dashboard = ({
   getCurrentProfile,
@@ -18,15 +21,59 @@ const Dashboard = ({
   }, [getCurrentProfile]);
 
   return (
-    <section className="container">
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Welcome {user && user.name}
+    <section >
+      <RightSideBar />
+      <div className='profile-main'>
+      <img src={cover} className='profile-cover' alt=''/>
+       <div className='profile-container-inner'>
+        <img src={user && user.avatar} alt='' className='profile-pic'/>
+        
+        <h1>{user && user.name}</h1>
+        
+        <b>{profile && profile.status}</b>
+        
+        <p>{profile && profile.location} &middot; <Link to='/edit-profile' >
+        <i className='fas fa-user-circle ' /> Edit Profile
+        </Link>
+        &middot;
+        
+     
       </p>
-      {profile !== null ? (
+
+        <div className='social-links'>
+        {profile && profile.social
+          ? Object.entries(profile && profile.social)
+              .filter(([_, value]) => value)
+              .map(([key, value]) => (
+                <a
+                  key={key}
+                  href={value}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className='social-link'
+                >
+                  <i className={`fab fa-${key} fa-2x`}></i>
+                </a>
+              ))
+          : null}
+            </div>
+
+            
+            
+            <div className='profile-description'>
+              <h2>About</h2>
+              <p> {profile && profile.bio}</p>
+              <a class="see-more-link">See more...</a>
+            </div>
+
+            
+
+        {profile !== null ? (
         <>
-          <DashboardActions />
+          
           <Experience experience={profile.experience} />
+          
+         
           <Education education={profile.education} />
 
           <div className="my-2">
@@ -34,6 +81,7 @@ const Dashboard = ({
               <i className="fas fa-user-minus" /> Delete My Account
             </button>
           </div>
+          
         </>
       ) : (
         <>
@@ -43,6 +91,9 @@ const Dashboard = ({
           </Link>
         </>
       )}
+       </div>
+     
+      </div>
     </section>
   );
 };

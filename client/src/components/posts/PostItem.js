@@ -73,7 +73,7 @@ const PostItem = ({
           
           
           <Link to={`/posts/${_id}`} className="btn-like">
-          <i class="fas fa-solid fa-comment"></i>
+          <i className="fas fa-solid fa-comment"></i>
             Comment{' '}
             
           </Link>

@@ -36,25 +36,25 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     <ul>
       <li>
         <Link to="/profiles">
-        <i class="fas fa-solid fa-address-card" /> {' '}
+        <i className="fas fa-solid fa-address-card" /> {' '}
          <span> Internors </span>
           </Link>
       </li>
       <li>
         <Link to="/posts">
-        <i class="fas fa-solid fa-language"/> {' '}
+        <i className="fas fa-solid fa-language"/> {' '}
          <span> Posts</span>
           </Link>
       </li>
       <li>
         <Link to="/training">
-        <i class="fas fa-solid fa-award" /> {' '}
+        <i className="fas fa-solid fa-award" /> {' '}
           <span >Trainings</span>
         </Link>
       </li>
       <li>
         <Link to="/events">
-        <i class="fas fa-solid fa-calendar" /> {' '}
+        <i className="fas fa-solid fa-calendar" /> {' '}
           <span >Events</span>
         </Link>
       </li>
@@ -79,13 +79,15 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       </div>
     </div>
     
-    <div class="profile-menu-wrap" id="profileMenu">
-      <div class="profile-menu">
-        <div class="user-info">
+    <div className="profile-menu-wrap" id="profileMenu">
+      <div className="profile-menu">
+        <div className="user-info">
           <img src={user} alt='' />
           <div>
             <h3>Rayan Walton</h3>
-            <a href="profile.html">See your Profile</a>
+            <Link to="/dashboard">
+            <span>See your Profile</span>
+            </Link>
           </div>
         </div>
         </div>

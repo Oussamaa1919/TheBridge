@@ -13,9 +13,9 @@ import logo from '../../img/the-bridge-logo.png'
 const RightSideBar = () => {
   return (
     
-      <div class="right-sidebar">
-      <div class="sidebar-news">
-        <img src={more} class="info-icon" alt='' />
+    <div className="right-sidebar">
+      <div className="sidebar-news">
+        <img src={more} className="info-icon" alt='' />
         <h3>Trending news</h3>
         <a href="#"> High demand for skilled manpower</a>
         <span>1d ago & middot; 10,934 readres</span>
@@ -33,10 +33,10 @@ const RightSideBar = () => {
         <span>12h ago & middot; 6,304 readres</span>
 
 
-        <a href="#" class="read-more-link">Read more</a>
+        <a href="#" className="read-more-link">Read more</a>
       </div>
      
-      <div class="sidebar-Ad">
+      <div className="sidebar-Ad">
         <small>Ad &middot; &middot; &middot;</small>
         <div id="slideset1">
           <div>
@@ -62,7 +62,7 @@ const RightSideBar = () => {
           </div>
         </div>
        </div>
-       <div class="sidebar-useful-links">
+       <div className="sidebar-useful-links">
         <a href="#">about</a>
         <a href="#">Accessibility</a>
         <a href="#">Help Center</a>
@@ -71,7 +71,7 @@ const RightSideBar = () => {
         <a href="#">Get the App</a>
         <a href="#">More</a>
         
-        <div class="copyright-msg">
+        <div className="copyright-msg">
           <img src={logo} alt=''/>
           <p>The Bridge &#169; 2022. All right reserved</p>
         </div>

@@ -1,42 +1,46 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { deleteExperience } from '../../actions/profile';
 import formatDate from '../../utils/formatDate';
+import explogo from '../../img/expicon.png'
+import del from '../../img/delete-icon.png'
+import plus from '../../img/plus.png'
+
 
 const Experience = ({ experience, deleteExperience }) => {
   const experiences = experience.map((exp) => (
-    <tr key={exp._id}>
-      <td>{exp.company}</td>
-      <td className="hide-sm">{exp.title}</td>
-      <td>
-        {formatDate(exp.from)} - {exp.to ? formatDate(exp.to) : 'Now'}
-      </td>
-      <td>
-        <button
-          onClick={() => deleteExperience(exp._id)}
-          className="btn btn-danger"
-        >
-          Delete
-        </button>
-      </td>
-    </tr>
+      <div key={exp._id} className='profile-desc-row'>
+        <div>
+      <img src={explogo} alt='' className='exp-img'  />
+      <div>
+      <h3>{exp.title}</h3>
+      <img src={del}alt='' onClick={() => deleteExperience(exp._id)}  className='exp-del'/>
+      <b>{exp.company}</b>
+      <b>{formatDate(exp.from)} - {exp.to ? formatDate(exp.to) : 'Now'}</b>
+      <p>{exp.description}</p>
+      
+      
+        
+        </div>
+          </div>
+              </div>
   ));
 
   return (
     <Fragment>
+      <div className='profile-description'>
       <h2 className="my-2">Experience Credentials</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th className="hide-sm">Title</th>
-            <th className="hide-sm">Years</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>{experiences}</tbody>
-      </table>
+      <Link to='/add-experience' >
+      <img src={plus} alt='' className='plus-img'/> 
+      </Link>
+      
+      <div> 
+      {experiences}
+      
+      </div>
+      </div>
     </Fragment>
   );
 };
