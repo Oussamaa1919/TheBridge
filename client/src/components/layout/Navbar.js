@@ -96,8 +96,16 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   );
 
   const guestLinks = (
-    
-     
+    <div>
+     <div className='navbar-left'>
+
+<h1>
+  <Link to="/" className='logo'>
+    <img  src={require('../../img/the-bridge-logo.png')} alt=''/>
+  </Link>
+</h1>
+</div>
+
     <div className='main-wavy'>
     <div className='wavy'>  
     <span style={{ '--i':1 }}>T</span>
@@ -111,7 +119,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     <span style={{ '--i':10 }}>E</span>
     </div>
   </div>
-   
+  </div>
    
     
     

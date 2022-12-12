@@ -20,13 +20,17 @@ const Login = ({ login, isAuthenticated }) => {
     login(email, password);
   };
 
+
+
+
+
   if (isAuthenticated) {
     return <Navigate to="/dashboard" />;
   }
 
   return (
-    <section className="container">
-      <h1 className="large text-primary">Sign In</h1>
+    <section className="login-container">
+      <h2 className="large text-primary">Sign In</h2>
       <p className="lead">
         <i className="fas fa-user" /> Sign Into Your Account
       </p>
@@ -38,6 +42,7 @@ const Login = ({ login, isAuthenticated }) => {
             name="email"
             value={email}
             onChange={onChange}
+            
           />
         </div>
         <div className="form-group">
@@ -48,10 +53,12 @@ const Login = ({ login, isAuthenticated }) => {
             value={password}
             onChange={onChange}
             minLength="6"
+            
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Login" />
       </form>
+     
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
