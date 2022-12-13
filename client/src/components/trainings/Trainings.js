@@ -4,16 +4,29 @@ import LeftSideBar from '../layout/LeftSideBar';
 import RightSideBar from '../layout/RightSideBar';
 const Trainings = () => {
   return (
-    <div className='trainings'>
-      <LeftSideBar />
-      <RightSideBar />
-      <div className='traing-welcome'><h1>Welcome to our courses</h1></div>
-      <div>
-      <TrainingItem />
-      <TrainingItem />
+    
       
+      <section className='trainings'>
+        <RightSideBar />
+      <div className='training'>
+        
+        <h1>
+          We are here to help  <i class="fas fa-solid fa-hand-holding-medical"></i>
+          
+          </h1>
+        <p>Become who you want to be with The Bridge. 
+          Choose your own career path and earn an online degree
+           with hands-on projects and weekly one-on-one mentoring sessions with a dedicated professional in your field.</p>
+      <TrainingItem />
+      <TrainingItem />
+      <TrainingItem />
+      <TrainingItem />
+      <TrainingItem />
+      <TrainingItem />
       </div>
-    </div>
+      
+      </section>
+    
   )
 }
 

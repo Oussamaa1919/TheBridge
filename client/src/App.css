@@ -105,14 +105,19 @@ a{
   text-decoration: none;
   color: #5f5f5f;
 }
-
 .trainings{
   padding-top: 30px;
 }
-.traing-welcome h1{
+.training{
+  max-width: 900px;
+  margin-left: 50px;
+}
+.training h1{
   color: var(--red);
-  float: right;
-  margin-right: 170px;
+  margin-bottom: 10px;   
+}
+.training p{
+  margin-bottom: -50px;
 }
 
 /****************training-card****************/
@@ -125,14 +130,14 @@ a{
   
 }
 #cardcontainer{
-	box-shadow: 0 15px 30px 1px grey;
+  box-shadow: 0 15px 30px 1px grey;
 	background: rgba(255, 255, 255, 0.90);
 	text-align: center;
 	border-radius: 5px;
 	overflow: hidden;
 	margin: 5em auto;
 	height: 350px;
-	width: 700px;	
+	width: 950px;	
 }
 .product-details {
 	position: relative;
