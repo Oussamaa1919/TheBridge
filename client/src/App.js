@@ -18,7 +18,7 @@ import NotFound from './components/layout/NotFound';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { LOGOUT } from './actions/types';
 import Events from './components/events/Events'
-import Training from './components/trainings/Training';
+import Trainings from './components/trainings/Trainings';
 
 
 
@@ -69,7 +69,7 @@ const  App = () => {
           element={<PrivateRoute component={Events}/>} />
         <Route
           path="training"
-          element={<PrivateRoute component={Training} />} />
+          element={<PrivateRoute component={Trainings} />} />
         <Route 
           path="profiles" 
           element={<PrivateRoute component={Profiles} />}
