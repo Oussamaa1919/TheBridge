@@ -34,36 +34,39 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       
       <div className='navbar-center'>
     <ul>
-      <li>
-        <Link to="/profiles">
-        <i className="fas fa-solid fa-address-card" /> {' '}
-         <span> Internors </span>
-          </Link>
-      </li>
-      <li>
+    <li>
         <Link to="/posts">
-        <i className="fas fa-solid fa-language"/> {' '}
-         <span> Posts</span>
+        <img src={require('../../img/home.png') } alt=''/>
+         <span> Home</span>
           </Link>
       </li>
       <li>
-        <Link to="/training">
-        <i className="fas fa-solid fa-award" /> {' '}
+        <Link to="/trainings">
+        <img src={require('../../img/tttt.png') } alt=''/>
           <span >Trainings</span>
         </Link>
       </li>
       <li>
-        <Link to="/events">
-        <i className="fas fa-solid fa-calendar" /> {' '}
-          <span >Events</span>
+        <Link to="/internships">
+        <img src={require('../../img/jobs.png') } alt=''/>
+          <span >Internships</span>
         </Link>
       </li>
+      {/* <li>
+        <Link to="/profiles">
+        <img src={require('../../img/home.png') } alt=''/>
+         <span> Internors </span>
+          </Link>
+      </li>  */}
+      
+      
       <li>
-        <Link to="/dashboard">
-          <i className="fas fa-user" />{' '}
-          <span >Dashboard</span>
-        </Link>
+        <a>
+        <img src={require('../../img/notification.png') } alt=''/>
+          <span >Notifications</span>
+          </a>
       </li>
+      
       
      
     </ul>
@@ -100,7 +103,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
      <div className='navbar-left'>
 
 <h1>
-  <Link to="/" className='logo'>
+  <Link to="/" className='logo2'>
     <img  src={require('../../img/the-bridge-logo.png')} alt=''/>
   </Link>
 </h1>

@@ -1,5 +1,6 @@
 import React from 'react'
-import android from '../../img/android4.jpg'
+import android from '../../img/android6.jpg'
+import { Link } from 'react-router-dom';
 const TrainingItem = () => {
   return (
     <div className='cardbody'>
@@ -23,10 +24,11 @@ const TrainingItem = () => {
 	<button className="btn-card">
 	 <span className="price">600DT</span>
    <span className="shopping-cart"><i class="fas fa fa-solid fa-money-check"></i></span>
-   <span className="buy">Let's go</span>
-   
+   <Link to='/training-form'>
+	 <span className="buy">Let's go</span>
+	 </Link>
  </button>
-		
+ 
 
 	
 </div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import TrainingItem from './TrainingItem'
-import LeftSideBar from '../layout/LeftSideBar';
 import RightSideBar from '../layout/RightSideBar';
 const Trainings = () => {
   return (
