@@ -17,7 +17,8 @@ const TrainingItem = () => {
 		<i className="fa fa-star" aria-hidden="true"></i>
 	</span>
 		
-			<p className="information">" Android is the most popular operating system on smartphones and tablets. The applications being written in Java, you.</p>
+			<p className="information">" Android is the most popular operating system on smartphones and tablets. The applications being written in Java, you.
+			Android is the most popular operating system on smartphones and tablets. The applications being written in Java, you.</p>
 
       <div className="control">
 	

@@ -17,11 +17,9 @@ const Post = ({ getPost, post: { post, loading } }) => {
   return loading || post === null ? (
     <Spinner />
   ) : (
-    <section className="container">
-      <Link to="/posts" className="btn">
-        Back To Posts
-      </Link>
-      <PostItem post={post} showActions={false} />
+    <section className="container" >
+      
+      
       <CommentForm postId={post._id} />
       <div className="comments">
         {post.comments.map((comment) => (

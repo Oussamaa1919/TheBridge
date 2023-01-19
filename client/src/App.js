@@ -21,6 +21,7 @@ import Events from './components/events/Events'
 import Trainings from './components/trainings/Trainings';
 import Internships from './components/internships/Internships';
 import TrainingForm from './components/trainings/TrainingForm';
+import InternshipForm from './components/internships/InternshipForm';
 
 
 // Redux
@@ -102,6 +103,7 @@ const  App = () => {
         <Route path="posts/:id" element={<PrivateRoute component={Post} />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="training-form" element={<PrivateRoute component={TrainingForm} />} />
+        <Route path="internship-form" element={<PrivateRoute component={InternshipForm} />} />
       </Routes>
       
     </Router>

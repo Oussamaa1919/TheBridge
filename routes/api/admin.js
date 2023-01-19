@@ -28,7 +28,7 @@ router.get('/', adminauth, async (req, res) => {
 // @access   Public
 router.post(
   '/',
-  check('username', 'Please include a valid username').exists(),
+  check('email', 'Please include a valid email').exists(),
   check('password', 'Password is required').exists(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -36,10 +36,10 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     try {
-      let admin = await Admin.findOne({ username });
+      let admin = await Admin.findOne({ email });
 
       if (!admin) {
         return res
@@ -82,7 +82,7 @@ router.post(
 // @access   Public
 router.post(
   '/register',
-  check('username', 'username is required').notEmpty(),
+  
   check('email', 'Please include a valid email').isEmail(),
   check(
     'password',
@@ -97,7 +97,7 @@ router.post(
     const { name,username, email, password } = req.body;
 
     try {
-      let admin = await Admin.findOne({ username });
+      let admin = await Admin.findOne({ email });
 
       if (admin) {
         return res

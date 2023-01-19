@@ -17,23 +17,23 @@ const RightSideBar = () => {
       <div className="sidebar-news">
         <img src={more} className="info-icon" alt='' />
         <h3>Trending news</h3>
-        <a href="#"> High demand for skilled manpower</a>
+        <a > High demand for skilled manpower</a>
         <span>1d ago & middot; 10,934 readres</span>
 
-        <a href="#"> Careers growing horizontally too</a>
+        <a > Careers growing horizontally too</a>
         <span>1d ago & middot; 1.552 readres</span>
 
-        <a href="#"> less work visa for US,more UK</a>
+        <a > less work visa for US,more UK</a>
         <span>1d ago & middot; 1.600 readres</span>
 
-        <a href="#"> More hiring = higher confidance ?</a>
+        <a > More hiring = higher confidance ?</a>
         <span>18h ago & middot; 8,204 readres</span>
 
-        <a href="#"> MGautam adani is the world's third richest</a>
+        <a > MGautam adani is the world's third richest</a>
         <span>12h ago & middot; 6,304 readres</span>
 
 
-        <a href="#" className="read-more-link">Read more</a>
+        <a  className="read-more-link">Read more</a>
       </div>
      
       <div className="sidebar-Ad">
@@ -63,13 +63,7 @@ const RightSideBar = () => {
         </div>
        </div>
        <div className="sidebar-useful-links">
-        <a href="#">about</a>
-        <a href="#">Accessibility</a>
-        <a href="#">Help Center</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Advertising</a>
-        <a href="#">Get the App</a>
-        <a href="#">More</a>
+        
         
         <div className="copyright-msg">
           <img src={logo} alt=''/>
