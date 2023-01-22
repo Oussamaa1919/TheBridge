@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import Posts from '../posts/Posts'
+
 const PrivateRoute = ({
   component: Component,
   auth: { isAuthenticated, loading }

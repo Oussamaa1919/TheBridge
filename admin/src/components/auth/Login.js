@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
@@ -30,7 +30,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <section className="login-container">
-      <h2 className="large text-primary">Sign In</h2>
+      <h2 className="large text-login">Sign In</h2>
       <p className="lead">
         <i className="fas fa-user" /> Sign Into Your Account
       </p>
@@ -56,12 +56,10 @@ const Login = ({ login, isAuthenticated }) => {
             
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <input type="submit" className="btn btn-login" value="Login" />
       </form>
      
-      <p className="my-1">
-        Don't have an account? <Link to="/register">Sign Up</Link>
-      </p>
+      
     </section>
   );
 };

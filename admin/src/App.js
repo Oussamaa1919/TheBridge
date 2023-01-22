@@ -7,6 +7,7 @@ import Alert from './components/layout/Alert';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { LOGOUT } from './actions/types';
 import Home from './components/layout/Home';
+import SideBar from './components/layout/SideBar'
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -15,6 +16,7 @@ import setAuthToken from './utils/setAuthToken';
 
 
 const App = () => {
+  
   useEffect(() => {
     // check for token in LS when app first runs
     if (localStorage.token) {
@@ -30,15 +32,16 @@ const App = () => {
       if (!localStorage.token) store.dispatch({ type: LOGOUT });
     });
   }, []);
-
+  
   return (
     <Provider store={store}>
     <Router>
-     <Login />
+      
       <Alert />
+      <SideBar />
       <Routes>
        
-       
+      <Route path="login" element={<Login />} />
       <Route
           path="home"
           element={<PrivateRoute component={Home} />}
@@ -51,6 +54,6 @@ const App = () => {
     </Router>
   </Provider>
   );
-}
+};
 
 export default App;
