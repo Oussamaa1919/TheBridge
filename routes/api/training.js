@@ -20,6 +20,26 @@ router.get('/', adminauth, async (req, res) => {
   }
 });
 
+// @route    GET api/posts/:id
+// @desc     Get post by ID
+// @access   Private
+router.get('/:id', adminauth, checkObjectId('id'), async (req, res) => {
+  try {
+    const training = await Training.findById(req.params.id);
+
+    if (!training) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+
+    res.json(training);
+  } catch (err) {
+    console.error(err.message);
+
+    res.status(500).send('Server Error');
+  }
+});
+
+
 // @route    POST api/trainings
 // @desc     Create a training
 // @access   Private
@@ -106,6 +126,30 @@ router.put(
     }
   });
 
+// @route    DELETE api/trainings/:id
+// @desc     Delete a training
+// @access   Private
+router.delete('/:id', [adminauth, checkObjectId('id')], async (req, res) => {
+  try {
+    const training = await Training.findById(req.params.id);
 
+    if (!training) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+
+    // Check user
+    if (training.admin.toString() !== req.admin.id) {
+      return res.status(401).json({ msg: 'User not authorized' });
+    }
+
+    await training.remove();
+
+    res.json({ msg: 'Post removed' });
+  } catch (err) {
+    console.error(err.message);
+
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
