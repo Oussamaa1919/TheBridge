@@ -17,6 +17,7 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/posts', require('./routes/api/posts'));
 app.use('/api/admin', require('./routes/api/admin'));
 app.use('/api/trainings', require('./routes/api/training'));
+app.use('/api/internships', require('./routes/api/internship'));
 
 
 
