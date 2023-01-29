@@ -32,7 +32,7 @@ function authReducer(state = initialState, action) {
       };
     
     case AUTH_ERROR:
-      case LOGOUT:
+    case LOGOUT:
       return {
         ...state,
         token: null,

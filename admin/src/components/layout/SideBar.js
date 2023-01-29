@@ -16,7 +16,7 @@ const SideBar = ({ auth: { isAuthenticated }, logout }) => {
     <div className='navigation'>
       <ul>
         <li>
-        <a onClick={logout} href="#!">
+        <a onClick={logout} href="#!" >
         <i className="fas fa-sign-out-alt" />{' '}
         <span >Logout</span>
       </a>
