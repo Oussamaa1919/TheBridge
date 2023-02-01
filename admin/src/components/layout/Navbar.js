@@ -7,12 +7,23 @@ import logo from '../../images/the-bridge-logo.png'
 
 const Navbar = ({ auth: { isAuthenticated} }) => {
 
+//MenuToggle 
+
+let navigation = document.querySelector('.navigation');
+let main = document.querySelector('.main');
+function toggle  (){
+  navigation.classList.toggle('active');
+  main.classList.toggle('active')
+}
+
+
+
   const authLinks = (
     <Fragment>
       <div className="main">
       <div className="topbar">
         <div className="toggle">
-        <i className="fas fa-solid fa-bars" />
+        <i className="fas fa-solid fa-bars" onClick={()=>toggle()} />
         </div>
         
         <div className="search-box">
@@ -49,7 +60,7 @@ const Navbar = ({ auth: { isAuthenticated} }) => {
    <span style={{ '--i':6 }}>O</span>
    <span style={{ '--i':7 }}>M</span>
    <span style={{ '--i':8}}>E</span>
-   <span style={{ '--i':8}}><i class="fas fa-solid fa-hand-sparkles"></i></span>
+   <span style={{ '--i':8}}><i className="fas fa-solid fa-hand-sparkles"></i></span>
 
    </div>
  </div>
@@ -71,5 +82,6 @@ const Navbar = ({ auth: { isAuthenticated} }) => {
 const mapStateToProps = (state) => ({
   auth: state.auth
 });
+
 export default connect(mapStateToProps) (Navbar)
 
