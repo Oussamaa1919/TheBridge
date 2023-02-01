@@ -48,6 +48,51 @@ body
   outline: none;
   border: 0;
 }
+/************search-box************/
+/*****************welcome-animation*************/
+.main-wavy{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -48px;
+}
+.wavy{
+  
+  position: relative;
+  right: 20px;
+ 
+}
+.wavy span{
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  text-transform: uppercase;
+  animation: animate 1s ease-in-out infinite;
+  animation-delay: calc(0.1s* var(--i)); 
+  margin-right: 20px; 
+  color: #f4f4f4; 
+
+}
+@keyframes animate{
+  0% { transform: translateY(0px);}
+  20% {transform: translateY(-20px);}
+  40%,100%{transform: translateY(0px);}
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+  background-color: #287bff;
+}
+.logo2 img {
+  width: 40px;
+  margin-right: 15 px;
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 50%;  
+}
+/*****************welcome-animation*************/
+
+
 
 /****************Login******************/
 
