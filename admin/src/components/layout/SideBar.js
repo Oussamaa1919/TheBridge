@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-
-
-const SideBar = ({ auth: { isAuthenticated }, logout }) => {
+import Login from '../auth/Login';
+const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
   
   
   
@@ -15,10 +14,22 @@ const SideBar = ({ auth: { isAuthenticated }, logout }) => {
   <div className='container'>
     <div className='navigation'>
       <ul>
+      <li>
+          <a href='#'>
+            <span ><img src={admin && admin.avatar} alt=''/></span>
+            <span className="title">{admin && admin.name}</span>
+          </a>
+        </li>
         <li>
-        <a onClick={logout} href="#!" >
-        <i className="fas fa-sign-out-alt" />{' '}
-        <span >Logout</span>
+          <a href='#'>
+            <span className="icon"><i class=" fas fa-solid fa-house-user" /></span>
+            <span className="title">Dashbord</span>
+          </a>
+        </li>
+        <li>
+        <a onClick={logout}  href='#'>
+       <span className='icon'> <i className="fas fa-sign-out-alt" />{' '} </span>
+        <span className="title">Logout</span>
       </a>
         </li>
       </ul>
@@ -28,10 +39,8 @@ const SideBar = ({ auth: { isAuthenticated }, logout }) => {
   </div>
   </Fragment>
   );
-  const guestLinks = (
-    <div>
-      <h1>hiiii</h1>
-</div>
+  const guestLinks = (    
+      <Login />  
 );
   return (
     <nav className='navbar bg-dark' > 
