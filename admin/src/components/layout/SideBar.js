@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import Login from '../auth/Login';
+
+
 const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
   
   
@@ -26,6 +28,18 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
             <span className="title">Dashbord</span>
           </a>
         </li>
+        <li>
+        <a href="#">
+            <span className="icon"> <i class=" fas fa-solid fa-briefcase" /></span>
+            <span className="title">Internships</span>
+          </a>
+          </li>
+          <li>
+        <a href="#">
+            <span className="icon"><i class="fas fa-duotone fa-laptop-code"></i></span>
+            <span className="title">Trainings</span>
+          </a>
+          </li>
         <li>
         <a onClick={logout}  href='#'>
        <span className='icon'> <i className="fas fa-sign-out-alt" />{' '} </span>

@@ -683,10 +683,10 @@ font-family: 'EB Garamond', serif;
   align-items: center;
   padding: 0 15px;
   margin-right: 29%;
-  
 }
 .search-box img{
-  width: 14px;
+  width: 14px; 
+  
 }
 .search-box input{
   width: 100%;

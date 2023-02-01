@@ -8,11 +8,13 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { LOGOUT } from './actions/types';
 import Home from './components/layout/Home';
 import SideBar from './components/layout/SideBar'
+import Navbar from './components/layout/Navbar';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+
 
 
 const App = () => {
@@ -39,6 +41,7 @@ const App = () => {
       
       <Alert />
       <SideBar />
+      <Navbar />
       <Routes>
        
       <Route path="login" element={<Login />} />
