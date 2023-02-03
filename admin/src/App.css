@@ -82,7 +82,11 @@ body
   display: flex;
   align-items: center;
   background-color: #287bff;
+  
+  
 }
+
+
 .logo2 img {
   width: 40px;
   margin-right: 15 px;
@@ -142,7 +146,13 @@ body
 
 /****************End-Login******************/
 
-
+.container-trainings{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  
+}
 
 
 .navigation{
@@ -380,7 +390,7 @@ color: var(--withe);
   margin-top: 10px;
 }
 
-.details .recentOrders{
+.details .table{
 
   position: relative;
   display: grid;

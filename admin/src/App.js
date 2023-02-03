@@ -9,11 +9,13 @@ import { LOGOUT } from './actions/types';
 import Home from './components/layout/Home';
 import SideBar from './components/layout/SideBar'
 import Navbar from './components/layout/Navbar';
+import Trainings from './components/trainings/Trainings';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+
 
 
 
@@ -49,7 +51,7 @@ const App = () => {
           path="home"
           element={<PrivateRoute component={Home} />}
         />
-       
+      <Route path="trainings" element={<PrivateRoute component={Trainings} />} />
         
        
       

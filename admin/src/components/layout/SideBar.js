@@ -24,10 +24,12 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
           </a>
         </li>
         <li>
+          <Link to= '/home'>
           <a href='#'>
             <span className="icon"><i class=" fas fa-solid fa-house-user" /></span>
-            <span className="title">Dashbord</span>
+            <span className="title">Home</span>
           </a>
+          </Link>
         </li>
         <li>
         <a href="#">
@@ -36,10 +38,12 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
           </a>
           </li>
           <li>
-        <a href="#">
+            <Link to='/trainings'>
+            <a href="#">
             <span className="icon"><i class="fas fa-duotone fa-laptop-code"></i></span>
             <span className="title">Trainings</span>
           </a>
+          </Link>
           </li>
         <li>
         <a onClick={logout}  href='#'>
