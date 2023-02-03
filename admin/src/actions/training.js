@@ -16,6 +16,10 @@ import {
 export const getTrainings = () => async (dispatch) => {
   try {
     const res = await api.get('/trainings');
+    dispatch({
+      type: GET_TRAININGS,
+      payload: res.data
+    });
   } catch (err) {
     dispatch({
       type: TRAINING_ERROR,
