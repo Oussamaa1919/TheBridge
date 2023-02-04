@@ -1,9 +1,7 @@
 import React, {Fragment, useEffect} from 'react'
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
 import { getTrainings } from '../../actions/training';
-import TrainingItem from './TrainingItem';
 import formatDate from '../../utils/formatDate';
 
 const Trainings = ({getTrainings, training:{trainings}}) => {
@@ -17,7 +15,11 @@ const Trainings = ({getTrainings, training:{trainings}}) => {
       <td>{training.title}</td>
       <td>{training.location}</td>
       <td>{formatDate(training.date)}</td>
+      <td>{training.coach}</td>
+      <td>{training.periode}</td>
       <td>{training.status}</td>
+      <td>Update</td>
+      <td>Delete</td>
 
     </tr>
   ))
@@ -32,11 +34,15 @@ const Trainings = ({getTrainings, training:{trainings}}) => {
         <div className='details'>
         <table className="table">
         <thead>
-          <tr>
-            <th>Title</th>
+          <tr className='cardHeader'>
+            <th >Title</th>
             <th >Location</th>
             <th >Date</th>
+            <th >Coach</th>
+            <th >Periode</th>
             <th >Status</th>
+            <th >Update</th>
+            <th >Delete</th>
             <th />
           </tr>
         </thead>

@@ -8,13 +8,13 @@ import formatDate from '../../utils/formatDate';
 
 
 const TrainingItem = ({
-  training:{title,location,date,status}
+  training:{title,location,date,status,coach,periode}
 
 }) => (
   
     <div >
       
-      {title},{location},{formatDate(date)},{status}
+      {title},{location},{formatDate(date)},{status},{coach},{periode}
     
     </div>
    ) 

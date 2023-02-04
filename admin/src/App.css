@@ -387,21 +387,41 @@ color: var(--withe);
   grid-gap: 30px;
   margin-top: 10px;
 }
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+}
 
-.details .table{
-
+.table th {
+  color:#287bff ;
+}
+.table{
   position: relative;
   display: grid;
-  min-height: 500px;
+  background: var(--withe);
+  box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+  border-radius: 20px;
+}
+
+.table {
+  
+  position: relative;
+  display: grid;
   background: var(--withe);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0,0,0,0.08);
   border-radius: 20px;
+  padding: 20px;
+  grid-gap: 30px;
+  
+  
 }
 .cardHeader{
   display: flex;
   justify-content: space-between;
   align-items:flex-start ; 
+  
 }
 
 .cardHeader h2 {
@@ -426,29 +446,31 @@ color: var(--withe);
   font-weight: 600;
 }
 
-.details .recentOrders table tr{
+.details  .table tr{
   color: var(--black1);
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
-.details .recentOrders table tbody tr:last-child{
+.details .table tbody tr:last-child{
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover{
+.details .table tbody tr:hover{
   background: var(--blue);
   color: var(--withe);
 }
 
-.details .recentOrders table tr td {
+.details .table tr th {
   padding: 10px;
 
 }
-.details .recentOrders table tr td:last-child{
+
+
+.details .table tr td:last-child{
   text-align: end;
 }
-.details .recentOrders table tr td:nth-child(2){
+.details .table tr td:nth-child(2){
   text-align: end;
 }
-.details .recentOrders table tr td:nth-child(3){
+.details .table tr td:nth-child(3){
   text-align: center;
 }
 
