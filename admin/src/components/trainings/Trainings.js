@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTrainings } from '../../actions/training';
 import TrainingItem from './TrainingItem';
+import formatDate from '../../utils/formatDate';
 
 const Trainings = ({getTrainings, training:{trainings}}) => {
   
@@ -11,7 +12,15 @@ const Trainings = ({getTrainings, training:{trainings}}) => {
     getTrainings();
   },[getTrainings])
   
-  
+  const traininglist = trainings.map((training) => (
+    <tr key={training._id}>
+      <td>{training.title}</td>
+      <td>{training.location}</td>
+      <td>{formatDate(training.date)}</td>
+      <td>{training.status}</td>
+
+    </tr>
+  ))
   
   
   
@@ -19,15 +28,23 @@ const Trainings = ({getTrainings, training:{trainings}}) => {
   return (
     <Fragment>
     <div className='container-trainings'>
-      
-         
-          {
-          trainings.map((training) => (
-            <TrainingItem key={training._id} training={training} />
-          ))}
-        
-         </div>
-        
+      <div className='main'>
+        <div className='details'>
+        <table className="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th >Location</th>
+            <th >Date</th>
+            <th >Status</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>{traininglist}</tbody>
+      </table>
+        </div>
+      </div>
+    </div>
     </Fragment>
   )
 }

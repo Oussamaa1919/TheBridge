@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import formatDate from '../../utils/formatDate';
 
 
 
@@ -7,16 +8,14 @@ import PropTypes from 'prop-types';
 
 
 const TrainingItem = ({
-  training:{title,location,status}
+  training:{title,location,date,status}
 
 }) => (
   
-    <div className='main'>
-      <div className='details'>
-        <div className='table'>
-      {title},{location},{status}
-    </div>
-    </div>
+    <div >
+      
+      {title},{location},{formatDate(date)},{status}
+    
     </div>
    ) 
   

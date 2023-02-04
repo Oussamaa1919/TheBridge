@@ -10,8 +10,8 @@ import Spinner from '../layout/Spinner';
 
 const Training = ({getTraining, training:{training, loading}}) => {
   
-  useEffect(() => {
-    getTraining();
+  useEffect((id) => {
+    getTraining(id);
   }, [getTraining]);
   
   
