@@ -50,7 +50,7 @@ export const deleteTraining = (id) => async (dispatch) => {
 // Add Training
 export const addTraining = (formData) => async (dispatch) => {
   try {
-    const res = await api.post('/training', formData);
+    const res = await api.post('/trainings', formData);
 
     dispatch({
       type: ADD_TRAINING,
@@ -69,7 +69,7 @@ export const addTraining = (formData) => async (dispatch) => {
 // Get Training
 export const getTraining = (id) => async (dispatch) => {
   try {
-    const res = await api.get(`/training/${id}`);
+    const res = await api.get(`/trainings/${id}`);
 
     dispatch({
       type: GET_TRAINING,

@@ -1,13 +1,41 @@
-import React from 'react'
-import TrainingItem from './TrainingItem'
+import React, {Fragment, useEffect} from 'react'
+import PropTypes from 'prop-types';
 
-const Trainings = () => {
+import { connect } from 'react-redux';
+import { getTrainings } from '../../actions/training';
+import TrainingItem from './TrainingItem';
+
+const Trainings = ({getTrainings, training:{trainings}}) => {
+  
+  useEffect(() => {
+    getTrainings();
+  },[getTrainings])
+  
+  
+  
+  
+  
+  
   return (
+    <Fragment>
     <div className='container-trainings'>
       
-      <TrainingItem />
-    </div>
+         
+          {
+          trainings.map((training) => (
+            <TrainingItem key={training._id} training={training} />
+          ))}
+        
+         </div>
+        
+    </Fragment>
   )
 }
-
-export default Trainings
+  Trainings.propTypes ={
+   getTrainings: PropTypes.func.isRequired,
+   training: PropTypes.object.isRequired,
+  }
+  const mapStateToProps = (state) => ({
+    training: state.training
+  });
+export default connect(mapStateToProps, { getTrainings }) (Trainings)

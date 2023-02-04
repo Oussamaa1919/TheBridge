@@ -10,6 +10,7 @@ import Home from './components/layout/Home';
 import SideBar from './components/layout/SideBar'
 import Navbar from './components/layout/Navbar';
 import Trainings from './components/trainings/Trainings';
+import Training from './components/trainings/Training';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -52,8 +53,7 @@ const App = () => {
           element={<PrivateRoute component={Home} />}
         />
       <Route path="trainings" element={<PrivateRoute component={Trainings} />} />
-        
-       
+      <Route path="posts/:id" element={<PrivateRoute component={Training} />} />
       
       </Routes>
     </Router>

@@ -20,15 +20,15 @@ router.get('/', adminauth, async (req, res) => {
   }
 });
 
-// @route    GET api/posts/:id
-// @desc     Get post by ID
+// @route    GET api/trainings/:id
+// @desc     Get training by ID
 // @access   Private
 router.get('/:id', adminauth, checkObjectId('id'), async (req, res) => {
   try {
     const training = await Training.findById(req.params.id);
 
     if (!training) {
-      return res.status(404).json({ msg: 'Post not found' });
+      return res.status(404).json({ msg: 'training not found' });
     }
 
     res.json(training);
@@ -40,7 +40,7 @@ router.get('/:id', adminauth, checkObjectId('id'), async (req, res) => {
 });
 
 
-// @route    POST api/trainings
+// @route    Training api/trainings
 // @desc     Create a training
 // @access   Private
 
@@ -53,6 +53,10 @@ router.post(
   check('location', 'location is required').notEmpty(),
   check('periode', 'periode is required').notEmpty(),
   check('coach', 'coach is required').notEmpty(),
+  check('date', 'coach is required').notEmpty(),
+  check('status', 'status is required').notEmpty(),
+  
+
   
   
 
@@ -72,6 +76,7 @@ router.post(
         location: req.body.location,
         periode: req.body.periode,
         coach: req.body.coach,
+        statuts: req.body.status,
         date: req.body.date,
         admin: req.admin.id
       });
@@ -109,6 +114,7 @@ router.put(
         location: req.body.location,
         periode: req.body.periode,
         coach: req.body.coach,
+        statuts: req.body.status,
         date: req.body.date,
         admin: req.admin.id
 
@@ -134,7 +140,7 @@ router.delete('/:id', [adminauth, checkObjectId('id')], async (req, res) => {
     const training = await Training.findById(req.params.id);
 
     if (!training) {
-      return res.status(404).json({ msg: 'Post not found' });
+      return res.status(404).json({ msg: 'Training not found' });
     }
 
     // Check user
@@ -144,7 +150,7 @@ router.delete('/:id', [adminauth, checkObjectId('id')], async (req, res) => {
 
     await training.remove();
 
-    res.json({ msg: 'Post removed' });
+    res.json({ msg: 'Training removed' });
   } catch (err) {
     console.error(err.message);
 

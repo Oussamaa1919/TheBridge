@@ -29,6 +29,10 @@ const TrainingSchema = new Schema({
     type: String,
     required: true
   },
+  statuts :{
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     

@@ -26,21 +26,21 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
         <li>
           <Link to= '/home'>
           <a href='#'>
-            <span className="icon"><i class=" fas fa-solid fa-house-user" /></span>
+            <span className="icon"><i className=" fas fa-solid fa-house-user" /></span>
             <span className="title">Home</span>
           </a>
           </Link>
         </li>
         <li>
         <a href="#">
-            <span className="icon"> <i class=" fas fa-solid fa-briefcase" /></span>
+            <span className="icon"> <i className=" fas fa-solid fa-briefcase" /></span>
             <span className="title">Internships</span>
           </a>
           </li>
           <li>
             <Link to='/trainings'>
             <a href="#">
-            <span className="icon"><i class="fas fa-duotone fa-laptop-code"></i></span>
+            <span className="icon"><i className="fas fa-duotone fa-laptop-code"></i></span>
             <span className="title">Trainings</span>
           </a>
           </Link>
