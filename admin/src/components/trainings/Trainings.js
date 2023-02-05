@@ -1,10 +1,10 @@
 import React, {Fragment, useEffect} from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getTrainings } from '../../actions/training';
+import { getTrainings ,deleteTraining } from '../../actions/training';
 import formatDate from '../../utils/formatDate';
 
-const Trainings = ({getTrainings, training:{trainings}}) => {
+const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
   
   useEffect(() => {
     getTrainings();
@@ -12,14 +12,16 @@ const Trainings = ({getTrainings, training:{trainings}}) => {
   
   const traininglist = trainings.map((training) => (
     <tr key={training._id}>
-      <td>{training.title}</td>
-      <td>{training.location}</td>
-      <td>{formatDate(training.date)}</td>
-      <td>{training.coach}</td>
-      <td>{training.periode}</td>
-      <td>{training.status}</td>
-      <td>Update</td>
-      <td>Delete</td>
+      <td className='td-1'>{training.title}</td>
+      <td className='td-2'>{training.location}</td>
+      <td className='td-3'>{formatDate(training.date)}</td>
+      <td className='td-4'>{training.coach}</td>
+      <td className='td-5'>{training.periode}</td>
+      <td className='td-6'>{training.status}</td>
+      <td className='td-7'>Update</td>
+      <td className='td-8'><button className='btn' onClick={()=>deleteTraining(training._id)} type="button"> 
+        Delete
+        </button></td>
 
     </tr>
   ))
@@ -30,9 +32,15 @@ const Trainings = ({getTrainings, training:{trainings}}) => {
   return (
     <Fragment>
     <div className='container-trainings'>
-      <div className='main'>
+        <div className='main'>
+        
         <div className='details'>
+        
         <table className="table">
+        <div className='Header'>
+        <h2>Trainings</h2>
+        <button className='btn'>Add Training</button>
+        </div>
         <thead>
           <tr className='cardHeader'>
             <th >Title</th>
@@ -56,9 +64,10 @@ const Trainings = ({getTrainings, training:{trainings}}) => {
 }
   Trainings.propTypes ={
    getTrainings: PropTypes.func.isRequired,
+   deleteTraining :PropTypes.func.isRequired,
    training: PropTypes.object.isRequired,
   }
   const mapStateToProps = (state) => ({
     training: state.training
   });
-export default connect(mapStateToProps, { getTrainings }) (Trainings)
+export default connect(mapStateToProps, { getTrainings,deleteTraining }) (Trainings)
