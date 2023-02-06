@@ -1,7 +1,16 @@
-import React from 'react'
+import React ,{ useEffect} from 'react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import TrainingItem from './TrainingItem'
+import { getTrainings } from '../../actions/training';
+
 import RightSideBar from '../layout/RightSideBar';
-const Trainings = () => {
+const Trainings = ({getTrainings,training:{trainings}}) => {
+
+  useEffect(() => {
+    getTrainings();
+  },[getTrainings])
+
   return (
     
       
@@ -16,12 +25,10 @@ const Trainings = () => {
         <p>Become who you want to be with The Bridge. 
           Choose your own career path and earn an online degree
            with hands-on projects and weekly one-on-one mentoring sessions with a dedicated professional in your field.</p>
-      <TrainingItem />
-      <TrainingItem />
-      <TrainingItem />
-      <TrainingItem />
-      <TrainingItem />
-      <TrainingItem />
+      
+      {trainings.map((training) =>(<TrainingItem key={training._id} training={training}/>))
+      
+}
       </div>
       
       </section>
@@ -29,4 +36,12 @@ const Trainings = () => {
   )
 }
 
-export default Trainings
+Trainings.propTypes ={
+  getTrainings: PropTypes.func.isRequired,
+  training: PropTypes.object.isRequired,
+ }
+ const mapStateToProps = (state) => ({
+   training: state.training
+ });
+export default connect(mapStateToProps, { getTrainings }) (Trainings)
+

@@ -19,7 +19,7 @@ const Trainingform = ({addTraining}) => {
     periode: '',
     caoch: '',
     date: '',
-    status:''
+    status:'comming soon'
 
   });
  const {title,description,price,location,periode,coach,date,status} = formData;
@@ -127,7 +127,7 @@ const Trainingform = ({addTraining}) => {
                required
                 />
             </div>
-            <input type="submit" className="internshipBtn" value="ADD" />
+            <input type="submit" className="internshipBtn" value="ADD TRAINING" />
            
           </form>
           </div>

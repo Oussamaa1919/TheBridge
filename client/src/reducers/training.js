@@ -1,9 +1,8 @@
 import {
-  GET_TRAININGS,
+ 
   TRAINING_ERROR,
-  DELETE_TRAINING,
-  ADD_TRAINING,
-  UPDATE_TRAINING,
+ 
+  GET_TRAININGS,
   GET_TRAINING
 }from '../actions/types'
 
@@ -31,19 +30,7 @@ function trainingReducer(state = initialState, action) {
         training: payload,
         loading: false
       };
-    case ADD_TRAINING:
-    case UPDATE_TRAINING:
-      return {
-        ...state,
-        posts: [payload, ...state.trainings],
-        loading: false
-      };
-    case DELETE_TRAINING:
-      return {
-        ...state,
-        trainings: state.trainings.filter((training) => training._id !== payload),
-        loading: false
-      };
+    
     case TRAINING_ERROR:
       return {
         ...state,

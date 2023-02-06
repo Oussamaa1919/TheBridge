@@ -1,14 +1,16 @@
 import React from 'react'
 import android from '../../img/android6.jpg'
 import { Link } from 'react-router-dom';
-const TrainingItem = () => {
+import PropTypes from 'prop-types';
+
+const TrainingItem = ({training:{title,description,price,location,date,status,coach,periode}}) => {
   return (
     <div className='cardbody'>
       <div id="cardcontainer">	
 	
 	<div className="product-details">
 		
-	<h1>Create apps for Android</h1>
+	<h1>{title}</h1>
 	<span className="hint-star star">
 		<i className="fa fa-star" aria-hidden="true"></i>
 		<i className="fa fa-star" aria-hidden="true"></i>
@@ -17,13 +19,12 @@ const TrainingItem = () => {
 		<i className="fa fa-star" aria-hidden="true"></i>
 	</span>
 		
-			<p className="information">" Android is the most popular operating system on smartphones and tablets. The applications being written in Java, you.
-			Android is the most popular operating system on smartphones and tablets. The applications being written in Java, you.</p>
+			<p className="information">{description}</p>
 
       <div className="control">
 	
 	<button className="btn-card">
-	 <span className="price">600DT</span>
+	 <span className="price">{price}</span>
    <span className="shopping-cart"><i class="fas fa fa-solid fa-money-check"></i></span>
    <Link to='/training-form'>
 	 <span className="buy">Let's go</span>
@@ -44,9 +45,9 @@ const TrainingItem = () => {
 <div className="info">
 	<h2> Description</h2>
 	<ul>
-		<li><strong>Location : </strong>Level 1 </li>
-		<li><strong>Periode : </strong>2 months</li>
-		<li><strong>Coach: </strong>Ahmed Naffeti</li>
+		<li><strong>Location : </strong>{location}</li>
+		<li><strong>Periode : </strong>{periode}</li>
+		<li><strong>Coach: </strong>{coach}</li>
 		<li><strong>Achievement Certificate: </strong>YES!!!</li>
 		
 	</ul>
@@ -57,5 +58,10 @@ const TrainingItem = () => {
     </div>
   )
 }
+
+TrainingItem.propTypes ={
+	training: PropTypes.object.isRequired,
+ }
+
 
 export default TrainingItem

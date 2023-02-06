@@ -85,3 +85,23 @@ export const getTraining = (id) => async (dispatch) => {
     });
   }
 };
+
+// Update Training
+export const updateTraining = (formData,navigate) => async (dispatch) => {
+  try {
+    const res = await api.put('/trainings', formData);
+
+    dispatch({
+      type: UPDATE_TRAINING,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Training Updated', 'success'));
+    navigate('/trainings');
+  } catch (err) {
+    dispatch({
+      type: TRAINING_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
