@@ -29,7 +29,7 @@ const TrainingSchema = new Schema({
     type: String,
     required: true
   },
-  statuts :{
+  status :{
     type: String,
     required: true
   },

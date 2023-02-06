@@ -11,6 +11,8 @@ import SideBar from './components/layout/SideBar'
 import Navbar from './components/layout/Navbar';
 import Trainings from './components/trainings/Trainings';
 import Training from './components/trainings/Training';
+import Trainingform from './components/trainings/Trainingform';
+
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -53,6 +55,7 @@ const App = () => {
           element={<PrivateRoute component={Home} />}
         />
       <Route path="trainings" element={<PrivateRoute component={Trainings} />} />
+      <Route path="trainingform" element={<PrivateRoute component={Trainingform} />} />
       <Route path="posts/:id" element={<PrivateRoute component={Training} />} />
       
       </Routes>

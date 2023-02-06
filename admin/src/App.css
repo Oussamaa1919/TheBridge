@@ -27,7 +27,40 @@ body
   position: relative;
   width: 100%;
 }
+.alert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  
+  background: #287bff;
+  color: #f0f2f5;
+}
+/***********************forms******************/
+.form .form-group {
+  margin: 1.2rem 0;
+}
 
+.form .form-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: #888;
+}
+.form input[type='username'],
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+.form input[type='date'],
+.form select,
+.form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+
+
+
+/*********************forms*********************/
 /************search-box************/
 .search-box{
   background: #f0f2f5;
@@ -117,6 +150,7 @@ body
 .form .form-group {
   margin: 1.2rem 0;
 }
+
 .btn {
   display: inline-block;
   background: var(--red);
@@ -132,6 +166,7 @@ body
 .btn-login {
   background: rgb(5, 5, 239);
   color: #fff;
+  
 }
 .large {
   font-size: 3rem;
@@ -389,7 +424,7 @@ color: var(--withe);
 }
 .table th,
 .table td {
-  padding: 1rem;
+  padding: 0.7rem;
   text-align: left;
 }
 
@@ -429,6 +464,15 @@ color: var(--withe);
   font-weight: 600;
   color: #287bff;
 }
+.btn-inscription{
+  position: relative;
+  padding: 5px 10px;
+  background: #287bff;
+  text-decoration: none;
+  color: #f0f2f5;
+  border-radius: 6px;
+  margin-left: 750px;
+}
 .btn{
   position: relative;
   padding: 5px 10px;
@@ -464,16 +508,15 @@ color: var(--withe);
 
 .details .table tr td {
   padding-right: 60px;
-  margin: 20px;
+  margin: 40px;
   
 }
 .details .table tr th{
-  text-align: center;
   padding: 40px;  
 }
 .details .table {
   text-align: center;
-  padding: 30px;  
+  padding: 20px;  
 }
 
 .td-1{
@@ -499,14 +542,7 @@ color: var(--withe);
   text-align: center;
 }
 
-.status.delivered {
-  padding: 2px 4px;
-  background: #8de02c;
-  color: var(--withe);
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-}
+
 .status.comingsoon {
   padding: 2px 4px;
   background: #f9ca3f;
@@ -590,10 +626,10 @@ color: var(--withe);
   
 }
 .internship label{
-  color:var(--black1);
+  color:#287bff;
   font-weight: bold;
   width: 130px;
-  float: left;
+  margin-left: -13px;
 }
 .internship input{
   width: 600px;
@@ -602,19 +638,21 @@ color: var(--withe);
   padding-left: 35px;
   font-size: 18px;
   outline: none;
-  border: 1px solid var(--black2);
+  border: 1px solid black;
 }
 .internshipBtn{
-  position: relative;
-  padding: 5px 10px;
+  
   background: var(--blue);
   color: var(--withe);
   border-radius: 6px;
-  left: 885px;
+  cursor: pointer;
   border-color: transparent;
-  width: 100px;
-  height: 30px;
-  bottom: 30px;
+ 
+
+
+  border-radius: 6px;
+  border-color: transparent;
+  
 }
 /*responsive design*/
 @media (max-width:991px) {

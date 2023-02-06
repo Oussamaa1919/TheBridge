@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTrainings ,deleteTraining } from '../../actions/training';
 import formatDate from '../../utils/formatDate';
+import { Link } from 'react-router-dom';
 
 const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
   
@@ -18,8 +19,10 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
       <td className='td-4'>{training.coach}</td>
       <td className='td-5'>{training.periode}</td>
       <td className='td-6'>{training.status}</td>
-      <td className='td-7'>Update</td>
-      <td className='td-8'><button className='btn' onClick={()=>deleteTraining(training._id)} type="button"> 
+      <td ><button className='btn'  type="button"> 
+        Update
+        </button></td>
+      <td ><button className='btn' onClick={()=>deleteTraining(training._id)} type="button"> 
         Delete
         </button></td>
 
@@ -39,7 +42,10 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
         <table className="table">
         <div className='Header'>
         <h2>Trainings</h2>
+        <button className='btn btn-inscription'>Inscription list</button>
+        <Link to='/trainingform'>
         <button className='btn'>Add Training</button>
+        </Link>
         </div>
         <thead>
           <tr className='cardHeader'>

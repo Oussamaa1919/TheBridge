@@ -76,7 +76,7 @@ router.post(
         location: req.body.location,
         periode: req.body.periode,
         coach: req.body.coach,
-        statuts: req.body.status,
+        status: req.body.status,
         date: req.body.date,
         admin: req.admin.id
       });
@@ -114,7 +114,7 @@ router.put(
         location: req.body.location,
         periode: req.body.periode,
         coach: req.body.coach,
-        statuts: req.body.status,
+        status: req.body.status,
         date: req.body.date,
         admin: req.admin.id
 

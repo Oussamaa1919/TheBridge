@@ -30,6 +30,7 @@ export const getTrainings = () => async (dispatch) => {
 
 // Delete Training
 export const deleteTraining = (id) => async (dispatch) => {
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
   try {
     await api.delete(`/trainings/${id}`);
 
@@ -45,10 +46,11 @@ export const deleteTraining = (id) => async (dispatch) => {
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
+}
 };
 
 // Add Training
-export const addTraining = (formData) => async (dispatch) => {
+export const addTraining = (formData,navigate) => async (dispatch) => {
   try {
     const res = await api.post('/trainings', formData);
 
@@ -58,6 +60,7 @@ export const addTraining = (formData) => async (dispatch) => {
     });
 
     dispatch(setAlert('Training Created', 'success'));
+    navigate('/trainings');
   } catch (err) {
     dispatch({
       type: TRAINING_ERROR,
