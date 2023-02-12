@@ -57,7 +57,6 @@ const App = () => {
       <Route path="trainings" element={<PrivateRoute component={Trainings} />} />
       <Route path="trainingform" element={<PrivateRoute component={Trainingform} />} />
       <Route path="posts/:id" element={<PrivateRoute component={Training} />} />
-      
       </Routes>
     </Router>
   </Provider>

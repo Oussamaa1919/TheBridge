@@ -10,8 +10,8 @@ import event from '../../img/event.png';
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
-  
-  
+  const [image,setImage] = useState('')
+  console.log(image,12);
 
   return (
     <div className="create-post">
@@ -39,6 +39,7 @@ const PostForm = ({ addPost }) => {
       e.preventDefault();
       addPost({ text });
       setText('');
+      setImage('');
       }}>
       <input type='submit' value='POST' /></form></li>
 
