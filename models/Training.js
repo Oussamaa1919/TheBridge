@@ -5,6 +5,7 @@ const TrainingSchema = new Schema({
    admin: {
     type:Schema.Types.ObjectId
    },
+   
    title :{
      type: String,
      required: true
