@@ -39,7 +39,8 @@ router.post(
         phone: req.body.phone,
         name: user.name,
         email: user.email,
-        user: req.user.id
+        user: req.user.id,
+        paid: req.body.paid
       });
 
       const inscription = await newInscription.save();

@@ -38,6 +38,7 @@ const InscriptionSchema = new Schema({
   },
   paid: {
     type: String,
+    default:'inpaid'
   }
 });
 
