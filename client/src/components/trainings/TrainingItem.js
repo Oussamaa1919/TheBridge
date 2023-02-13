@@ -25,9 +25,9 @@ const TrainingItem = ({training:{title,description,price,location,date,status,co
 	
 	<button className="btn-card">
 	 <span className="price">{price}</span>
-   <span className="shopping-cart"><i class="fas fa fa-solid fa-money-check"></i></span>
+   <span className="shopping-cart"><i className="fas fa fa-solid fa-money-check"></i></span>
    <Link to='/training-form'>
-	 <span className="buy">Let's go</span>
+	 <span className="buy" >Let's go</span>
 	 </Link>
  </button>
  

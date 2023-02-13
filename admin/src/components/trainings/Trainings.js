@@ -42,7 +42,9 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
         <table className="table">
         <div className='Header'>
         <h2>Trainings</h2>
+        <Link to='/inscriptionlist'>
         <button className='btn btn-inscription'>Inscription list</button>
+        </Link>
         <Link to='/trainingform'>
         <button className='btn'>Add Training</button>
         </Link>

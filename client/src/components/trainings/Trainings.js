@@ -19,7 +19,7 @@ const Trainings = ({getTrainings,training:{trainings}}) => {
       <div className='training'>
         
         <h1>
-          We are here to help  <i class="fas fa-solid fa-hand-holding-medical"></i>
+          We are here to help  <i className="fas fa-solid fa-hand-holding-medical"></i>
           
           </h1>
         <p>Become who you want to be with The Bridge. 

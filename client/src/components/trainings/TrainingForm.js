@@ -46,7 +46,7 @@ const TrainingForm = ({addInscription,auth:{user}}) => {
             type="text"
             placeholder="* Name & LastName"
             name="name"
-            value={user && user.name}
+            defaultValue={user && user.name}
             
             required           
           /> 
@@ -56,7 +56,7 @@ const TrainingForm = ({addInscription,auth:{user}}) => {
             type="text"
             placeholder="* Email"
             name="email"
-            value={user && user.email}
+            defaultValue={user && user.email}
             required           
           />                   
         </div>
