@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getTrainings ,deleteTraining } from '../../actions/training';
 import formatDate from '../../utils/formatDate';
 import { Link } from 'react-router-dom';
+import TrainingItem from './TrainingItem';
 
 const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
   
@@ -11,23 +12,6 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
     getTrainings();
   },[getTrainings])
   
-  const traininglist = trainings.map((training) => (
-    <tr key={training._id}>
-      <td className='td-1'>{training.title}</td>
-      <td className='td-2'>{training.location}</td>
-      <td className='td-3'>{formatDate(training.date)}</td>
-      <td className='td-4'>{training.coach}</td>
-      <td className='td-5'>{training.periode}</td>
-      <td className='td-6'>{training.status}</td>
-      <td ><button className='btn'  type="button"> 
-        Update
-        </button></td>
-      <td ><button className='btn' onClick={()=>deleteTraining(training._id)} type="button"> 
-        Delete
-        </button></td>
-
-    </tr>
-  ))
   
   
   
@@ -40,29 +24,35 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
         <div className='details'>
         
         <table className="table">
-        <div className='Header'>
+          <div className='Header'>
         <h2>Trainings</h2>
-        <Link to='/inscriptionlist'>
-        <button className='btn btn-inscription'>Inscription list</button>
-        </Link>
         <Link to='/trainingform'>
         <button className='btn'>Add Training</button>
         </Link>
         </div>
-        <thead>
-          <tr className='cardHeader'>
-            <th >Title</th>
-            <th >Location</th>
-            <th >Date</th>
-            <th >Coach</th>
-            <th >Periode</th>
-            <th >Status</th>
-            <th >Update</th>
-            <th >Delete</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>{traininglist}</tbody>
+        <div >
+        <table className='head'>
+       
+    <thead> 
+      <tr className='cardHeader'>
+        <td>Title</td>
+        <td>Coach</td>
+        <td>Location</td>
+        <td>Status</td>
+        <td>Price</td>
+        <td>Delete</td>
+        <td>Update</td>
+        <td>Inscriptions</td>
+
+      </tr>
+    </thead>
+    </table>
+        {
+          trainings.map((training) => (
+                      <TrainingItem key={training._id} training={training}/>
+          ))
+        }
+        </div>
       </table>
         </div>
       </div>
@@ -72,10 +62,10 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
 }
   Trainings.propTypes ={
    getTrainings: PropTypes.func.isRequired,
-   deleteTraining :PropTypes.func.isRequired,
+
    training: PropTypes.object.isRequired,
   }
   const mapStateToProps = (state) => ({
     training: state.training
   });
-export default connect(mapStateToProps, { getTrainings,deleteTraining }) (Trainings)
+export default connect(mapStateToProps, { getTrainings }) (Trainings)

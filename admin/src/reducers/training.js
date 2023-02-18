@@ -35,7 +35,7 @@ function trainingReducer(state = initialState, action) {
     case UPDATE_TRAINING:
       return {
         ...state,
-        posts: [payload, ...state.trainings],
+       trainings: [payload, ...state.trainings],
         loading: false
       };
     case DELETE_TRAINING:

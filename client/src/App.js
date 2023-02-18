@@ -29,6 +29,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import Training from './components/trainings/Training';
 
 
 
@@ -102,7 +103,7 @@ const  App = () => {
         <Route path="posts" element={<PrivateRoute component={Posts} />} />
         <Route path="posts/:id" element={<PrivateRoute component={Post} />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="training-form" element={<PrivateRoute component={TrainingForm} />} />
+        <Route path="trainings/:id" element={<PrivateRoute component={Training} />} />
         <Route path="internship-form" element={<PrivateRoute component={InternshipForm} />} />
       </Routes>
       

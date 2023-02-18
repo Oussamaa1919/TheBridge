@@ -28,10 +28,7 @@ const InscriptionSchema = new Schema({
     type: String,
     required: true   
   },
-  type: {
-    type: String,
-    required: true   
-  },
+  
   option: {
     type: String,
     required: true   

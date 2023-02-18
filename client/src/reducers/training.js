@@ -3,7 +3,8 @@ import {
   TRAINING_ERROR,
  
   GET_TRAININGS,
-  GET_TRAINING
+  GET_TRAINING,
+  ADD_INSCRIPTION
 }from '../actions/types'
 
 const initialState = {
@@ -28,6 +29,13 @@ function trainingReducer(state = initialState, action) {
       return {
         ...state,
         training: payload,
+        loading: false
+      };
+
+      case ADD_INSCRIPTION:
+      return {
+        ...state,
+        training: { ...state.training, inscriptions: payload },
         loading: false
       };
     

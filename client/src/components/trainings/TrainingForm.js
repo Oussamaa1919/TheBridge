@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addInscription } from '../../actions/inscription';
+import { addInscription } from '../../actions/training';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,35 +10,38 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const TrainingForm = ({addInscription,auth:{user}}) => {
+const TrainingForm = ({trainingId,addInscription,auth:{user}}) => {
+ 
+ 
+ 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     
     
     phone: '',
     university: '',
-    location: '',
-    type: '',
+    location: '',  
     option:'',
     
+    
   });
-  const {phone,university,location,type,option} = formData;
+  const {phone,university,location,option} = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
  
- 
- 
+    console.log(trainingId);
+
  
  
  
   return (
     <section className='container'>
       <h1 className='large text-primary'>Let's get some information</h1>
-      <small>* = required field</small>
+     
       <form className='form'
       onSubmit={(e)=> {
         e.preventDefault();
-        addInscription(formData, navigate);
+        addInscription(trainingId,formData, navigate);
       }}
       >
       <div className="form-group">
@@ -94,18 +97,8 @@ const TrainingForm = ({addInscription,auth:{user}}) => {
             required         
           />                   
         </div>
-
-        <div className="form-group">
-          <select name="type"  value={type}
-            onChange={onChange}
-            required  >
-            <option>* Select a Training</option>
-            <option value="Web Full stack JS (Node React)">Web Full stack JS (Node React)</option>
-            <option value="Web Full stack(Spring Boot Angular)">Web Full stack(Spring Boot Angular)</option>
-            <option value="Mobile Flutter">Mobile Flutter</option>
-            
-          </select>
-        </div>
+        
+        
 
         <div className="form-group">
           <select name="option" value={option}
@@ -132,11 +125,11 @@ const TrainingForm = ({addInscription,auth:{user}}) => {
 TrainingForm.propTypes = {
   addInscription: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  
 });
 
 

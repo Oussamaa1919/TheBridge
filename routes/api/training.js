@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const adminauth = require('../../middleware/adminauth');
+const auth = require('../../middleware/auth');
+const User = require('../../models/User');
 
 const Training = require('../../models/Training');
 const Admin = require('../../models/Admin');
@@ -157,5 +159,52 @@ router.delete('/:id', [adminauth, checkObjectId('id')], async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route    POST api/trainings/inscription/:id
+// @desc     inscription
+// @access   Private
+router.post(
+  '/inscription/:id',
+  auth,
+  checkObjectId('id'),
+  check('phone', 'Phone is required').notEmpty(),
+  check('university', 'University is required').notEmpty(),
+  check('location', 'Location is required').notEmpty(),
+  check('option', 'Option is required').notEmpty(),
+
+
+
+
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const user = await User.findById(req.user.id).select('-password');
+      const training = await Training.findById(req.params.id);
+
+      const newInscription = {
+        phone: req.body.phone,
+        university: req.body.university,
+        location: req.body.location,
+        option:req.body.option,  
+        name: user.name,
+        email: user.email,
+        user: req.user.id
+      };
+
+      training.inscriptions.unshift(newInscription);
+
+      await training.save();
+
+      res.json(training.inscriptions);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
 
 module.exports = router;

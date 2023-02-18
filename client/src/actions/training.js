@@ -6,6 +6,7 @@ import {
   GET_TRAININGS,
   GET_TRAINING,
   TRAINING_ERROR,
+  ADD_INSCRIPTION
 } from './types';
 
 
@@ -46,3 +47,22 @@ export const getTraining = (id) => async (dispatch) => {
   }
 };
 
+// Add inscription
+export const addInscription = (trainingId, formData, navigate) => async (dispatch) => {
+  try {
+    const res = await api.post(`/trainings/inscription/${trainingId}`, formData);
+
+    dispatch({
+      type: ADD_INSCRIPTION,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Inscription Sent', 'success'));
+    navigate('/trainings');
+  } catch (err) {
+    dispatch({
+      type: TRAINING_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

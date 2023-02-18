@@ -3,7 +3,8 @@ import android from '../../img/android6.jpg'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const TrainingItem = ({training:{title,description,price,location,date,status,coach,periode}}) => {
+
+const TrainingItem = ({training:{_id,title,description,price,location,date,status,coach,periode}}) => {
   return (
     <div className='cardbody'>
       <div id="cardcontainer">	
@@ -26,7 +27,7 @@ const TrainingItem = ({training:{title,description,price,location,date,status,co
 	<button className="btn-card">
 	 <span className="price">{price}</span>
    <span className="shopping-cart"><i className="fas fa fa-solid fa-money-check"></i></span>
-   <Link to='/training-form'>
+   <Link to={`/trainings/${_id}`}>
 	 <span className="buy" >Let's go</span>
 	 </Link>
  </button>
@@ -53,7 +54,7 @@ const TrainingItem = ({training:{title,description,price,location,date,status,co
 	</ul>
 </div>
 </div>
-
+ 
 </div>
     </div>
   )

@@ -5,6 +5,7 @@ import TrainingItem from './TrainingItem'
 import { getTrainings } from '../../actions/training';
 
 import RightSideBar from '../layout/RightSideBar';
+import TrainingForm from './TrainingForm';
 const Trainings = ({getTrainings,training:{trainings}}) => {
 
   useEffect(() => {

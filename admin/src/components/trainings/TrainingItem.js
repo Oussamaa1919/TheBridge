@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import formatDate from '../../utils/formatDate';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deleteTraining } from '../../actions/training';
 
 
 
@@ -8,22 +10,47 @@ import formatDate from '../../utils/formatDate';
 
 
 const TrainingItem = ({
-  training:{title,location,date,status,coach,periode}
+  deleteTraining,
+    training: {_id,title,description,price,location,periode,coach,status,inscriptions  } }) => (
 
-}) => (
+
+
+
+  <div className='training-container'>
   
-    <div >
-      
-      {title},{location},{formatDate(date)},{status},{coach},{periode}
-    
-    </div>
-   ) 
+  <table>
+    <tbody>
+  
+   
+   </tbody>
+   <tr>
+    <td>{title}</td>
+    <td>{coach}</td>
+    <td>{location}</td>
+    <td>{status}</td>
+    <td>{price}</td>
+    <td><button className='btn' onClick={()=>deleteTraining(_id)} type="button">Delete</button></td>
+    <td>Update</td>
+    <td><Link to={`/trainings/${_id}`}>Inscriptions</Link></td>
+
+
+   </tr>
+   </table>
+</div>
+
+)
+
+
+  
+  
   
 
 
 TrainingItem.propTypes ={
  training: PropTypes.object.isRequired,
+ deleteTraining :PropTypes.func.isRequired,
+ 
 }
 
 
-export default TrainingItem
+export default connect(null,{deleteTraining})(TrainingItem)

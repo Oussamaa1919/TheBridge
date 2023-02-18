@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import {  useParams } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getTraining } from '../../actions/training';
 import TrainingItem from './TrainingItem';
 import Spinner from '../layout/Spinner';
+import TrainingForm from './TrainingForm';
 
 
 
 const Training = ({getTraining, training:{training, loading}}) => {
-  
-  useEffect((id) => {
+  const { id } = useParams();
+
+  useEffect(() => {
     getTraining(id);
-  }, [getTraining]);
-  
+  }, [getTraining, id]);
   
   return loading || training === null ? (
     <Spinner />
@@ -21,8 +23,7 @@ const Training = ({getTraining, training:{training, loading}}) => {
     
     <div >
       
-      <TrainingItem training={training}/>
-    
+      <TrainingForm  trainingId={training._id}/>
     </div>
     
   )
