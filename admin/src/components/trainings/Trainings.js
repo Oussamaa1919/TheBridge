@@ -1,12 +1,12 @@
 import React, {Fragment, useEffect} from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getTrainings ,deleteTraining } from '../../actions/training';
+import { getTrainings  } from '../../actions/training';
 import formatDate from '../../utils/formatDate';
 import { Link } from 'react-router-dom';
 import TrainingItem from './TrainingItem';
 
-const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
+const Trainings = ({getTrainings,training:{trainings}}) => {
   
   useEffect(() => {
     getTrainings();
@@ -23,7 +23,7 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
         
         <div className='details'>
         
-        <table className="table">
+      <div className='table'>
           <div className='Header'>
         <h2>Trainings</h2>
         <Link to='/trainingform'>
@@ -31,29 +31,14 @@ const Trainings = ({getTrainings, deleteTraining,training:{trainings}}) => {
         </Link>
         </div>
         <div >
-        <table className='head'>
-       
-    <thead> 
-      <tr className='cardHeader'>
-        <td>Title</td>
-        <td>Coach</td>
-        <td>Location</td>
-        <td>Status</td>
-        <td>Price</td>
-        <td>Delete</td>
-        <td>Update</td>
-        <td>Inscriptions</td>
-
-      </tr>
-    </thead>
-    </table>
+      
         {
           trainings.map((training) => (
                       <TrainingItem key={training._id} training={training}/>
           ))
         }
         </div>
-      </table>
+        </div>
         </div>
       </div>
     </div>

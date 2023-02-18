@@ -8,7 +8,7 @@ import InscriptionItem from './InscriptionItem'
 import { useParams } from 'react-router-dom';
 import EditTrainingForm from './EditTrainingForm';
 
-const Training = ({getTraining, training:{training, loading}}) => {
+const Inscriptions = ({getTraining, training:{training, loading}}) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -27,7 +27,9 @@ const Training = ({getTraining, training:{training, loading}}) => {
         
         
           
-        <EditTrainingForm trainingId ={training._id} training={training}/>
+        {training.inscriptions.map((inscription) => (
+          <InscriptionItem key={inscription._id} inscription={inscription} trainingId={training._id} />
+        ))}
        
        </div>
       </div>
@@ -36,7 +38,7 @@ const Training = ({getTraining, training:{training, loading}}) => {
   )
 }
 
-TrainingItem.propTypes ={
+Inscriptions.propTypes ={
  training: PropTypes.object.isRequired,
  getTraining: PropTypes.func.isRequired,
 }
@@ -44,4 +46,4 @@ TrainingItem.propTypes ={
 const mapStateToProps = (state) => ({
   training: state.training
 });
-export default connect(mapStateToProps, {getTraining})(Training)
+export default connect(mapStateToProps, {getTraining})(Inscriptions)

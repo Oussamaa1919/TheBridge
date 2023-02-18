@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 import thumb from '../../img/thumbsup.png';
 import post1 from '../../img/post-image-1.png';
-import Post from '../post/Post';
 import {  useState } from 'react';
 import { getPost } from '../../actions/post';
 import CommentForm from '../post/CommentForm';
@@ -58,8 +57,9 @@ const PostItem = ({
         </div>
         
         <div>
+      <Link to={`/posts/${_id}`} >       <span className="comment-count ">{comments.length} comments</span>
+      </Link>
 
-       <span className="comment-count ">{comments.length} comments</span>
         </div>
       </div>
       {showActions && (

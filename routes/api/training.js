@@ -102,31 +102,18 @@ router.put(
   adminauth,checkObjectId('id'),
   
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+    try{
+    const trainingId= req.params.id;
+    const updatedTraining = req.body;
+    const training = await Training.findByIdAndUpdate(trainingId, updatedTraining, {new:true});
+    
+    if(!training){
+      res.status(404).json({message: 'training not found'});
+    }else {
+      res.json(training);
     }
     
-    try {
-      const training = new Training({
-        _id: req.params.id,
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-        location: req.body.location,
-        periode: req.body.periode,
-        coach: req.body.coach,
-        status: req.body.status,
-        date: req.body.date,
-        admin: req.admin.id
-
-
-      });
-      Training.updateOne({_id: req.params.id}, training).then( 
-        ()=>res.status(201).json({
-          message: 'Training updated successfully !'
-        })
-      )
+    
       
     } catch (err) {
       console.error(err.message);

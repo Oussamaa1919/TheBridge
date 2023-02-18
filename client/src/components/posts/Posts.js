@@ -13,7 +13,7 @@ const Posts = ({ getPosts, post: { posts } }) => {
 
   return (
     <div>
-      <RightSideBar />
+        <RightSideBar />
        <LeftSideBar />
     <section className="posts">
      

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 const InscriptionItem = (
   {
-    trainingId,
+    
     inscription: { _id, name, email, phone,university,location,option,paid },
     
   }

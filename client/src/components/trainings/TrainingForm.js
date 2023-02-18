@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const TrainingForm = ({trainingId,addInscription,auth:{user}}) => {
+const TrainingForm = ({trainingId,training,addInscription,auth:{user}}) => {
  
  
  
@@ -37,7 +37,8 @@ const TrainingForm = ({trainingId,addInscription,auth:{user}}) => {
   return (
     <section className='container'>
       <h1 className='large text-primary'>Let's get some information</h1>
-     
+      <small>* = required field</small>
+
       <form className='form'
       onSubmit={(e)=> {
         e.preventDefault();
@@ -50,7 +51,7 @@ const TrainingForm = ({trainingId,addInscription,auth:{user}}) => {
             placeholder="* Name & LastName"
             name="name"
             defaultValue={user && user.name}
-            
+            readOnly
             required           
           /> 
     </div>
@@ -60,6 +61,7 @@ const TrainingForm = ({trainingId,addInscription,auth:{user}}) => {
             placeholder="* Email"
             name="email"
             defaultValue={user && user.email}
+            readOnly
             required           
           />                   
         </div>
@@ -95,6 +97,14 @@ const TrainingForm = ({trainingId,addInscription,auth:{user}}) => {
             value={location}
             onChange={onChange}
             required         
+          />                   
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            defaultValue={training.title}
+            required
+            readOnly
           />                   
         </div>
         

@@ -23,7 +23,7 @@ const Training = ({getTraining, training:{training, loading}}) => {
     
     <div >
       
-      <TrainingForm  trainingId={training._id}/>
+      <TrainingForm  trainingId={training._id} training={training}/>
     </div>
     
   )

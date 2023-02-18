@@ -87,9 +87,9 @@ export const getTraining = (id) => async (dispatch) => {
 };
 
 // Update Training
-export const updateTraining = (formData,navigate) => async (dispatch) => {
+export const updateTraining = (id,formData,navigate) => async (dispatch) => {
   try {
-    const res = await api.put('/trainings', formData);
+    const res = await api.put(`/trainings/${id}`, formData);
 
     dispatch({
       type: UPDATE_TRAINING,
