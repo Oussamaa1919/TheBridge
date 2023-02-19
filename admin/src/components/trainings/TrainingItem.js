@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { deleteTraining } from '../../actions/training';
 import { connect } from 'react-redux';
+import formatDate from '../../utils/formatDate';
 
 const TrainingItem = ({
   deleteTraining,
@@ -53,7 +54,10 @@ const TrainingItem = ({
 		<li><strong>Location : </strong>{location}</li>
 		<li><strong>Periode : </strong>{periode}</li>
 		<li><strong>Coach: </strong>{coach}</li>
-		<li><strong>Achievement Certificate: </strong>YES!!!</li>
+		<li><strong>Price: </strong>{price}</li>
+		<li><strong>Date: </strong>{formatDate(date)}</li>
+		<li><strong>Status: </strong>{status}</li>
+
 		
 	</ul>
 </div>

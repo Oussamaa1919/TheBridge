@@ -9,12 +9,18 @@ const InscriptionItem = (
 ) => {
   return (
     <div className='training-container'>
-  
-    <table>
-      <tbody>
-    
-     
-     </tbody>
+      
+        <table className='tableinscription'>
+      <tbody>  
+      <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th >University</th>
+      <th>Location</th>
+      <th>Option</th>
+      <th>Paid</th>
+     </tr>   
      <tr>
       <td>{name}</td>
       <td>{email}</td>
@@ -23,16 +29,15 @@ const InscriptionItem = (
       <td>{location}</td>
       <td>{option}</td>
       <td>{paid}</td>
-  
-  
      </tr>
+     </tbody>
      </table>
   </div>
+  
   
   )
 }
 InscriptionItem.propTypes = {
-  trainingId: PropTypes.string.isRequired,
   inscription: PropTypes.object.isRequired,
   
 };

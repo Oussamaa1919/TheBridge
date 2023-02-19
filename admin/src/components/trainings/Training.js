@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getTraining } from '../../actions/training';
 import TrainingItem from './TrainingItem';
 import Spinner from '../layout/Spinner';
-import InscriptionItem from './InscriptionItem'
 import { useParams } from 'react-router-dom';
 import EditTrainingForm from './EditTrainingForm';
 

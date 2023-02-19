@@ -5,7 +5,7 @@ import { updateTraining } from '../../actions/training';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const EditTrainingForm = ({ updateTraining,training:{training}}) => {
+const EditTrainingForm = ({ trainingId,updateTraining,training:{training}}) => {
  
   
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const EditTrainingForm = ({ updateTraining,training:{training}}) => {
     price: training.price,
     location: training.location,
     periode: training.periode,
-    caoch: training.coach,
+    coach: training.coach,
     date: training.date,
     status:'comming soon'});
     const {title,description,price,location,periode,coach,date,status} = formData;
@@ -37,7 +37,7 @@ const EditTrainingForm = ({ updateTraining,training:{training}}) => {
       className="form"
       onSubmit={(e) => {
         e.preventDefault();
-        updateTraining(training._id,formData, navigate);
+        updateTraining(trainingId,formData, navigate);
       }}
           >
             <div className='form-group'>
@@ -55,7 +55,7 @@ const EditTrainingForm = ({ updateTraining,training:{training}}) => {
              type="text"
              placeholder="* Description"
              name="description"
-             defaultValue={training && training.description}
+             
 
              value={description}
 
@@ -68,7 +68,6 @@ const EditTrainingForm = ({ updateTraining,training:{training}}) => {
              type="text"
              placeholder="* Price"
              name="price"
-             defaultValue={training && training.price}
 
              value={price}
              onChange={onChange}
@@ -81,7 +80,6 @@ const EditTrainingForm = ({ updateTraining,training:{training}}) => {
             type="text" 
             placeholder="* Location"
             name="location"
-            defaultValue={ training && training.location}
 
              value={location}
              onChange={onChange}
@@ -119,17 +117,17 @@ const EditTrainingForm = ({ updateTraining,training:{training}}) => {
              required
               />
           </div>
-          <div className='form-group'> 
-            <input
-             type="text"
-              placeholder="* Status"
-              name="status"
-             value={status}
-             onChange={onChange}
-             required
-              />
+          <div className="form-group">
+          <select name="status" value={status} onChange={onChange}>
+            <option>*  {status}</option>
+            <option value="Comming soon">Comming soon</option>
+            <option value="In progress">In progress</option>
+            <option value="Finished">Finished</option>
+          </select>
+          
+        
           </div>
-          <input type="submit" className="internshipBtn" value="ADD TRAINING" />
+          <input type="submit" className="internshipBtn" value="Update TRAINING" />
          
         </form>
         </div>

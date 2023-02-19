@@ -87,10 +87,10 @@ export const getInternship = (id) => async (dispatch) => {
   }
 };
 
-// Update internship
-export const updateInternship = (formData,navigate) => async (dispatch) => {
+// Update Internship
+export const updateInternship = (id,formData,navigate) => async (dispatch) => {
   try {
-    const res = await api.put('/internships', formData);
+    const res = await api.put(`/internships/${id}`, formData);
 
     dispatch({
       type: UPDATE_INTERNSHIP,
