@@ -32,10 +32,12 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
           </Link>
         </li>
         <li>
+        <Link to='/internships'>
         <a href="#">
             <span className="icon"> <i className=" fas fa-solid fa-briefcase" /></span>
             <span className="title">Internships</span>
           </a>
+          </Link>
           </li>
           <li>
             <Link to='/trainings'>

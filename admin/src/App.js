@@ -12,7 +12,7 @@ import Navbar from './components/layout/Navbar';
 import Trainings from './components/trainings/Trainings';
 import Training from './components/trainings/Training';
 import Trainingform from './components/trainings/Trainingform';
-import EditTrainingForm from './components/trainings/EditTrainingForm';
+import Internships from './components/internships/Internships';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -61,6 +61,7 @@ const App = () => {
       <Route path="trainingform" element={<PrivateRoute component={Trainingform} />} />
       <Route path="trainings/:id" element={<PrivateRoute component={Training} />} />
       <Route path="inscriptions/:id" element={<PrivateRoute component={Inscriptions} />} />
+      <Route path="internships" element={<PrivateRoute component={Internships} />} />
 
       </Routes>
     </Router>
