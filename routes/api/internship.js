@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const adminauth = require('../../middleware/adminauth');
-
+const auth = require('../../middleware/auth');
+const User = require('../../models/User');
 const Internship = require('../../models/Internship');
 const Admin = require('../../models/Admin');
 const checkObjectId = require('../../middleware/checkObjectId');
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 // @route    GET api/internships
 // @desc     Get all internships
@@ -54,6 +57,7 @@ router.post(
   check('technologies', 'technologies is required').notEmpty(),
   check('type', 'type is required').notEmpty(),
   check('requirements', 'requirements is required').notEmpty(),
+  check('company', 'company is required').notEmpty(),
 
 
   
@@ -75,6 +79,7 @@ router.post(
         technologies: req.body.technologies,
         type: req.body.type,
         requirements: req.body.requirements,
+        company: req.body.company,
         date: req.body.date,
         admin: req.admin.id
       });
@@ -98,37 +103,25 @@ router.put(
   adminauth,checkObjectId('id'),
   
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+    try{
+    const internshipId= req.params.id;
+    const updatedInternship = req.body;
+    const internship = await Internship.findByIdAndUpdate(internshipId, updatedInternship, {new:true});
+    
+    if(!internship){
+      res.status(404).json({message: 'internship not found'});
+    }else {
+      res.json(internship);
     }
     
-    try {
-      const internship = new Internship({
-        _id: req.params.id,
-        title: req.body.title,
-        description: req.body.description,
-        location: req.body.location,
-        periode: req.body.periode,
-        technologies: req.body.technologies,
-        type: req.body.type,
-        requirements: req.body.requirements,
-        date: req.body.date,
-        admin: req.admin.id
-
-
-      });
-      Internship.updateOne({_id: req.params.id}, internship).then( 
-        ()=>res.status(201).json({
-          message: 'Internship updated successfully !'
-        })
-      )
+    
       
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
     }
   });
+
 
 // @route    DELETE api/internship/:id
 // @desc     Delete an internship
@@ -155,5 +148,55 @@ router.delete('/:id', [adminauth, checkObjectId('id')], async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route    POST api/internships/inscription/:id
+// @desc     inscription
+// @access   Private
+router.post(
+  '/inscription/:id',upload.fields([{name: 'resume'}, {name: 'coverletter'}]),
+  auth,
+  checkObjectId('id'),
+  check('phone', 'phone is required').notEmpty(),
+  check('university', 'university is required').notEmpty(),
+  check('location', 'location is required').notEmpty(),
+  
+
+
+
+
+
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const user = await User.findById(req.user.id).select('-password');
+      const internship = await Internship.findById(req.params.id);
+
+      const newInscription = {
+        phone: req.body.phone,
+        university: req.body.university,
+        location: req.body.location,
+        resume: req.files['resume'][0].path,
+        coverletter: req.files['coverletter'][0].path,
+        name: user.name,
+        email: user.email,
+        user: req.user.id
+      };
+
+      internship.inscriptions.unshift(newInscription);
+
+      await internship.save();
+
+      res.json(internship.inscriptions);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 
 module.exports = router;

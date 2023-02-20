@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const multer = require('multer');
+
 
 const InternshipSchema = new Schema({
    admin: {
@@ -21,6 +23,10 @@ const InternshipSchema = new Schema({
     type: String,
     required: true
   },
+  company :{
+    type: String,
+    required: true
+  },
   periode :{
     type: String,
     required: true
@@ -35,8 +41,48 @@ const InternshipSchema = new Schema({
   },
   date: {
     type: Date,
-    
-  }
+  },
+  
+  inscriptions:[
+    {
+      user: {
+        type: Schema.Types.ObjectId
+      },
+      name: {
+        type: String,
+       
+      },
+      email: {
+        type: String,
+        
+      },
+      phone: {
+        type: String,
+        required: true
+      },
+      university: {
+        type: String,
+        required: true
+        
+      },
+      location: {
+        type: String,
+        required: true   
+      },
+      
+      resume: {
+        type: String,
+        required: true
+      },
+      coverletter: {
+        type: String,
+        required: true
+      }
+
+      
+
+    }
+  ]
 })
 
 module.exports = mongoose.model('internship', InternshipSchema);
