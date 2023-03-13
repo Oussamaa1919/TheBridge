@@ -8,7 +8,7 @@ import formatDate from '../../utils/formatDate';
 
 
 const InternshipItem = ({deleteInternship,
-  internship:{_id,title,description,type,location,company,periode,technologies,requirments}}) => {
+  internship:{_id,title,description,type,location,company,periode,technologies,requirements}}) => {
     return (
       <div className='cardbody'>
         <div id="cardcontainer">	
@@ -16,7 +16,7 @@ const InternshipItem = ({deleteInternship,
     <div className="product-details">
       
     <h1>{title}</h1>
-    <h1>{company}</h1>
+    <h2>{company}</h2>
       
         <p className="information">{description}</p>
   
@@ -55,7 +55,7 @@ const InternshipItem = ({deleteInternship,
       <li><strong>Type : </strong>{type}</li>
 
       <li><strong>Technologies: </strong>{technologies}</li>
-      <li><strong>Requirments: </strong>{requirments}</li>
+      <li><strong>Requirments: </strong>{requirements}</li>
       
     </ul>
   </div>
