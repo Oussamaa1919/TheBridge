@@ -153,7 +153,7 @@ router.delete('/:id', [adminauth, checkObjectId('id')], async (req, res) => {
 // @desc     inscription
 // @access   Private
 router.post(
-  '/inscription/:id',upload.fields([{name: 'resume'}, {name: 'coverletter'}]),
+  '/application/:id',upload.fields([{name: 'resume'}, {name: 'coverletter'}]),
   auth,
   checkObjectId('id'),
   check('phone', 'phone is required').notEmpty(),
