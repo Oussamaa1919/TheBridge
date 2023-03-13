@@ -4,7 +4,6 @@ import {  useParams } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getTraining } from '../../actions/training';
-import TrainingItem from './TrainingItem';
 import Spinner from '../layout/Spinner';
 import TrainingForm from './TrainingForm';
 
@@ -29,7 +28,7 @@ const Training = ({getTraining, training:{training, loading}}) => {
   )
 }
 
-TrainingItem.propTypes ={
+Training.propTypes ={
  training: PropTypes.object.isRequired,
  getTraining: PropTypes.func.isRequired,
 }

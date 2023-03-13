@@ -14,9 +14,9 @@ import {
 
 // Get trainings 
 
-export const getInernships = () => async (dispatch) => {
+export const getInternships = () => async (dispatch) => {
   try {
-    const res = await api.get('/inernships');
+    const res = await api.get('/internships');
     dispatch({
       type:GET_INTERNSHIPS,
       payload: res.data
@@ -33,7 +33,7 @@ export const getInernships = () => async (dispatch) => {
 // Get Training
 export const getInernship = (id) => async (dispatch) => {
   try {
-    const res = await api.get(`/inernships/${id}`);
+    const res = await api.get(`/internships/${id}`);
 
     dispatch({
       type: GET_INTERNSHIP,

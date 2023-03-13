@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import intershipphoto from '../../img/internship-img.jpeg'
 
 
-const InternshipItem = () => {
+const InternshipItem = ({internship:{_id,title,description,type,location,date,requirments,technologies,periode}}) => {
   return (
     <div className='cardinternshipbody'>
       <div id="cardinternshipcontainer">	
 	
 	<div className="product-details">
 		
-	<h1>Web Development (MERN Stack)</h1>
+	<h1>{title}</h1>
 	
 		
-			<p className="information">" About The project:
-The business management and training company headquartered in Bremen, Germany. We are a success-driven firm that provides management advisory and contracting services customized to help companies from different industries with business management problems. </p>
+			<p className="information">{description} </p>
 
       <div className="control">
 	
@@ -40,11 +39,11 @@ The business management and training company headquartered in Bremen, Germany. W
 <div className="info">
 	<h2> Description</h2>
 	<ul>
-		<li><strong>Location : </strong>BeeCoders Ghazzela</li>
-		<li><strong>Periode : </strong>6 months</li>
-		<li><strong>Technologies: </strong>React,Express,Node,MongoDB,JS</li>
-		<li><strong>Type: </strong>Remote </li>
-    <li><strong>Requirements : </strong> Bac +3/5 Looking for an end of studies internship </li>
+		<li><strong>Location : </strong>{location}</li>
+		<li><strong>Periode : </strong>{periode}</li>
+		<li><strong>Technologies: </strong>{technologies}</li>
+		<li><strong>Type: </strong>{type} </li>
+    <li><strong>Requirements : </strong>{technologies} </li>
 	</ul>
 </div>
 </div>
