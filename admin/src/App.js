@@ -14,13 +14,15 @@ import Training from './components/trainings/Training';
 import Trainingform from './components/trainings/Trainingform';
 import Internships from './components/internships/Internships';
 import InternshipForm from './components/internships/InternshipForm';
+import TrainingItem from './components/trainings/TrainingItem';
+import Inscriptions from './components/trainings/Inscriptions';
+import Internship from './components/internships/Internship';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
-import TrainingItem from './components/trainings/TrainingItem';
-import Inscriptions from './components/trainings/Inscriptions';
+
 
 
 
@@ -60,6 +62,7 @@ const App = () => {
       <Route path="trainings" element={<PrivateRoute component={Trainings} />} />
       <Route path="trainingform" element={<PrivateRoute component={Trainingform} />} />
       <Route path="internshipform" element={<PrivateRoute component={InternshipForm} />} />
+      <Route path="internships/:id" element={<PrivateRoute component={Internship} />} />
 
       <Route path="trainings/:id" element={<PrivateRoute component={Training} />} />
       <Route path="inscriptions/:id" element={<PrivateRoute component={Inscriptions} />} />

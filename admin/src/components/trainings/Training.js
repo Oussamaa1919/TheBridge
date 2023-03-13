@@ -2,7 +2,6 @@ import React, { useEffect,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTraining } from '../../actions/training';
-import TrainingItem from './TrainingItem';
 import Spinner from '../layout/Spinner';
 import { useParams } from 'react-router-dom';
 import EditTrainingForm from './EditTrainingForm';
@@ -26,7 +25,7 @@ const Training = ({getTraining, training:{training, loading}}) => {
         
         
           
-        <EditTrainingForm trainingId ={training._id} training={training}/>
+        <EditTrainingForm  training={training}/>
        
        </div>
       </div>
@@ -35,7 +34,7 @@ const Training = ({getTraining, training:{training, loading}}) => {
   )
 }
 
-TrainingItem.propTypes ={
+Training.propTypes ={
  training: PropTypes.object.isRequired,
  getTraining: PropTypes.func.isRequired,
 }

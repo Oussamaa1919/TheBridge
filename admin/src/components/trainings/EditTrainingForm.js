@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { getTraining } from '../../actions/training';
 import { updateTraining } from '../../actions/training';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const EditTrainingForm = ({ trainingId,updateTraining,training:{training}}) => {
+const EditTrainingForm = ({ updateTraining,training:{training}}) => {
  
   
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ const EditTrainingForm = ({ trainingId,updateTraining,training:{training}}) => {
       
       <div className="table">
         <div className="Header">
-          <h2>Add An Internship</h2>
+          <h2>Update a Training</h2>
           <small>* = required field</small>
         </div>
         <div className="internship">
@@ -37,7 +36,7 @@ const EditTrainingForm = ({ trainingId,updateTraining,training:{training}}) => {
       className="form"
       onSubmit={(e) => {
         e.preventDefault();
-        updateTraining(trainingId,formData, navigate);
+        updateTraining(training._id,formData, navigate);
       }}
           >
             <div className='form-group'>
@@ -141,12 +140,12 @@ const EditTrainingForm = ({ trainingId,updateTraining,training:{training}}) => {
 
 EditTrainingForm.propTypes ={
   training: PropTypes.object.isRequired,
-  getTraining: PropTypes.func.isRequired,
+  
   updateTraining:PropTypes.func.isRequired,
  }
  
  const mapStateToProps = (state) => ({
    training: state.training
  });
- export default connect(mapStateToProps, {getTraining,updateTraining})(EditTrainingForm)
+ export default connect(mapStateToProps, {updateTraining})(EditTrainingForm)
 
