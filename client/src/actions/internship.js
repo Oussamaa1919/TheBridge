@@ -12,7 +12,7 @@ import {
 
 
 
-// Get trainings 
+// Get internships 
 
 export const getInternships = () => async (dispatch) => {
   try {
@@ -30,8 +30,8 @@ export const getInternships = () => async (dispatch) => {
 };
 
 
-// Get Training
-export const getInernship = (id) => async (dispatch) => {
+// Get internship
+export const getInternship = (id) => async (dispatch) => {
   try {
     const res = await api.get(`/internships/${id}`);
 

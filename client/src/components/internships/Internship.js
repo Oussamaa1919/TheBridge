@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {  useParams } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import { getInternship} from '../../actions/internship';
 import Spinner from '../layout/Spinner';
@@ -14,7 +13,7 @@ const Internship = ({getInternship, internship:{internship, loading}}) => {
     getInternship(id);
   }, [getInternship, id]);
   
-  return loading || training === null ? (
+  return loading || internship === null ? (
     <Spinner />
   ) : ( 
 
@@ -26,8 +25,8 @@ const Internship = ({getInternship, internship:{internship, loading}}) => {
 
   )}
 
-  Training.propTypes ={
-    training: PropTypes.object.isRequired,
+  Internship.propTypes ={
+    internship: PropTypes.object.isRequired,
     getInternship: PropTypes.func.isRequired,
    }
    

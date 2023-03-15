@@ -20,7 +20,7 @@ const InternshipItem = ({internship:{_id,title,description,type,location,date,re
 	<button className="btn-card">
 	 <span className="price">Apply</span>
    <span className="shopping-cart"><i class="fas fa fa-solid fa-paper-plane"></i></span>
-   <Link to='/internship-form'>
+   <Link to={`/internships/${_id}`}>
 	 <span className="buy">Now !!!</span>
 	 </Link>
  </button>
