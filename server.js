@@ -5,11 +5,19 @@ const path = require('path');
 
 const app = express();
 
-// Connect Database
+
+
+// Add middleware declarations here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+app.use(express.urlencoded({ extended: false }));
+
 connectDB();
 
 // Init Middleware
 app.use(express.json());
+
 
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));

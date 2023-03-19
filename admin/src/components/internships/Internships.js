@@ -23,7 +23,7 @@ const Internships = ({getInternships,internship:{internships}}) => {
         
       <div className='table'>
           <div className='Header'>
-        <h2>Trainings</h2>
+        <h2>Internships</h2>
         <Link to='/internshipform'>
         <button className='btn'>Add Internship</button>
         </Link>

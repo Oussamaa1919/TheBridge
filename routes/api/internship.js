@@ -10,6 +10,10 @@ const checkObjectId = require('../../middleware/checkObjectId');
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
+
+
+
+
 // @route    GET api/internships
 // @desc     Get all internships
 // @access   Private
@@ -179,8 +183,8 @@ router.post(
         phone: req.body.phone,
         university: req.body.university,
         location: req.body.location,
-        resume: req.files['resume'][0].path,
-        coverletter: req.files['coverletter'][0].path,
+        resume: req.files['resume'][0].filename,
+        coverletter: req.files['coverletter'][0].filename,
         name: user.name,
         email: user.email,
         user: req.user.id

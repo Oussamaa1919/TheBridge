@@ -32,7 +32,7 @@ const InternshipItem = ({deleteInternship,
      
    </button>
    <button className="btn-card">
-     <Link to={`/inscriptions/${_id}`}>
+     <Link to={`/internshipinscriptions/${_id}`}>
      <span className="buy" >Inscriptions</span>
      </Link>
    </button>
