@@ -91,6 +91,7 @@ export const deletePost = (id) => async (dispatch) => {
 // Add post
 export const addPost = (formData) => async (dispatch) => {
   try {
+    console.log(formData);
     const res = await api.post('/posts', formData);
 
     dispatch({

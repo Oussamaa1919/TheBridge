@@ -4,9 +4,10 @@ const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, 'uploads/')
   },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname)
-  },
-})
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + file.originalname.match(/\..*$/)[0] )
+}
+});
+const upload = multer({ storage: storage })
 
-
+module.exports= upload

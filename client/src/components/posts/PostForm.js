@@ -10,7 +10,15 @@ import event from '../../img/event.png';
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
+  const [photos, setPhotos] = useState([]);
+ async function handleOnSubmit(e) {
+    e.preventDefault();
+      console.log({photos})
+     await  addPost({ text, photos:[...photos] });
+      setText('');
+      setPhotos([]);
 
+  }
   return (
     <div className="create-post">
     <div className="create-post-input">
@@ -28,17 +36,26 @@ const PostForm = ({ addPost }) => {
     </div>
     
     <div className="create-post-links">
-      <li><img src={photo} alt=''/>Photo</li>
+      <li><div>
+        <label htmlFor="photos">Photos:</label>
+        <input
+          type="file"
+          id="photos"
+          name="photos"
+          accept="image/*"
+          multiple
+          onChange={e => setPhotos(e.target.files)}
+        />
+      </div></li>
       <li><img src={video} alt=''/>Video</li>
       <li><img src={event} alt=''/>Event</li>
       <li>
       <form 
-      onSubmit={e => {
-      e.preventDefault();
-      addPost({ text });
-      setText('');
-      }}>
-      <input type='submit' value='POST' /></form></li>
+      onSubmit={e => handleOnSubmit(e)
+      }>
+      <input type='submit' value='POST' />
+      
+      </form></li>
 
     </div>
   </div>

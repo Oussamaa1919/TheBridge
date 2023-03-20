@@ -8,7 +8,7 @@ const Internship = require('../../models/Internship');
 const Admin = require('../../models/Admin');
 const checkObjectId = require('../../middleware/checkObjectId');
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const upload = require('../../middleware/storage')
 
 
 
@@ -189,7 +189,7 @@ router.post(
         email: user.email,
         user: req.user.id
       };
-
+      console.log({req: req.files.resume})
       internship.inscriptions.unshift(newInscription);
 
       await internship.save();

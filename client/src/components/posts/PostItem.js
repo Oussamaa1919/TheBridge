@@ -17,7 +17,7 @@ const PostItem = ({
   deletePost,
   auth,
   profile:{profile},
-  post: { _id, text, name,avatar, user, likes, comments, date },
+  post: { _id, text, name,avatar, user, likes, comments, date ,photos},
   showActions
 }) => {
   const [displaySComments, toggleComments] = useState(false);
@@ -48,7 +48,7 @@ const PostItem = ({
     </div>
     <div>
       <p className="my-1">{text}</p>
-      <img className='post-img' src={post1} alt=''/>
+      {photos}
       <div className='post-stats'>
         <div className='like-stats'>
         <img src={thumb} alt=''/>

@@ -6,6 +6,8 @@ const auth = require('../../middleware/auth');
 const Post = require('../../models/Post');
 const User = require('../../models/User');
 const checkObjectId = require('../../middleware/checkObjectId');
+const multer  = require('multer')
+const upload = require('../../middleware/storage')
 
 
 
@@ -15,6 +17,7 @@ const checkObjectId = require('../../middleware/checkObjectId');
 router.post(
   '/',
   auth,
+  upload.fields([{name: 'photos'}]),
   check('text', 'Text is required').notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -27,11 +30,12 @@ router.post(
 
       const newPost = new Post({
         text: req.body.text,
+        photos: req.files.photos.map(file => file.filename),
         name: user.name,
         avatar: user.avatar,
         user: req.user.id
       });
-
+console.log(req.files);
       const post = await newPost.save();
 
       res.json(post);
