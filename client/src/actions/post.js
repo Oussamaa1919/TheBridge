@@ -1,5 +1,4 @@
 import api from '../utils/api';
-import axios from 'axios';
 
 import { setAlert } from './alert';
 import {
@@ -10,7 +9,8 @@ import {
   ADD_POST,
   GET_POST,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  REMOVE_COMMENT,
+  GET_POST_LIKES
 } from './types';
 
 /*
@@ -157,6 +157,23 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
     });
 
     dispatch(setAlert('Comment Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+// get likes
+
+export const getPostLikes = (postId) => async(dispatch) =>{
+  try {
+    const res = await api.get(`/posts/${postId}/likes`);
+    
+    dispatch({
+      type: GET_POST_LIKES,
+      payload: res.data,
+    });
   } catch (err) {
     dispatch({
       type: POST_ERROR,

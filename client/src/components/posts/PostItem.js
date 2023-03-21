@@ -26,6 +26,20 @@ const PostItem = ({
     getPost(id);
   }, [getPost, id]);
   
+  const [showModal, setShowModal] = useState(false);
+
+  const firstLike = likes[0];
+  const otherLikes = likes.slice(1);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const closeOnOtherClick = (event) => {
+    if (event.target.className === 'others-btn') {
+      setShowModal(false);
+    }
+  };
 
   return (
   
@@ -53,6 +67,29 @@ const PostItem = ({
         <div className='like-stats'>
         <img src={thumb} alt=''/>
         <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+        <span>
+      <div className='likesname' onClick={toggleModal}>
+      <Link to={`/profile/${firstLike.user}`} ><p>{firstLike.name}</p></Link>
+        {otherLikes.length > 0 && <p className='others'>+{otherLikes.length} others</p>}
+      </div>
+      {showModal && (
+        <div className='modal' onClick={closeOnOtherClick}>
+          <div className='modal-content'>
+            
+            <ul>
+              {otherLikes.map((like) => (
+                <li key={like.user}>
+                  <Link to={`/profile/${like.user}`} >
+                  {like.name} </Link>
+                  </li>
+              ))}
+               <p className='others-btn'>Click to close</p>
+            </ul>
+           
+          </div>
+        </div>
+      )}
+    </span>
         
         </div>
         

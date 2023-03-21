@@ -1122,6 +1122,42 @@ margin: 20px 0 10px;
   font-size: 14px;
   margin-bottom: 15px;
 }
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-content li {
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  margin-top: 10px;
+}
 .post-stats{
   display: flex;
   flex-wrap: wrap;
@@ -1130,6 +1166,18 @@ margin: 20px 0 10px;
   font-size: 12px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 6px;
+  margin-top: 16px;
+}
+.others {
+  color: var(--red);
+  cursor: pointer;
+  
+}
+.others-btn{
+  color: var(--red);
+  cursor: pointer;
+  position: absolute;
+  
 }
 .post-stats div {
   display: flex;
@@ -1141,6 +1189,10 @@ margin-right: -5px;
 }
 .liked-users{
   margin-left: 10px;
+}
+.likesname{
+  margin-left: 9px;
+  margin-top:12px;
 }
 .post-activity{
   display:flex;
