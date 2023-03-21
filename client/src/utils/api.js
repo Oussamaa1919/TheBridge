@@ -6,9 +6,11 @@ import { LOGOUT } from '../actions/types';
 const api = axios.create({
   baseURL: '/api',
   headers: {
-    'Content-Type': 'multipart/form-data'  }
+    'Content-Type': 'application/json'  }
 });
 /*
+
+'Content-Type': 'multipart/form-data' 
   NOTE: intercept any error responses from the api
  and check if the token is no longer valid.
  ie. Token has expired or user is no longer

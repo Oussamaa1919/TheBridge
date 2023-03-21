@@ -23,6 +23,20 @@ const InternshipInscriptionItem = (
     link.click();
   };
 
+  const handleDownloadCoverLetter = (coverletterUrl) => {
+    const link = document.createElement("a");
+    link.href = coverletterUrl;
+  
+    // Extract file extension from resume filename
+    const extension = coverletterUrl.split(".").pop();
+    const filename = `coverletter.${extension}`;
+  
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+  };
+
+
   return (
     <div className='training-container'>
       
@@ -44,14 +58,23 @@ const InternshipInscriptionItem = (
       <td >{university}</td>
       <td>{location}</td>
       
-      <td><button
+      <td><button className='btn'
                 onClick={() =>
                   handleDownloadResume(
                     `http://localhost:5000/uploads/${resume}`
                   )
                 }
               >
-                Download Resume
+               Resume
+              </button> </td>
+              <td><button className='btn'
+                onClick={() =>
+                  handleDownloadCoverLetter(
+                    `http://localhost:5000/uploads/${coverletter}`
+                  )
+                }
+              >
+               CoverLetter
               </button> </td>
      </tr>
      </tbody>

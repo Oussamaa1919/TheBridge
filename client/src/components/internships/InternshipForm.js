@@ -101,7 +101,7 @@ const InternshipForm = ({internship,addApplication,auth:{user}}) => {
               type="file"
               placeholder="* resume"
               name="resume"    
-              
+              className='custom-file-input-resume'
               onChange={(e) => setResume(e.target.files[0])}
               required         
             />                   
@@ -114,7 +114,7 @@ const InternshipForm = ({internship,addApplication,auth:{user}}) => {
               type="file"
               placeholder="* coverletter"
               name="coverletter"    
-              
+              className='custom-file-input-letter'
               onChange={(e) => setCoverLetter(e.target.files[0])}
               required         
             />                   

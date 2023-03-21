@@ -20,7 +20,10 @@ const PostSchema = new Schema({
     {
       user: {
         type: Schema.Types.ObjectId
-      }
+      },
+      name: {
+        type: String
+      },
     }
   ],
   comments: [

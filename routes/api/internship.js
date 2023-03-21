@@ -189,7 +189,6 @@ router.post(
         email: user.email,
         user: req.user.id
       };
-      console.log({req: req.files.resume})
       internship.inscriptions.unshift(newInscription);
 
       await internship.save();

@@ -57,7 +57,52 @@ body{
   margin-top: 0.3rem;
   color: #888;
 }
+.custom-file-input-letter::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input-letter::before {
+  content: 'Select your coverletter';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  
+}
+.custom-file-input-letter::before {
+  border-color: black;
+}
+.custom-file-input-letter::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.custom-file-input-resume::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input-resume::before {
+  content: 'Select your resume';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  
+}
+.custom-file-input-resume::before {
+  border-color: black;
+}
+.custom-file-input-resume::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
 .form input[type='username'],
+.form input[type='file'],
 .form input[type='text'],
 .form input[type='email'],
 .form input[type='password'],

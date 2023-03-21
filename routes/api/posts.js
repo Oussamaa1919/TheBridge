@@ -9,15 +9,38 @@ const checkObjectId = require('../../middleware/checkObjectId');
 const multer  = require('multer')
 const upload = require('../../middleware/storage')
 
+// @route    GET api/posts/:id/likes
+// @desc     get likes of a post 
+// @access   Private
+// Route to get the users who liked a post
 
-
+router.get('/:id/likes', auth ,checkObjectId('id'),async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id).populate('likes.user');
+    if (!post) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+    const likes = post.likes.map(like => {
+      return {
+        userId: like.user._id,
+        name: like.name
+      };
+    });
+    res.json(likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 // @route    POST api/posts
 // @desc     Create a post
 // @access   Private
 router.post(
   '/',
   auth,
-  upload.fields([{name: 'photos'}]),
+   upload.fields([
+    {name: 'photos', maxCount: 20}
+]),
   check('text', 'Text is required').notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -109,15 +132,17 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
 // @access   Private
 router.put('/like/:id', auth, checkObjectId('id'), async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    
+    const post = await Post.findById(req.params.id)
+    const likedUser = await User.findById(req.user.id).select('name');
 
     // Check if the post has already been liked
     if (post.likes.some((like) => like.user.toString() === req.user.id)) {
       return res.status(400).json({ msg: 'Post already liked' });
     }
 
-    post.likes.unshift({ user: req.user.id });
-
+    post.likes.unshift({ user: req.user.id ,name:likedUser.name} );
+    console.log(post.likes);
     await post.save();
 
     return res.json(post.likes);

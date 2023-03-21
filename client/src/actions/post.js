@@ -1,4 +1,6 @@
 import api from '../utils/api';
+import axios from 'axios';
+
 import { setAlert } from './alert';
 import {
   GET_POSTS,

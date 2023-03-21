@@ -11,7 +11,8 @@ import event from '../../img/event.png';
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
   const [photos, setPhotos] = useState([]);
- async function handleOnSubmit(e) {
+  
+  async function handleOnSubmit(e) {
     e.preventDefault();
       console.log({photos})
      await  addPost({ text, photos:[...photos] });
@@ -40,7 +41,7 @@ const PostForm = ({ addPost }) => {
         <label htmlFor="photos">Photos:</label>
         <input
           type="file"
-          id="photos"
+          
           name="photos"
           accept="image/*"
           multiple
@@ -50,7 +51,7 @@ const PostForm = ({ addPost }) => {
       <li><img src={video} alt=''/>Video</li>
       <li><img src={event} alt=''/>Event</li>
       <li>
-      <form 
+      <form  encType='multipart/form-data'
       onSubmit={e => handleOnSubmit(e)
       }>
       <input type='submit' value='POST' />
