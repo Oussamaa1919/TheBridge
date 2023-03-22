@@ -1154,6 +1154,11 @@ margin: 20px 0 10px;
 .modal-content li {
   margin-bottom: 10px;
 }
+.modal-content li img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
 
 .modal-content button {
   margin-top: 10px;
@@ -1171,7 +1176,35 @@ margin: 20px 0 10px;
 .others {
   color: var(--red);
   cursor: pointer;
+  margin-left: -16px;
+  margin-top: -1.5px;
   
+  
+}
+.likeLink{
+  display: flex;
+  align-items: center;
+}
+.likeLink p{
+  margin-top: 12px;
+  margin-left: -8px;
+  font-size: 22px;
+}
+.firstlike{
+  display: flex;
+  
+  align-items: center;
+  margin-right: 20px;
+
+}
+.firstlike p {
+  margin-left: 22px;
+  margin-top: -20px;
+}
+.firstlike img{
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 15px; 
 }
 .others-btn{
   color: var(--red);
@@ -1191,7 +1224,9 @@ margin-right: -5px;
   margin-left: 10px;
 }
 .likesname{
-  margin-left: 9px;
+  display: flex;
+  align-items: center;
+  margin-left: -2px;
   margin-top:12px;
 }
 .post-activity{

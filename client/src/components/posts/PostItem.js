@@ -69,8 +69,17 @@ const PostItem = ({
         <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         <span>
       <div className='likesname' onClick={toggleModal}>
-      <Link to={`/profile/${firstLike.user}`} ><p>{firstLike.name}</p></Link>
-        {otherLikes.length > 0 && <p className='others'>+{otherLikes.length} others</p>}
+      <span className='firstlike'>
+      <Link to={`/profile/${firstLike.user}`} >
+      
+      <img src={firstLike.avatar} className='like-img' />
+      
+        <p>{firstLike.name}</p>
+        
+        </Link>
+        
+        </span>
+        {otherLikes.length > 0 && <p className='others'>&{otherLikes.length} others</p>}
       </div>
       {showModal && (
         <div className='modal' onClick={closeOnOtherClick}>
@@ -79,8 +88,13 @@ const PostItem = ({
             <ul>
               {otherLikes.map((like) => (
                 <li key={like.user}>
-                  <Link to={`/profile/${like.user}`} >
-                  {like.name} </Link>
+                  
+                 
+                  <Link to={`/profile/${like.user}`}  className= "likeLink">
+                  <img src={like.avatar}  />
+                  <p>{like.name} </p>
+                  
+                  </Link>
                   </li>
               ))}
                <p className='others-btn'>Click to close</p>
@@ -99,7 +113,10 @@ const PostItem = ({
 
         </div>
       </div>
-      {showActions && (
+      {
+      
+      
+      showActions && (
         <Fragment >
           <div className='post-activity'>
           <img className='post-activity-user-icon'  src={avatar} alt="" />
