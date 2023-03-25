@@ -26,8 +26,17 @@ const PostItem = ({
     getPost(id);
   }, [getPost, id]);
   
-  const [showModal, setShowModal] = useState(false);
 
+  const handleClick = () => {
+    if (liked) {
+      removeLike(_id);
+    } else {
+      addLike(_id);
+    }
+    setLiked(!liked);
+  };
+  const [showModal, setShowModal] = useState(false);
+  const [liked, setLiked] = useState(false);
   const firstLike = likes[0];
   const otherLikes = likes.slice(1);
 
@@ -125,25 +134,14 @@ const PostItem = ({
           <div className='post-activity'>
           <img className='post-activity-user-icon'  src={avatar} alt="" />
           
-          <button
-            onClick={() => addLike(_id)}
-            type="button"
-            className="btn-like"
-          > 
-            <i className="fas fa-thumbs-up" />{' '}
-            
-            <span>Like</span>
-          </button>
           
           
-          <button
-            onClick={() => removeLike(_id)}
-            type="button"
-            className="btn-like"
-          > 
-            <i className="fas fa-thumbs-down" />
-            <span>Unlike</span>
-          </button>
+          <button onClick={handleClick} type="button" className="btn-like">
+      <i className={`fas fa-thumbs-${liked ? 'down' : 'up'}`} />{' '}
+      <span>{liked ? 'Unlike' : 'Like'}</span>
+    </button>
+          
+          
           
           <button onClick={() => toggleComments(!displaySComments)}>
           
