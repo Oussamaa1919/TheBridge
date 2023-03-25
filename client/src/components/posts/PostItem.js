@@ -17,7 +17,7 @@ const PostItem = ({
   deletePost,
   auth,
   profile:{profile},
-  post: { _id, text, name,avatar, user, likes, comments, date ,photos},
+  post: { _id, text, name,avatar, user, likes, comments, date ,photos,originalUserName,originalUserAvatar,originalDate,shared,originalUser},
   showActions
 }) => {
   const [displaySComments, toggleComments] = useState(false);
@@ -69,9 +69,33 @@ const PostItem = ({
         <small className="post-date">Posted on {formatDate(date)}</small>
       </div>
     </div>
+    
+    
     <div>
+      
+    {shared ? (
+              <>
+              <div className='post-author-shared'>
+              <Link to={`/profile/${originalUser}`}>
+              <img src={originalUserAvatar} alt="Original user avatar"  />
+              </Link>
+              <div>
+                <h1>{originalUserName}</h1>
+                
+                <small className="post-date">Posted on {formatDate(originalDate)}</small>
+                </div>
+                </div>
+              </>
+            ) : (
+              <h1></h1>
+            )}
+    
+
       <p className="my-1">{text}</p>
-      {photos}
+      {photos &&
+        photos.map((photo) => (
+          <img key={photo} src={photo} alt="Post photo" className="post-photo" />
+        ))}
       <div className='post-stats'>
         <div className='like-stats'>
         <img src={thumb} alt=''/>
@@ -143,7 +167,7 @@ const PostItem = ({
           
           
           
-          <button onClick={() => toggleComments(!displaySComments)}>
+          <button onClick={() => toggleComments(!displaySComments)} className="btn-like">
           
           <i className="fas fa-solid fa-comment"></i>
             Comment{' '}

@@ -1100,6 +1100,19 @@ margin: 20px 0 10px;
   align-items: flex-start;
   margin-bottom: 20px;
 }
+.post-author-shared{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-top: 1px solid #ccc;
+}
+.post-author-shared img{
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+
+  margin-top: 5px;
+}
 .post-img {
   width: 100%;
 }
@@ -1108,6 +1121,15 @@ margin: 20px 0 10px;
   border-radius: 50%;
   margin-right: 10px;
   margin-top: 5px;
+}
+.post-author-shared h1{
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+.post-author-shared small{
+  display: block;
+  margin-bottom: -2px;
 }
 .post-author h1{
   font-size: 18px;

@@ -56,7 +56,26 @@ const PostSchema = new Schema({
   },
   photos: [{
     type: String,
-  }]
+  }],
+  originalUserName: {
+  type: String
+},
+originalUserAvatar: {
+  type: String
+},
+originalDate:{
+  type: Date,
+},
+shared: {
+  type: Boolean,
+  default: false
+},
+originalUser:{
+  type: Schema.Types.ObjectId
+}
 });
+
+
+
 
 module.exports = mongoose.model('post', PostSchema);
