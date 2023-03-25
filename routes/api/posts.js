@@ -257,7 +257,7 @@ router.post('/:postId/share', auth,async (req, res) => {
     // Create a new post object with the same content
     const user = await User.findById(req.user.id).select('-password');
     const sharedPost = new Post({
-      user: req.user._id, // Set the user ID to the current user's ID
+      user: req.user.id, // Set the user ID to the current user's ID
       text: post.text,
       name: user.name,
       avatar: user.avatar,
