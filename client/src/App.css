@@ -1318,6 +1318,152 @@ border-radius: 50%;
   border-radius: 50%;
   margin-right: 15px;
 }
+/******************profile-other********************/
+
+.container-p {
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+.profile {
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
+  align-items: center;
+  grid-gap: 2rem;
+  padding: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.bg-light
+ {
+  background: var(--light-color);
+  color: #333;
+}
+.my-1 {
+  margin: 1rem 0;
+}
+.btn-primary
+ {
+  background: rgb(254, 52, 113);
+  color: #fff;
+}
+.round-img {
+  border-radius: 50%;
+}
+.btnn {
+  display: inline-block;
+  background: var(--light-color);
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+.text-primary {
+  color:rgb(232, 200, 55); 
+}
+.btn-dark,
+.bg-dark,
+.badge-dark,
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+.profile-grid {
+  display: grid;
+  grid-template-areas:
+    'top top'
+    'about about'
+    'exp edu'
+    'github github';
+  grid-gap: 1rem;
+}
+.profile-exp {
+  grid-area: exp;
+}
+.profile ul {
+  display: none;
+}
+.bg-white
+ {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
+}
+.p-2 {
+  padding: 2rem;
+}
+.profile-edu {
+  grid-area: edu;
+}
+.profile-about {
+  grid-area: about;
+  text-align: center;
+}
+.profile-about .skills {
+  flex-direction: column;
+}
+
+.profile-about .skills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+.line {
+  height: 1px;
+  background: #ccc;
+  margin: 1.5rem 0;
+}
+.profile-about .skills {
+  flex-direction: column;
+}
+.text-dark {
+  color: var(--dark-color);
+}
+.profile-top {
+  grid-area: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile-top img {
+  width: 250px;
+}
+
+.profile-top .icons a {
+  color: #fff;
+  margin: 0 0.3rem;
+}
+
+.profile-top .icons a:hover {
+  color: var(--dark-color);
+}
+.bg-primary
+{
+  background: rgb(254, 52, 113);
+  color: #fff;
+}
+.large {
+  font-size: 2rem;
+}
+
+.lead {
+  font-size: 1rem;
+}
+
+/******************profile-other********************/
+
 /*--------------------- profile-page---------------*/
 .profile-main{
   flex-basis: 73%;

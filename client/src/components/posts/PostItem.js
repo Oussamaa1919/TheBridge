@@ -70,15 +70,19 @@ const PostItem = ({
         <span>
       <div className='likesname' onClick={toggleModal}>
       <span className='firstlike'>
+      
+      {likes.length>0 &&  (
       <Link to={`/profile/${firstLike.user}`} >
       
-      <img src={firstLike.avatar} className='like-img' />
+      <img src={firstLike.avatar} className='like-img'  />
       
         <p>{firstLike.name}</p>
         
         </Link>
         
-        </span>
+        
+      )}
+      </span>
         {otherLikes.length > 0 && <p className='others'>&{otherLikes.length} others</p>}
       </div>
       {showModal && (
