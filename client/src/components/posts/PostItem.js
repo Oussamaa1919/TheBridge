@@ -29,6 +29,10 @@ const PostItem = ({
   }, [getPost, id]);
   
 
+ const photoCount = photos.length;
+  const postClass = `post ${photoCount === 1 ? 'one-photo' : photoCount === 2 ? 'two-photos' : 'three-photos'}`;
+
+
   const handleClick = () => {
     if (liked) {
       removeLike(_id);
@@ -69,7 +73,6 @@ const PostItem = ({
   
   
   
-  <div>
     
   <div className="post">
   
@@ -117,10 +120,12 @@ const PostItem = ({
 </Link>
       
       
-      {photos &&
-        photos.map((photo) => (
-          <img key={photo} src={photo} alt="Post photo" className="post-photo" />
-        ))}
+      <div className={postClass}>
+      {photos.map((photo, index) => (
+        <div className="photos" key={index}>
+          <img src={`/uploads/${photo}`} alt="Post photo" />
+        </div>
+      ))}
       <div className='post-stats'>
         <div className='like-stats'>
         <img src={thumb} alt=''/>

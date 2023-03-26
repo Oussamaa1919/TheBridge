@@ -58,7 +58,7 @@ router.post(
         avatar: user.avatar,
         user: req.user.id
       });
-console.log(req.files);
+
       const post = await newPost.save();
 
       res.json(post);

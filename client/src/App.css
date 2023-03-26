@@ -1004,6 +1004,13 @@ margin: 20px 0 10px;
   margin-bottom: 3rem; 
   
 }
+.post-photo{
+  display: inline-block;
+  max-width: 35%;
+  height: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 .create-post{
   background: #fff;
   
@@ -1094,6 +1101,48 @@ margin: 20px 0 10px;
   background: #fff;
   padding: 20px 25px 5px;
   margin: 5px 0 15px;
+}
+.post .photos {
+  display: flex;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+.post .photos img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.post.one-photo .photos {
+  width: 100%;
+}
+
+.post.two-photos .photos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.post.two-photos .photos img {
+  width: 49%;
+}
+
+.post.three-or-more-photos .photos {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.post.three-or-more-photos .photos img:first-child {
+  width: 50%;
+}
+
+.post.three-or-more-photos .photos img:not(:first-child) {
+  width: 24%;
 }
 .post-author{
   display: flex;
