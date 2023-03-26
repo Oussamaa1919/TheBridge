@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Link,useParams } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
-import { addLike, removeLike, deletePost } from '../../actions/post';
+import { addLike, removeLike, deletePost,sharePost } from '../../actions/post';
 import thumb from '../../img/thumbsup.png';
 import post1 from '../../img/post-image-1.png';
+
 import {  useState } from 'react';
 import { getPost } from '../../actions/post';
 import CommentForm from '../post/CommentForm';
@@ -15,9 +16,10 @@ const PostItem = ({
   addLike,
   removeLike,
   deletePost,
+  sharePost,
   auth,
   profile:{profile},
-  post: { _id, text, name,avatar, user, likes, comments, date ,photos,originalUserName,originalUserAvatar,originalDate,shared,originalUser},
+  post: { _id, text, name,avatar, user, likes, shares,comments, date ,photos,originalUserName,originalUserAvatar,originalDate,shared,originalUser,originalPostId},
   showActions
 }) => {
   const [displaySComments, toggleComments] = useState(false);
@@ -36,6 +38,19 @@ const PostItem = ({
     setLiked(!liked);
   };
   const [showModal, setShowModal] = useState(false);
+  const [showSharesModal, setShowSheresModal] = useState(false);
+  const toggleSharesModal = () => {
+    setShowSheresModal(!showModal);
+  };
+
+  const closeOnOtherClickShares = (event) => {
+    if (event.target.className === 'shares-btn') {
+      setShowSheresModal(false);
+    }
+  };
+
+
+
   const [liked, setLiked] = useState(false);
   const firstLike = likes[0];
   const otherLikes = likes.slice(1);
@@ -82,6 +97,7 @@ const PostItem = ({
               <div>
                 <h1>{originalUserName}</h1>
                 
+                
                 <small className="post-date">Posted on {formatDate(originalDate)}</small>
                 </div>
                 </div>
@@ -91,7 +107,16 @@ const PostItem = ({
             )}
     
 
-      <p className="my-1">{text}</p>
+     
+      <Link 
+         to={shared ? `/posts/${originalPostId}` : `/posts/${_id}`} 
+  className="post-text"
+>
+<p className="my-1">{text}</p>
+ 
+</Link>
+      
+      
       {photos &&
         photos.map((photo) => (
           <img key={photo} src={photo} alt="Post photo" className="post-photo" />
@@ -145,9 +170,39 @@ const PostItem = ({
         </div>
         
         <div>
-      <Link to={`/posts/${_id}`} >       <span className="comment-count ">{comments.length} comments</span>
+      <Link to={`/posts/${_id}`} >       <span className="comment-count ">{comments.length} comments
+      
+      
+      </span>
       </Link>
-
+      &middot; 
+                
+                <span> { <span onClick={toggleSharesModal} className='sharesspan'>{shares.length} shares
+                
+                
+                </span>} </span>
+                {showSharesModal && (
+        <div className='modal' onClick={closeOnOtherClickShares}>
+          <div className='modal-content'>
+            
+            <ul>
+              {shares.map((share) => (
+                <li key={share.user}>
+                  
+                 
+                  <Link to={`/profile/${share.user}`}  className= "likeLink">
+                  <img src={share.avatar}  />
+                  <p>{share.name} </p>
+                  
+                  </Link>
+                  </li>
+              ))}
+               <p className='shares-btn'>Click to close</p>
+            </ul>
+           
+          </div>
+        </div>
+      )}
         </div>
       </div>
       {
@@ -175,6 +230,15 @@ const PostItem = ({
           
           </button>
           
+          
+            <button
+              onClick={() => sharePost(_id)}
+              type="button"
+              className="btn-like"
+            >
+              <i className="fas fa-solid fa-share" />     
+              <span>Share</span>
+            </button>
           
           
           {!auth.loading && user === auth.user._id && (
@@ -224,7 +288,7 @@ PostItem.propTypes = {
   showActions: PropTypes.bool,
   profile:PropTypes.object.isRequired,
   getPost: PropTypes.func.isRequired,
- 
+  sharePost: PropTypes.func.isRequired,
   
   
 };
@@ -236,6 +300,6 @@ const mapStateToProps = (state) => ({
   
 });
 
-export default connect(mapStateToProps, { getPost, addLike, removeLike, deletePost })(
+export default connect(mapStateToProps, { getPost, addLike, removeLike, deletePost,sharePost })(
   PostItem
 );

@@ -252,26 +252,55 @@ router.post('/:postId/share', auth,async (req, res) => {
   try {
     // Find the post by its ID
     const post = await Post.findById(req.params.postId);
+    
     const originalUser = await User.findById(post.user);
     
     // Create a new post object with the same content
-    const user = await User.findById(req.user.id).select('-password');
-    const sharedPost = new Post({
+    const user = await User.findById(req.user.id).select('name avatar');
+    
+    if(post.shared) {
+
+       sharedPost = new Post({
+        
+     
+        user: req.user.id, // Set the user ID to the current user's ID
+        text: post.text,
+        name: user.name,
+        avatar: user.avatar,
+        photos: post.photos,
+        originalUserName: post.originalUserName ,
+        originalUserAvatar: post.originalUserAvatar ,
+        originalDate: post.originalDate ,
+        shared: true ,
+        originalUser:post.originalUser ,
+        // Set the shared field to true
+        // Add the original user's name and avatar to the shared post
+      });
+
+    }
+    else{
+     sharedPost = new Post({
+        
+     
       user: req.user.id, // Set the user ID to the current user's ID
       text: post.text,
       name: user.name,
       avatar: user.avatar,
       photos: post.photos,
-      originalUserName: post.name,
-      originalUserAvatar: post.avatar,
-      originalDate: post.date,
+      originalUserName: post.name ,
+      originalUserAvatar: post.avatar ,
+      originalDate: post.date ,
       shared: true ,
-      originalUser:originalUser,
+      originalUser:originalUser ,
+      originalPostId:post.id,
       // Set the shared field to true
       // Add the original user's name and avatar to the shared post
     });
-
+  }
     // Save the new post to the database
+    post.shares.unshift({ user: req.user.id ,name:user.name,avatar:user.avatar} );
+   await post.save();
+
     await sharedPost.save();
 
     // Send the shared post in the response

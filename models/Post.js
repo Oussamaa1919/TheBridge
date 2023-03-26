@@ -72,7 +72,23 @@ shared: {
 },
 originalUser:{
   type: Schema.Types.ObjectId
-}
+},
+originalPostId:{
+  type: Schema.Types.ObjectId
+},
+shares: [
+  {
+    user: {
+      type: Schema.Types.ObjectId
+    },
+    name: {
+      type: String
+    },
+    avatar: {
+      type: String
+    },
+  }
+],
 });
 
 

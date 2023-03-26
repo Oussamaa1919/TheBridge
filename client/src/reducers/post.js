@@ -7,7 +7,8 @@ import {
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
-  GET_POST_LIKES
+  GET_POST_LIKES,
+  SHARE_POST
 } from '../actions/types';
 
 const initialState = {
@@ -41,6 +42,7 @@ function postReducer(state = initialState, action) {
         loading: false
       };
     case ADD_POST:
+      case SHARE_POST:
       return {
         ...state,
         posts: [payload, ...state.posts],

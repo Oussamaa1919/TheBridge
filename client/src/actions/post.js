@@ -10,7 +10,8 @@ import {
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
-  GET_POST_LIKES
+  GET_POST_LIKES,
+  SHARE_POST
 } from './types';
 
 /*
@@ -82,6 +83,27 @@ export const deletePost = (id) => async (dispatch) => {
     });
 
     dispatch(setAlert('Post Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+
+// Share post
+export const sharePost = (id) => async (dispatch) => {
+  try {
+    
+    const res = await api.post(`/posts/${id}/share`);
+
+    dispatch({
+      type: SHARE_POST,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Post Shared', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
