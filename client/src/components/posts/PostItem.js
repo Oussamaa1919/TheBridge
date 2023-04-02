@@ -29,9 +29,15 @@ const PostItem = ({
   }, [getPost, id]);
   
 
- const photoCount = photos.length;
-  const postClass = `post ${photoCount === 1 ? 'one-photo' : photoCount === 2 ? 'two-photos' : 'three-photos'}`;
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
+  const handlePhotoClick = (index) => {
+    if (expandedIndex === index) {
+      setExpandedIndex(null);
+    } else {
+      setExpandedIndex(index);
+    }
+  };
 
   const handleClick = () => {
     if (liked) {
@@ -120,12 +126,15 @@ const PostItem = ({
 </Link>
       
       
-      <div className={postClass}>
+      <div className='post'>
+      
       {photos.map((photo, index) => (
         <div className="photos" key={index}>
           <img src={`/uploads/${photo}`} alt="Post photo" />
         </div>
       ))}
+
+
       <div className='post-stats'>
         <div className='like-stats'>
         <img src={thumb} alt=''/>
