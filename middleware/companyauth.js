@@ -19,7 +19,7 @@ try {
     if (error) {
       return res.status(401).json({ msg: 'Token is not valid' });
     } else {
-      req.user = decoded.user;
+      req.company = decoded.company;
       next();
     }
   });

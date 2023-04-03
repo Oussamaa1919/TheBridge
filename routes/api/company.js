@@ -1,18 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const companyauth = require('../../middleware/companyauth');
-
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
-const normalize = require('normalize-url');
+const gravatar = require('gravatar');
 const Company = require('../../models/Company');
+const normalize = require('normalize-url');
 
-
-// @route    GET api/compnay
-// @desc     Get company by token
+// @route    GET api/auth
+// @desc     Get user by token
 // @access   Private
 router.get('/', companyauth, async (req, res) => {
   try {
@@ -24,12 +22,12 @@ router.get('/', companyauth, async (req, res) => {
   }
 });
 
-// @route    POST api/company
-// @desc     Authenticate company & get token
+// @route    POST api/auth
+// @desc     Authenticate user & get token
 // @access   Public
 router.post(
   '/',
-  check('email', 'Please include a valid email').exists(),
+  check('email', 'Please include a valid email').isEmail(),
   check('password', 'Password is required').exists(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -78,9 +76,8 @@ router.post(
   }
 );
 
-
-// @route    POST api/company
-// @desc     Register compnay
+// @route    POST api/users
+// @desc     Register user
 // @access   Public
 router.post(
   '/register',
@@ -150,8 +147,6 @@ router.post(
     }
   }
 );
-
-
 
 
 module.exports = router;
