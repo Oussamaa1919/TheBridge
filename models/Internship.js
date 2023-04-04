@@ -7,6 +7,9 @@ const InternshipSchema = new Schema({
    admin: {
     type:Schema.Types.ObjectId
    },
+   company: {
+    type:Schema.Types.ObjectId
+   },
    
    title :{
      type: String,
@@ -24,7 +27,7 @@ const InternshipSchema = new Schema({
     type: String,
     required: true
   },
-  company :{
+  companyname :{
     type: String,
     required: true
   },

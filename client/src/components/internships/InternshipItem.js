@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import intershipphoto from '../../img/internship-img.jpeg'
 
 
-const InternshipItem = ({internship:{_id,title,description,type,location,date,requirments,technologies,periode}}) => {
+const InternshipItem = ({internship:{_id,title,description,type,location,date,companyname,requirements,technologies,periode}}) => {
   return (
     <div className='cardinternshipbody'>
       <div id="cardinternshipcontainer">	
@@ -11,7 +11,7 @@ const InternshipItem = ({internship:{_id,title,description,type,location,date,re
 	<div className="product-details">
 		
 	<h1>{title}</h1>
-	
+	<h2>{companyname}</h2>
 		
 			<p className="information">{description} </p>
 
@@ -43,7 +43,7 @@ const InternshipItem = ({internship:{_id,title,description,type,location,date,re
 		<li><strong>Periode : </strong>{periode}</li>
 		<li><strong>Technologies: </strong>{technologies}</li>
 		<li><strong>Type: </strong>{type} </li>
-    <li><strong>Requirements : </strong>{technologies} </li>
+    <li><strong>Requirements : </strong>{requirements} </li>
 	</ul>
 </div>
 </div>

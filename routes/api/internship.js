@@ -61,7 +61,7 @@ router.post(
   check('technologies', 'technologies is required').notEmpty(),
   check('type', 'type is required').notEmpty(),
   check('requirements', 'requirements is required').notEmpty(),
-  check('company', 'company is required').notEmpty(),
+  check('companyname', 'companyname is required').notEmpty(),
 
 
   
@@ -83,7 +83,7 @@ router.post(
         technologies: req.body.technologies,
         type: req.body.type,
         requirements: req.body.requirements,
-        company: req.body.company,
+        companyname: req.body.companyname,
         date: req.body.date,
         admin: req.admin.id
       });

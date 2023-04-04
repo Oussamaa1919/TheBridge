@@ -14,11 +14,11 @@ const EditInternshipForm = ({ updateInternship,internship:{internship}}) => {
     type: internship.type,
     location: internship.location,
     periode: internship.periode,
-    company: internship.company,
+    companyname: internship.companyname,
     technologies: internship.technologies,
     requirements: internship.requirements,
     date: internship.date});
-    const {title,description,type,location,periode,company, technologies,requirements,date} = formData;
+    const {title,description,type,location,periode,companyname, technologies,requirements,date} = formData;
  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
  
@@ -55,8 +55,8 @@ const EditInternshipForm = ({ updateInternship,internship:{internship}}) => {
          
          <input type="text"
           placeholder="* Company"
-          name="company"
-          value={company}
+          name="companyname"
+          value={companyname}
           onChange={onChange}
           required
           />

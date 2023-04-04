@@ -16,14 +16,14 @@ const InternshipForm = ({addInternship}) => {
     description: '',
     type: '',
     location: '',
-    company: '',
+    companyname: '',
     periode: '',
     technologies: '',
     requirements:'',
     date:'',
 
   });
- const {title,description,type,location,company,periode,technologies,requirements,date} = formData;
+ const {title,description,type,location,companyname,periode,technologies,requirements,date} = formData;
  const onChange = (e) =>
  setFormData({ ...formData, [e.target.name]: e.target.value });
 return(
@@ -59,8 +59,8 @@ return(
          
          <input type="text"
           placeholder="* Company"
-          name="company"
-          value={company}
+          name="companyname"
+          value={companyname}
           onChange={onChange}
           required
           />

@@ -7,6 +7,8 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const Company = require('../../models/Company');
+const Internship = require('../../models/Internship');
+
 const normalize = require('normalize-url');
 
 // @route    GET api/auth
@@ -148,5 +150,55 @@ router.post(
   }
 );
 
+// @route    POST api/trainings
+// @desc     Create a training
+// @access   Private
+
+router.post(
+  '/addinternship',
+  companyauth,
+  check('title', 'title is required').notEmpty(),
+  check('description', 'description is required').notEmpty(),
+  check('location', 'location is required').notEmpty(),
+  check('periode', 'periode is required').notEmpty(),
+  check('technologies', 'technologies is required').notEmpty(),
+  check('type', 'type is required').notEmpty(),
+  check('requirements', 'requirements is required').notEmpty(),
+  check('companyname', 'companyname is required').notEmpty(),
+
+
+  
+
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const company = await Company.findById(req.company.id).select('-password');
+
+      const newInternship = new Internship({
+        title: req.body.title,
+        description: req.body.description,
+        location: req.body.location,
+        periode: req.body.periode,
+        technologies: req.body.technologies,
+        type: req.body.type,
+        requirements: req.body.requirements,
+        companyname: req.body.companyname,
+        date: req.body.date,
+        company: req.company.id
+      });
+
+      const internship = await newInternship.save();
+
+      res.json(internship);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
 
 module.exports = router;
