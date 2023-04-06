@@ -8,7 +8,7 @@ import Home from './components/layout/Home'
 import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import SideBar from './components/layout/SideBar';
-
+import Register from './components/auth/Register';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -48,6 +48,8 @@ const App = () => {
       <Routes>
       
       <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+
       <Route
           path="home"
           element={<PrivateRoute component={Home} />}
