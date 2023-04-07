@@ -55,7 +55,9 @@ export const createProfile =
       dispatch(
         setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success')
       );
-
+        if(!edit){
+          window.confirm('thank for trusting us ,we still need to confirm your account ,you will recieve an email of verifcation soon !')
+        }
       if (!edit) {
         navigate('/home');
       }

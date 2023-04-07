@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import { LOGOUT } from './actions/types';
-import Home from './components/layout/Home'
+import Home from './components/layout/home/Home'
 import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar';
 import SideBar from './components/layout/SideBar';
 import Register from './components/auth/Register';
+import ProfileForm from './components/layout/home/ProfileForm'
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -54,7 +55,14 @@ const App = () => {
           path="home"
           element={<PrivateRoute component={Home} />}
         />
-      
+      <Route
+          path="create-profile"
+          element={<PrivateRoute component={ProfileForm} />}
+        />
+        <Route
+          path="edit-profile"
+          element={<PrivateRoute component={ProfileForm} />}
+        />
 
       </Routes>
     </Router>
