@@ -35,7 +35,7 @@ const SideBar = ({ auth: { isAuthenticated , company}, logout }) => {
         <Link to='/internships'>
         <a href="#">
             <span className="icon"> <i className=" fas fa-solid fa-briefcase" /></span>
-            <span className="title">Internships</span>
+            <span className="title">Add Internship</span>
           </a>
           </Link>
           </li>
@@ -43,7 +43,7 @@ const SideBar = ({ auth: { isAuthenticated , company}, logout }) => {
             <Link to='/trainings'>
             <a href="#">
             <span className="icon"><i className="fas fa-duotone fa-laptop-code"></i></span>
-            <span className="title">Trainings</span>
+            <span className="title">Internships</span>
           </a>
           </Link>
           </li>
