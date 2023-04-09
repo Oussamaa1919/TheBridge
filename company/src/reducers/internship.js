@@ -4,14 +4,17 @@ import {
   DELETE_INTERNSHIP,
   ADD_INTERNSHIP,
   UPDATE_INTERNSHIP,
-  GET_INTERNSHIP
+  GET_INTERNSHIP,
+  DELETE_ALLINTERNSHIP,
 }from '../actions/types'
 
 const initialState = {
   internships: [],
   internship: null,
   loading: true,
+  
   error: {}
+  
 };
 
 
@@ -19,11 +22,19 @@ function internshipReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    
     case GET_MYINTERNSHIPS:
       return {
         ...state,
         internships: payload,
         loading: false
+      };
+      case DELETE_ALLINTERNSHIP:
+      return {
+        ...state,
+        internships: payload,
+        loading: false,
+        error: null,
       };
     case GET_INTERNSHIP:
       return {

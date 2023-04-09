@@ -1183,6 +1183,7 @@ margin-left: 230px;
 .heading{
   margin-bottom: 2rem;
   font-size: 1.5rem;
+  color: #0080ff;
 }
 .internship-tablecontainer{
   width: 100%;
@@ -1289,6 +1290,19 @@ th{
   padding: 5px 10px;
   border-radius: 6px;
   cursor: pointer;
+}
+.DeleteALL{
+  background-color: rgb(249, 4, 4);
+  font: inherit;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+  margin-right: 643px;
+  margin-bottom: 8px;
 }
 .pagination{
   margin-top: 2rem;

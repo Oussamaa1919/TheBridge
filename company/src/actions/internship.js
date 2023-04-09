@@ -8,6 +8,7 @@ import {
   ADD_INTERNSHIP,
   UPDATE_INTERNSHIP,
   GET_INTERNSHIP,
+  DELETE_ALLINTERNSHIP,
   
   
 } from './types';
@@ -105,4 +106,27 @@ export const updateInternship = (id,formData,navigate) => async (dispatch) => {
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
+  
+};
+
+// Delete All Internship
+export const deleteAllInternship = (navigate) => async (dispatch) => {
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+  try {
+   const res =  await api.delete('/company/deleteinternships');
+
+    dispatch({
+      type: DELETE_ALLINTERNSHIP,
+      payload: res.data
+    });
+
+    dispatch(setAlert('ALL Internships Are Removed', 'success'));
+    navigate('/internships');
+  } catch (err) {
+    dispatch({
+      type: INTERNSHIP_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+}
 };

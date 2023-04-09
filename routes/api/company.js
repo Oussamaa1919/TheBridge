@@ -343,13 +343,14 @@ router.delete('/deleteinternships', companyauth, async (req, res) => {
 
     // Delete all internships with the company ID
     const result = await Internship.deleteMany({ company: companyId });
-
+    const internships = await Internship.find({ company: req.company.id });
+    
     // Check if any internships were deleted
     if (result.deletedCount === 0) {
       return res.status(404).json({ msg: 'No internships found for this company' });
     }
-
-    res.json({ msg: `Deleted ${result.deletedCount} internships` });
+    
+    res.json(internships);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
