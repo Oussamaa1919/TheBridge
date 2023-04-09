@@ -63,7 +63,7 @@ const Dashboard = ({
             <div className='profile-description'>
               <h2>About</h2>
               <p> {profile && profile.bio}</p>
-              <a class="see-more-link">See more...</a>
+              
             </div>
 
             

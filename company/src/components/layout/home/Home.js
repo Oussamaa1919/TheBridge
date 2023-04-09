@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import HomeActions from './HomeActions';
 
 import { getCurrentProfile, deleteAccount } from '../../../actions/profile';
-import cover from '../../../images/cover-pic.png'
 
 
 
@@ -30,11 +29,11 @@ const Home = ({
 
        <div className='verified'>
       {company && company.verified ? (
-       <span><i class="fas fa-solid fa-user-check fa-2xl" style={{ fontSize: '27px' }}></i></span> 
+       <span><i className="fas fa-solid fa-user-check fa-2xl" style={{ fontSize: '27px' }}></i></span> 
       ) : (
 
         <span className='tooltip'>
-          <i class="fas fa-regular fa-user-clock  " style={{ fontSize: '27px' }}></i>
+          <i className="fas fa-regular fa-user-clock  " style={{ fontSize: '27px' }}></i>
           <span className="tooltiptext">This account will be verified soon !</span>
           </span> 
       )}
@@ -42,12 +41,12 @@ const Home = ({
 
         <img src={company && company.avatar} alt='' className='profile-pic'/>
         
-        <h3 className='i-profile'><i class=" fas fa-solid fa-user"></i>&middot;{company && company.name}</h3>
+        <h3 className='i-profile'><i className=" fas fa-solid fa-user"></i>&middot;{company && company.name}</h3>
         
-        <h3 className='i-profile'><i class="fas fa-solid fa-envelope"></i>&middot;{company  && company.email}</h3>
-        <h3 className='i-profile'> <i class="fas fa-solid fa-phone"></i>&middot;{profile  && profile.phone}</h3>
-        <h3><a  className='i-profile' href={profile && profile.website}> <i class="fas fa-solid fa-link"></i>&middot;{profile && profile.website}</a></h3>
-        <h3 className='i-profile'><i class="fas fa-solid fa-thumbtack"></i>&middot;{profile && profile.location}</h3>
+        <h3 className='i-profile'><i className="fas fa-solid fa-envelope"></i>&middot;{company  && company.email}</h3>
+        <h3 className='i-profile'> <i className="fas fa-solid fa-phone"></i>&middot;{profile  && profile.phone}</h3>
+        <h3><a  className='i-profile' href={profile && profile.website}> <i className="fas fa-solid fa-link"></i>&middot;{profile && profile.website}</a></h3>
+        <h3 className='i-profile'><i className="fas fa-solid fa-thumbtack"></i>&middot;{profile && profile.location}</h3>
      
       &middot; <Link to='/edit-profile' >
         <i className='fas fa-user-circle ' /> Edit Profile

@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const Company = require('../../models/Company');
 const Internship = require('../../models/Internship');
+const checkObjectId = require('../../middleware/checkObjectId');
 
 const normalize = require('normalize-url');
 
@@ -150,8 +151,6 @@ router.post(
   }
 );
 
-// @route    POST api/trainings
-// @desc     Create a training
 // @access   Private
 
 router.post(
@@ -211,7 +210,7 @@ router.get('/myinternships', companyauth, async (req, res) => {
   }
 });
 
-router.delete('/internship/:id', companyauth, async (req, res) => {
+router.delete('/internship/:id',[ companyauth,checkObjectId('id')], async (req, res) => {
   try {
     // Get the internship to be deleted
     const internship = await Internship.findById(req.params.id);
@@ -259,7 +258,7 @@ router.get('/internship/:id/inscriptions', companyauth, async (req, res) => {
   }
 });
 
-router.delete('/internship/:id/inscription/:inscriptionId', companyauth, async (req, res) => {
+router.delete('/internship/:id/inscription/:inscriptionId',[ companyauth,checkObjectId('id')], async (req, res) => {
   try {
     const company = await Company.findById(req.company.id).select('-password');
     const internship = await Internship.findById(req.params.id);
@@ -276,6 +275,81 @@ router.delete('/internship/:id/inscription/:inscriptionId', companyauth, async (
 
     await internship.save();
     res.json(internship.inscriptions);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// Update an internship
+router.put(
+  '/updateinternship/:id',
+  [ companyauth,checkObjectId('id')],
+  async (req, res) => {
+    try {
+      const internship = await Internship.findById(req.params.id);
+
+      if (!internship) {
+        return res.status(404).json({ msg: 'Internship not found' });
+      }
+
+      // Check if the company who added the internship is the one trying to update it
+      if (internship.company.toString() !== req.company.id) {
+        return res.status(401).json({ msg: 'Not authorized' });
+      }
+
+      internship.title = req.body.title || internship.title;
+      internship.description = req.body.description || internship.description;
+      internship.location = req.body.location || internship.location;
+      internship.periode = req.body.periode || internship.periode;
+      internship.technologies = req.body.technologies || internship.technologies;
+      internship.type = req.body.type || internship.type;
+      internship.requirements = req.body.requirements || internship.requirements;
+      internship.companyname = req.body.companyname || internship.companyname;
+      internship.date = req.body.date || internship.date;
+
+      const updatedInternship = await internship.save();
+
+      res.json(updatedInternship);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+//get internship by id
+router.get('/:id', [ companyauth,checkObjectId('id')],async (req, res) => {
+  try {
+    const internship = await Internship.findById(req.params.id);
+
+    if (!internship) {
+      return res.status(404).json({ msg: 'Internship not found' });
+    }
+
+    res.json(internship);
+  } catch (err) {
+    console.error(err.message);
+
+    res.status(500).send('Server Error');
+  }
+});
+
+
+router.delete('/deleteinternships', companyauth, async (req, res) => {
+  try {
+    // Get the company ID from the authenticated user
+    const companyId = req.company.id;
+
+    // Delete all internships with the company ID
+    const result = await Internship.deleteMany({ company: companyId });
+
+    // Check if any internships were deleted
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ msg: 'No internships found for this company' });
+    }
+
+    res.json({ msg: `Deleted ${result.deletedCount} internships` });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

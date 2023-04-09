@@ -10,6 +10,7 @@ import Navbar from './components/layout/Navbar';
 import SideBar from './components/layout/SideBar';
 import Register from './components/auth/Register';
 import ProfileForm from './components/layout/home/ProfileForm'
+import Internships from './components/internships/Internships';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -63,6 +64,7 @@ const App = () => {
           path="edit-profile"
           element={<PrivateRoute component={ProfileForm} />}
         />
+            <Route path="internships" element={<PrivateRoute component={Internships} />} />
 
       </Routes>
     </Router>
