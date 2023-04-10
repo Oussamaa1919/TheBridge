@@ -32,7 +32,7 @@ const SideBar = ({ auth: { isAuthenticated , company}, logout }) => {
           </Link>
         </li>
         <li>
-        <Link to='/internships'>
+        <Link to='/internshipform'>
         <a href="#">
             <span className="icon"> <i className=" fas fa-solid fa-briefcase" /></span>
             <span className="title">Add Internship</span>

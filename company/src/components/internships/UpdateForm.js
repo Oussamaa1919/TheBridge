@@ -1,64 +1,49 @@
-import React ,{ useState }from 'react'
-import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useState,useEffect } from 'react';
 import { connect } from 'react-redux';
-import { addInternship } from '../../actions/internship';
-
-
-
-
-
-const InternshipForm = ({  
+import { updateInternship,getInternship } from '../../actions/internship';
+import { useNavigate,useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+const UpdateForm = ({ getInternship,updateInternship, internship:{internship}}) => {
   
-  auth: { company },
-  addInternship}) => {
-
+  const { id } = useParams();
+  useEffect(() => {
+    getInternship(id);
+  }, [getInternship ,id]);
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    type: '',
-    location: '',
-    companyname: '',
-    periode: '',
-    technologies: '',
-    requirements:'',
-    date:'',
-
-  });
- const {title,description,type,location,companyname,periode,technologies,requirements,date} = formData;
+    title: internship && internship.title,
+    description: internship && internship.description,
+    type: internship && internship.type,
+    location: internship && internship.location,
+    periode: internship && internship.periode,
+    companyname: internship && internship.companyname,
+    technologies: internship && internship.technologies,
+    requirements: internship && internship.requirements,
+    date: internship && internship.date});
+    const {title,description,type,location,periode,companyname, technologies,requirements,date} = formData;
  const onChange = (e) =>
- setFormData({ ...formData, [e.target.name]: e.target.value });
-
- if (!company.verified) {
-  return <div className='container-trainings '>
-    
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+ 
+ return (
+    <div className='container-trainings'>
     <div className='main'>
-    <h1>You are not verified yet!</h1>
-    </div>
-    </div>
-}
-
-
- return(
- <div className='container-trainings'>
- <div className='main'>
- <div className="details">
-   
-   <div className="table">
-     <div className="Header">
-       <h2>Add An Internship</h2>
-       <small>* = required field</small>
-     </div>
-     <div className="internship">
-     <form
-   className="form"
-   onSubmit={(e) => {
-     e.preventDefault();
-     addInternship(formData, navigate);
-   }}
-       >
-         <div className='form-group'>
+    <div className="details">
+      
+      <div className="table">
+        <div className="Header">
+          <h2>Update an Internship</h2>
+          <small>* = required field</small>
+        </div>
+        <div className="internship">
+        <form
+      className="form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        updateInternship(internship && internship._id,formData, navigate);
+      }}
+          >
+            <div className='form-group'>
          
          <input type="text"
           placeholder="* Title"
@@ -153,7 +138,7 @@ const InternshipForm = ({
                required
                 />
             </div>
-       <input type="submit" className="internshipBtn" value="ADD INTERNSHIP" />
+       <input type="submit" className="internshipBtn" value="UPDATE INTERNSHIP" />
       
      </form>
      </div>
@@ -165,15 +150,13 @@ const InternshipForm = ({
 )
 }
 
-
-InternshipForm.propTypes = {
-addInternship: PropTypes.func.isRequired,
-auth: PropTypes.object.isRequired,
-
-}
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-
-
-export default connect(mapStateToProps, {addInternship})(InternshipForm)
+UpdateForm.propTypes ={
+  internship: PropTypes.object.isRequired,
+  getInternship:PropTypes.func.isRequired,
+  updateInternship:PropTypes.func.isRequired,
+ }
+ 
+ const mapStateToProps = (state) => ({
+  internship: state.internship
+ });
+ export default connect(mapStateToProps, {updateInternship,getInternship})(UpdateForm)

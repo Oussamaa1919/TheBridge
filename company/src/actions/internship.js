@@ -9,7 +9,7 @@ import {
   UPDATE_INTERNSHIP,
   GET_INTERNSHIP,
   DELETE_ALLINTERNSHIP,
-  
+  GET_APPLICATIONS,
   
 } from './types';
 
@@ -129,4 +129,21 @@ export const deleteAllInternship = (navigate) => async (dispatch) => {
     });
   }
 }
+};
+
+// Get inscriptions by internship ID
+export const getApplicationsByInternshipId = (id) => async dispatch => {
+  try {
+    const res = await api.get(`/company/internship/:id/inscriptions/${id}`);
+
+    dispatch({
+      type: GET_APPLICATIONS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: INTERNSHIP_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
 };
