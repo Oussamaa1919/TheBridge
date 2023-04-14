@@ -1,6 +1,6 @@
 import React, { Fragment ,useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { Link,useParams } from 'react-router-dom';
+import { Link,useParams,useNavigate } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost,sharePost } from '../../actions/post';
@@ -22,6 +22,8 @@ const PostItem = ({
   post: { _id, text, name,avatar, user, likes, shares,comments, date ,photos,originalUserName,originalUserAvatar,originalDate,shared,originalUser,originalPostId},
   showActions
 }) => {
+  const navigate = useNavigate();
+
   const [displaySComments, toggleComments] = useState(false);
   const { id } = useParams();
   useEffect(() => {
@@ -246,7 +248,10 @@ const PostItem = ({
           
           
             <button
-              onClick={() => sharePost(_id)}
+
+              onClick={
+
+                () => sharePost(_id,navigate)}
               type="button"
               className="btn-like"
             >

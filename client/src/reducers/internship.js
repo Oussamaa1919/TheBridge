@@ -3,7 +3,9 @@ import {
   INTERNSHIP_ERROR, 
   GET_INTERNSHIPS,
   GET_INTERNSHIP,
-  ADD_APPLICATION
+  ADD_APPLICATION,
+  GET_APPLICATIONS,
+  DELETE_APPLICATION,
 }from '../actions/types'
 
 const initialState = {
@@ -18,6 +20,7 @@ function internshipReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_APPLICATIONS:
     case GET_INTERNSHIPS:
       return {
         ...state,
@@ -30,6 +33,21 @@ function internshipReducer(state = initialState, action) {
         internship: payload,
         loading: false
       };
+      case DELETE_APPLICATION:
+  return {
+    ...state,
+    internships: state.internships.map((internship) =>
+      internship._id === payload.internshipId
+        ? {
+            ...internship,
+            inscriptions: internship.inscriptions.filter(
+              (inscription) => inscription._id !== payload.inscriptionId
+            ),
+          }
+        : internship
+    ),
+    loading: false,
+  };
 
       case ADD_APPLICATION:
       return {

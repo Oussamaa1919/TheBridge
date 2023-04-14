@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-import user from '../../img/user-1.png'
+import user1 from '../../img/user-1.png'
 
-const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated ,user}, logout }) => {
   const profileMenu = document.getElementById('profileMenu');
    function toggleMenu(){
     profileMenu.classList.toggle("open-menu");
@@ -73,14 +73,14 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     </div>
     <div className="navbar-right">
       <div className="online">
-        <img src={user} className="nav-profile-img" onClick={()=>toggleMenu()}  alt=''/>
+        <img src={user1} className="nav-profile-img" onClick={()=>toggleMenu()}  alt=''/>
       </div>
     </div>
     
     <div className="profile-menu-wrap" id="profileMenu">
       <div className="profile-menu">
         <div className="user-info">
-          <img src={user} alt='' />
+          <img src={user1} alt='' />
           <div>
             <h3>Rayan Walton</h3>
             <Link to="/dashboard">
@@ -89,10 +89,23 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
           </div>
         </div>
         <hr/>
-        <a onClick={logout} href="#!">
+        <div >
+          
+        <Link to={`/appliedinternships/${user && user._id}`} className='profile-menu-link'>
+        <img src={require('../../img/jobs.png') } alt=''/>
+          <span >Applied Internships</span>
+        </Link>
+
+        <Link to={`/traininginscriptions/${user && user._id}`} className='profile-menu-link'>
+        <img src={require('../../img/tttt.png') } alt=''/>
+          <span >Training Inscriptions</span>
+        </Link>
+        
+        <a onClick={logout} href="#!" >
           <i className="fas fa-sign-out-alt" />{' '}
           <span >Logout</span>
         </a>
+        </div>
         </div>
         </div>
     </Fragment>

@@ -4,7 +4,9 @@ import {
  
   GET_TRAININGS,
   GET_TRAINING,
-  ADD_INSCRIPTION
+  ADD_INSCRIPTION,
+  GET_INSCRIPTIONS,
+  DELETE_INSCRIPTION
 }from '../actions/types'
 
 const initialState = {
@@ -19,6 +21,7 @@ function trainingReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_INSCRIPTIONS:
     case GET_TRAININGS:
       return {
         ...state,
@@ -38,7 +41,21 @@ function trainingReducer(state = initialState, action) {
         training: { ...state.training, inscriptions: payload },
         loading: false
       };
-    
+      case DELETE_INSCRIPTION:
+  return {
+    ...state,
+    trainings: state.trainings.map((training) =>
+      training._id === payload.inscriptionId
+        ? {
+            ...training,
+            inscriptions: training.inscriptions.filter(
+              (inscription) => inscription._id !== payload.inscriptionId
+            ),
+          }
+        : training
+    ),
+    loading: false,
+  };
     case TRAINING_ERROR:
       return {
         ...state,

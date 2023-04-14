@@ -172,6 +172,14 @@ router.post(
       const user = await User.findById(req.user.id).select('-password');
       const training = await Training.findById(req.params.id);
 
+      const existingInscription = training.inscriptions.find(inscription => inscription.user.toString() === req.user.id);
+      if (existingInscription) {
+        
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'You applied for this training' }] });
+      }
+
       const newInscription = {
         phone: req.body.phone,
         university: req.body.university,
@@ -194,4 +202,66 @@ router.post(
   }
 );
 
+// get the user inscriptions
+router.get('/user/:id/trainings', [auth, checkObjectId('id')],async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    // Find the user document based on their user ID
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Find all internships that the user has applied for
+    const trainings = await Training.find({ 
+      inscriptions: { 
+        $elemMatch: { user: user._id } 
+      } 
+    });
+
+    return res.json(trainings);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+//delete an inscription
+router.delete('/inscription/:id/:inscriptionId', [auth, checkObjectId('id')], async (req, res) => {
+  try {
+    const training = await Training.findById(req.params.id);
+    // Check if the internship exists
+    if (!training) {
+      return res.status(404).json({ msg: 'Training not found' });
+    }
+
+    // Check if the inscription exists
+    const inscription = training.inscriptions.find(
+      (inscription) => inscription.id === req.params.inscriptionId
+    );
+    if (!inscription) {
+      return res.status(404).json({ msg: 'Inscription not found' });
+    }
+
+    // Check if the user is authorized to delete the inscription
+    if (inscription.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'User not authorized' });
+    }
+
+    // Remove the inscription
+    training.inscriptions = training.inscriptions.filter(
+      (inscription) => inscription.id !== req.params.inscriptionId
+    );
+
+    await training.save();
+
+    res.json({ msg: 'Inscription removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 module.exports = router;

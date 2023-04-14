@@ -74,7 +74,7 @@ const InternshipForm = ({
          <input type="text"
           placeholder="* Company"
           name="companyname"
-          value={companyname}
+          value={companyname}   
           onChange={onChange}
           required
           />

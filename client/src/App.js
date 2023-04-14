@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
@@ -21,8 +21,8 @@ import Events from './components/events/Events'
 import Trainings from './components/trainings/Trainings';
 import Internships from './components/internships/Internships';
 import Internship from './components/internships/Internship'
-
-
+import AppliedInternships from './components/internships/AppliedInternships';
+import TrainingInscriptions from './components/trainings/TrainingInscriptions';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -99,6 +99,9 @@ const  App = () => {
           path="add-education"
           element={<PrivateRoute component={AddEducation} />}
         />
+        <Route path="traininginscriptions/:id" element={<PrivateRoute component={TrainingInscriptions} />} />
+
+        <Route path="appliedinternships/:id" element={<PrivateRoute component={AppliedInternships} />} />
         <Route path="posts" element={<PrivateRoute component={Posts} />} />
         <Route path="posts/:id" element={<PrivateRoute component={Post} />} />
         <Route path="/*" element={<NotFound />} />

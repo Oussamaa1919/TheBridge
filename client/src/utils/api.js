@@ -8,6 +8,11 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json'  }
 });
+function hashUrl(url) {
+  // Update the URL hash
+  window.location.hash = url;
+}
+
 /*
 
 'Content-Type': 'multipart/form-data' 

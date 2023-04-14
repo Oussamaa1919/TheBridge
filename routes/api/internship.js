@@ -157,18 +157,13 @@ router.delete('/:id', [adminauth, checkObjectId('id')], async (req, res) => {
 // @desc     inscription
 // @access   Private
 router.post(
-  '/application/:id',upload.fields([{name: 'resume'}, {name: 'coverletter'}]),
+  '/application/:id',
+  upload.fields([{name: 'resume'}, {name: 'coverletter'}]),
   auth,
   checkObjectId('id'),
   check('phone', 'phone is required').notEmpty(),
   check('university', 'university is required').notEmpty(),
   check('location', 'location is required').notEmpty(),
-  
-
-
-
-
-
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -178,6 +173,15 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('-password');
       const internship = await Internship.findById(req.params.id);
+
+      // Check if user already applied for this internship
+      const existingInscription = internship.inscriptions.find(inscription => inscription.user.toString() === req.user.id);
+      if (existingInscription) {
+        
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'You  applied for this internship' }] });
+      }
 
       const newInscription = {
         phone: req.body.phone,
@@ -200,6 +204,69 @@ router.post(
     }
   }
 );
+
+// get the user inscriptions
+router.get('/user/:id/internships', [auth, checkObjectId('id')],async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    // Find the user document based on their user ID
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Find all internships that the user has applied for
+    const internships = await Internship.find({ 
+      inscriptions: { 
+        $elemMatch: { user: user._id } 
+      } 
+    });
+
+    return res.json(internships);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.delete('/application/:id/:inscriptionId', [auth, checkObjectId('id')], async (req, res) => {
+  try {
+    const internship = await Internship.findById(req.params.id);
+    // Check if the internship exists
+    if (!internship) {
+      return res.status(404).json({ msg: 'Internship not found' });
+    }
+
+    // Check if the inscription exists
+    const inscription = internship.inscriptions.find(
+      (inscription) => inscription.id === req.params.inscriptionId
+    );
+    if (!inscription) {
+      return res.status(404).json({ msg: 'Application not found' });
+    }
+
+    // Check if the user is authorized to delete the inscription
+    if (inscription.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'User not authorized' });
+    }
+
+    // Remove the inscription
+    internship.inscriptions = internship.inscriptions.filter(
+      (inscription) => inscription.id !== req.params.inscriptionId
+    );
+
+    await internship.save();
+
+    res.json({ msg: 'Apllication removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
 
 
 module.exports = router;
