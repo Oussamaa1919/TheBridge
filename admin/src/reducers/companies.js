@@ -1,7 +1,7 @@
 import {
   GET_COMPANIES,
-  COMPANY_ERROR
-  
+  COMPANY_ERROR,
+  VERIFY_COMPANY
 }from '../actions/types'
 
 const initialState = {
@@ -25,7 +25,12 @@ function companiesReducer(state = initialState, action) {
         loading: false
       };
       
-      
+      case VERIFY_COMPANY:
+      return {
+        ...state,
+        profiles: [payload, ...state.profiles],
+        loading: false
+      };
      
     
     

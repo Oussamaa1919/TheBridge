@@ -1,9 +1,13 @@
 import React, { useEffect,useState } from 'react';
 import { connect } from 'react-redux';
-import { getCompanies } from '../../actions/companies';
+import { getCompanies,verifyCompany } from '../../actions/companies';
 import formatDate from '../../utils/formatDate';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-const Companies = ({ getCompanies, profiles }) => {
+
+
+
+
+const Companies = ({ getCompanies,verifyCompany, profiles }) => {
   useEffect(() => {
     getCompanies();
   }, [getCompanies]);
@@ -46,20 +50,20 @@ const Companies = ({ getCompanies, profiles }) => {
           
       </tr>
       {
-  profiles.length > 0 ? profiles.slice(page * 5 - 5, page * 5).map((profile, index) => {
-    return (<tr >
+         profiles.length > 0 ? profiles.slice(page * 5 - 5, page * 5).map((profile, index) => {
+    return (<tr key={profile._id}>
       <td>
-<div className='userDetails'>
-<div className='userPic'>
-<img src={profile.company.avatar} alt='' />
-</div>
-<div className='userHandles'>
-<p className='userName'>{profile.company.name}</p>
-<div className='userEmail'>{profile.company.email}</div>
-</div>
-</div>
-                            </td>
-                            <td className='userAddress f-weight'><div className='social-links'>
+      <div className='userDetails'> 
+            <div className='userPic'>
+            <img src={profile.company.avatar} alt='' />
+      </div>
+        <div className='userHandles'>
+          <p className='userName'>{profile.company.name}</p>
+          <div className='userEmail'>{profile.company.email}</div>
+        </div>
+        </div>
+        </td>
+       <td className='userAddress f-weight'><div className='social-links'>
         {profile && profile.social
           ? Object.entries(profile && profile.social)
               .filter(([_, value]) => value)
@@ -81,7 +85,8 @@ const Companies = ({ getCompanies, profiles }) => {
 
       <td className='userBirth f-weight'><a  href={profile.website}>{profile.website} </a></td>
       <td className='userAddress f-weight'>
-                  {profile.company.verified ? 'Verified' : <button className='contactCTA'>Verify</button>}
+                  {profile.company.verified ? 'Verified' : 
+                  <button className='contactCTA' onClick={()=>verifyCompany(profile.company._id)}>Verify</button>}
                 </td>
       
 
@@ -131,4 +136,4 @@ const mapStateToProps = state => ({
   profiles: state.companies.profiles,
 });
 
-export default connect(mapStateToProps, { getCompanies })(Companies);
+export default connect(mapStateToProps, { getCompanies,verifyCompany })(Companies);

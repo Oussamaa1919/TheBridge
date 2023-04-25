@@ -10,6 +10,9 @@ const adminauth = require('../../middleware/adminauth');
 
 const Companyprofile = require('../../models/CompanyProfile');
 const Company = require('../../models/Company');
+const Admin = require ('../../models/Admin')
+
+const nodemailer = require('nodemailer');
 
 // @route    GET api/profile
 // @desc     Get all profiles
@@ -46,5 +49,51 @@ router.get(
     }
   }
 );
+
+
+router.put('/company/verify/:companyId', async (req, res) => {
+  try {
+    const companyId = req.params.companyId;
+
+    // Find the company by ID in the database
+    const company = await Company.findById(companyId);
+
+    if (!company) {
+      return res.status(404).json({ error: 'Company not found' });
+    }
+
+    // Update the company's verified status to true
+    company.verified = true;
+    await company.save();
+
+    // Send verification email using Nodemailer
+    const transporter = nodemailer.createTransport({
+      port: 465,               // true for 465, false for other ports
+      host: "smtp.gmail.com",
+         auth: {
+              user: 'oussemathebridge@gmail.com',
+              pass: 'rdsopaqfapttkxvq',
+           },
+      secure: true,
+      });
+
+    const mailOptions = {
+      from: 'oussemathebridge@gmail.com', // Sender email address
+      to: company.email, // Receiver email address
+      subject: 'Company Verification', // Subject of the email
+      text: `Congratulations! Your company ${company.name} has been verified.` // Email body
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    return res.json({ message: 'Company verification successful' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 
 module.exports = router;
