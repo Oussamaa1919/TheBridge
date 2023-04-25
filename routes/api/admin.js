@@ -7,8 +7,10 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const normalize = require('normalize-url');
 const gravatar = require('gravatar');
-
 const Admin = require('../../models/Admin');
+const CompanyProfile = require('../../models/CompanyProfile')
+const Company = require ('../../models/Company')
+const checkObjectId = require('../../middleware/checkObjectId');
 
 // @route    GET api/auth
 // @desc     Get user by token
@@ -149,5 +151,6 @@ router.post(
     }
   }
 );
+
 
 module.exports = router;

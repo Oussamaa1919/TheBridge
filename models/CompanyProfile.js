@@ -25,9 +25,7 @@ const CompanyProfileSchema = new mongoose.Schema({
     type: String
   },
   social: {
-    youtube: {
-      type: String
-    },
+   
     twitter: {
       type: String
     },

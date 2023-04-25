@@ -17,6 +17,7 @@ import {
 export const getInternships = () => async (dispatch) => {
   try {
     const res = await api.get('/internships');
+
     dispatch({
       type: GET_INTERNSHIPS,
       payload: res.data

@@ -1,5 +1,5 @@
 import React from 'react'
-import android from '../../img/android6.jpg'
+import android from '../../img/azaz.jpeg'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 

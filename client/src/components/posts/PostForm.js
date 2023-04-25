@@ -36,18 +36,8 @@ const PostForm = ({ addPost }) => {
        
     </div>
     
-    <div className="create-post-links">
-      <li><div>
-        <label htmlFor="photos">Photos:</label>
-        <input
-          type="file"
-          
-          name="photos"
-          accept="image/*"
-          multiple
-          onChange={e => setPhotos(e.target.files)}
-        />
-      </div></li>
+  <div className="create-post-links">
+      <li><img src={photo} alt=''/>Photo</li>
       <li><img src={video} alt=''/>Video</li>
       <li><img src={event} alt=''/>Event</li>
       <li>

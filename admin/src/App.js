@@ -18,6 +18,7 @@ import TrainingItem from './components/trainings/TrainingItem';
 import Inscriptions from './components/trainings/Inscriptions';
 import InternshipInscriptions from './components/internships/InternshipInscriptions'
 import Internship from './components/internships/Internship';
+import Companies from './components/companies/Companies';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -56,10 +57,9 @@ const App = () => {
       <Routes>
       <Route path="training/:id" element={<TrainingItem />} />
       <Route path="login" element={<Login />} />
-      <Route
-          path="home"
-          element={<PrivateRoute component={Home} />}
-        />
+      <Route path="home" element={<PrivateRoute component={Home} />} />
+      <Route path="companies" element={<PrivateRoute component={Companies} />} />
+
       <Route path="trainings" element={<PrivateRoute component={Trainings} />} />
       <Route path="trainingform" element={<PrivateRoute component={Trainingform} />} />
       <Route path="internshipform" element={<PrivateRoute component={InternshipForm} />} />

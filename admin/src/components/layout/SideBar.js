@@ -31,6 +31,16 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
           </a>
           </Link>
         </li>
+
+        <li>
+        <Link to='/companies'>
+        <a href="#">
+            <span className="icon"> <i className=" fas fa-solid fa-briefcase" /></span>
+            <span className="title">Companies</span>
+          </a>
+          </Link>
+          </li>
+
         <li>
         <Link to='/internships'>
         <a href="#">

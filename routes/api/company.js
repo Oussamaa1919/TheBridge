@@ -224,7 +224,6 @@ router.delete('/internship/:id',[ companyauth,checkObjectId('id')], async (req, 
     if (internship.company.toString() !== req.company.id) {
       return res.status(401).json({ msg: 'Not authorized to delete this internship' });
     }
-
     // Delete the internship
     await internship.remove();
 

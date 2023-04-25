@@ -102,7 +102,8 @@ export const sharePost = (id,navigate) => async (dispatch) => {
       type: SHARE_POST,
       payload: res.data
     });
-   
+    window.location.reload();
+
     dispatch(setAlert('Post Shared', 'success'));
     navigate('/posts');
   } catch (err) {

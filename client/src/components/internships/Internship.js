@@ -9,6 +9,8 @@ const Internship = ({getInternship, internship:{internship, loading}}) => {
   
   const { id } = useParams();
 
+ 
+
   useEffect(() => {
     getInternship(id);
   }, [getInternship, id]);
