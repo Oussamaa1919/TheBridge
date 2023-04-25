@@ -27,7 +27,7 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 // Login User
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password,navigate) => async (dispatch) => {
   const body = { email, password };
 
   try {
@@ -37,6 +37,7 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data
     });
+    navigate('/home');
 
     dispatch(loadUser());
   } catch (err) {

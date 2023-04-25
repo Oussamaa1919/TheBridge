@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link,Navigate } from 'react-router-dom';
+import { Link,Navigate,useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
@@ -9,6 +9,7 @@ const Login = ({ login, isAuthenticated }) => {
     email: '',
     password: ''
   });
+  const navigate = useNavigate();
 
   const { email, password } = formData;
 
@@ -17,7 +18,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    login(email, password,navigate);
   };
 
 

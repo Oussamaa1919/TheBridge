@@ -34,7 +34,7 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // Register User
-export const register = (formData) => async (dispatch) => {
+export const register = (formData,navigate) => async (dispatch) => {
   try {
     const res = await api.post('/company/register', formData);
 
@@ -42,6 +42,7 @@ export const register = (formData) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data
     });
+    navigate('/home');
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
@@ -57,7 +58,7 @@ export const register = (formData) => async (dispatch) => {
 };
 
 // Login User
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password,navigate) => async (dispatch) => {
   const body = { email, password };
 
   try {
@@ -67,7 +68,7 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data
     });
-
+    navigate('/home');
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;

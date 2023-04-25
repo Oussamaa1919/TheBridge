@@ -22,7 +22,7 @@ const initialState = {
   twitter: '',
   facebook: '',
   linkedin: '',
-  youtube: '',
+  
   instagram: ''
 };
 
@@ -80,7 +80,7 @@ const ProfileForm = ({
     twitter,
     facebook,
     linkedin,
-    youtube,
+    
     instagram
   } = formData;
 
@@ -251,16 +251,7 @@ const ProfileForm = ({
               />
             </div>
 
-            <div className="form-group social-input">
-              <i className="fab fa-youtube fa-2x youtube" />
-              <input
-                type="text"
-                placeholder="YouTube URL"
-                name="youtube"
-                value={youtube}
-                onChange={onChange}
-              />
-            </div>
+          
 
             <div className="form-group social-input">
               <i className="fab fa-linkedin fa-2x linkedin" />

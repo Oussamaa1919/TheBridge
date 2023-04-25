@@ -54,7 +54,7 @@ router.post(
       skills,
       languages,
       hashtags,
-      youtube,
+      
       twitter,
       instagram,
       linkedin,
@@ -85,7 +85,7 @@ router.post(
     };
 
     // Build socialFields object
-    const socialFields = { youtube, twitter, instagram, linkedin, facebook };
+    const socialFields = {  twitter, instagram, linkedin, facebook };
 
     // normalize social fields to ensure valid url
     for (const [key, value] of Object.entries(socialFields)) {
