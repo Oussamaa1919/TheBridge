@@ -16,10 +16,10 @@ const RightSideBar = () => {
     <div className="right-sidebar">
       <div className="sidebar-news">
         <img src={more} className="info-icon" alt='' />
-        <h3>Trending news</h3>
+        <h3>Comming Events</h3>
         <a > High demand for skilled manpower</a>
-        <span>1d ago & middot; 10,934 readres</span>
-
+        <span>1d ago & middot; 10,934 readres  </span>
+        
         <a > Careers growing horizontally too</a>
         <span>1d ago & middot; 1.552 readres</span>
 

@@ -22,3 +22,14 @@ export const COMPANY_ERROR = 'COMPANY_ERROR';
 export const VERIFY_COMPANY ='VERIFY_COMPANY';
 export const GET_PROFILES='GET_PROFILES';
 export const PROFILE_ERROR='PROFILE_ERROR';
+export const BLOCK_PROFILE ='BLOCK_PROFILE';
+export const UNBLOCK_PROFILE='UNBLOCK_PROFILE';
+export const GET_EVENTS = 'GET_EVENTS';
+ export const EVENT_ERROR = 'EVENT_ERROR';
+ export const DELETE_EVENT = 'DELETE_EVENT';
+ export const ADD_EVENT = 'ADD_EVENT';
+ export const UPDATE_EVENT = 'UPDATE_EVENT';
+ export const GET_EVENT = 'GET_EVENT';
+
+
+ 

@@ -23,6 +23,7 @@ import Internships from './components/internships/Internships';
 import Internship from './components/internships/Internship'
 import AppliedInternships from './components/internships/AppliedInternships';
 import TrainingInscriptions from './components/trainings/TrainingInscriptions';
+import Blocked from './components/layout/Blocked';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -105,6 +106,8 @@ const  App = () => {
         <Route path="posts" element={<PrivateRoute component={Posts} />} />
         <Route path="posts/:id" element={<PrivateRoute component={Post} />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="blocked" element={<Blocked />} />
+
         <Route path="trainings/:id" element={<PrivateRoute component={Training} />} />
         <Route path="internships/:id" element={<PrivateRoute component={Internship} />} />
       </Routes>

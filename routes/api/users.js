@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const normalize = require('normalize-url');
-
+const Admin = require ('../../models/Admin');
 const User = require('../../models/User');
 
 // @route    POST api/users
@@ -81,7 +81,75 @@ router.post(
   }
 );
 
+router.put('/block/:userId', async (req, res) => {
+  try {
+    const admin = await Admin.findOne({ id: req.body.id });
+    if (!admin) {
+      return res.status(404).json({ message: 'Admin not found' });
+    }
+    const userId = req.params.userId;
+    // Find the user by ID in the database
+    const user = await User.findById(userId);
 
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Update the company's verified status to true
+    user.blocked = true;
+    await user.save();
+
+    return res.json({ msg: 'User blocked successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// Route to unblock a user
+router.put('/unblock/:userId', async (req, res) => {
+  try {
+    const admin = await Admin.findOne({ id: req.body.id });
+    if (!admin) {
+      return res.status(404).json({ message: 'Admin not found' });
+    }
+
+    const userId = req.params.userId;
+    // Find the user by ID in the database
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Update the company's verified status to true
+    user.blocked = false;
+    await user.save();
+    return res.json({ msg: 'User unblocked successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

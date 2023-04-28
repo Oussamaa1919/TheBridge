@@ -20,7 +20,12 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  blocked: {
+    type: Boolean,
+    default: false
   }
+  
 });
 
 module.exports = mongoose.model('user', UserSchema);

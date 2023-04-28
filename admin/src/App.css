@@ -258,7 +258,50 @@ font-family: 'EB Garamond', serif;
   font-size: 1.2rem;
   border: 1px solid #ccc;
 }
+.eventform{
+  position:relative;
+  display: grid;
+  min-height: 100px;
+  min-width: 100px;
+  padding: 20px;
+}
+.internship{
+  
+  position:relative;
+  display: grid;
+  min-height: 500px;
+  padding: 20px;
+  
+}
+.eventform label{
+  color:#287bff;
+  font-weight: bold;
+  width: 130px;
+  margin-left: -13px;
+}
+.eventform input{
+  width: 600px;
+  height: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid black;
+}
+.internshipBtn{
+  
+  background: var(--blue);
+  color: var(--withe);
+  border-radius: 6px;
+  cursor: pointer;
+  border-color: transparent;
+ 
 
+
+  border-radius: 6px;
+  border-color: transparent;
+  
+}
 
 
 /*********************forms*********************/
@@ -509,6 +552,22 @@ pointer-events: none;}
   background:var(--withe);
   transition: 0.5s;
 }
+.mainevent{
+  position: absolute;
+ 
+  left:300px;
+  
+  background:var(--withe);
+  transition: 0.5s;
+}
+.detailsevent{
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-top: 10px;
+}
 .main.active{
   width: calc(100% - 80px);
   left:80px;
@@ -678,7 +737,6 @@ color: var(--withe);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0,0,0,0.08);
   border-radius: 20px;
-  padding: 20px;
   grid-gap: 30px;
   
   
@@ -1022,6 +1080,13 @@ th{
   align-items: center;
   justify-content: center;
   margin-left: -100px;
+}
+.paginationevents{
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -280px;
 }
 .pageNumbers{
   display: flex;

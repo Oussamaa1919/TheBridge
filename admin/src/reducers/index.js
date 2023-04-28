@@ -4,7 +4,8 @@ import alert from './alert';
 import training from './training'
 import internship from './internship';
 import companies from './companies';
-import users from './users'
+import users from './users';
+import events from './events'
 export default combineReducers({
   alert,
   auth,
@@ -12,4 +13,5 @@ export default combineReducers({
   internship,
   companies,
   users,
+  events,
 });

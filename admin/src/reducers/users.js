@@ -1,7 +1,8 @@
 import {
  
   PROFILE_ERROR,
- 
+  BLOCK_PROFILE,
+  UNBLOCK_PROFILE,
   GET_PROFILES,
  
 } from '../actions/types';
@@ -32,8 +33,16 @@ function usersReducer(state = initialState, action) {
         loading: false,
         profile: null
       };
-    
-    
+      case BLOCK_PROFILE:
+        case UNBLOCK_PROFILE:
+          return {
+            ...state,
+            profiles: state.profiles.map((profile) =>
+              profile.user._id === action.payload.user._id ? action.payload : profile
+            )
+          };
+      
+      
     
     default:
       return state;

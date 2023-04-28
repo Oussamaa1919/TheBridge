@@ -31,6 +31,7 @@ app.use('/api/internships', require('./routes/api/internship'));
 app.use('/api/company', require('./routes/api/company'));
 app.use('/api/companyprofile', require('./routes/api/companyprofile'));
 app.use('/api/companies', require('./routes/api/companies'));
+app.use('/api/events', require('./routes/api/event'));
 
 
 const PORT = process.env.PORT || 5000;

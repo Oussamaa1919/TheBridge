@@ -19,6 +19,10 @@ import Inscriptions from './components/trainings/Inscriptions';
 import InternshipInscriptions from './components/internships/InternshipInscriptions'
 import Internship from './components/internships/Internship';
 import Companies from './components/companies/Companies';
+import Events from './components/events/Events';
+import EventFrom from './components/events/EventForm';
+import InscriptionList from './components/events/InscriptionList';
+import UpdateForm from './components/events/UpdateFrom';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -70,7 +74,11 @@ const App = () => {
       <Route path="internshipinscriptions/:id" element={<PrivateRoute component={InternshipInscriptions} />} />
 
       <Route path="internships" element={<PrivateRoute component={Internships} />} />
-
+      
+      <Route path="events" element={<PrivateRoute component={Events} />} />
+            <Route path="participation/:id" element={<PrivateRoute component={InscriptionList} />} />
+            <Route path="updateform/:id" element={<PrivateRoute component={UpdateForm} />} />
+            <Route path="eventform" element={<PrivateRoute component={EventFrom} />} />
       </Routes>
     </Router>
   </Provider>

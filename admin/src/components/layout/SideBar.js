@@ -35,8 +35,17 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
         <li>
         <Link to='/companies'>
         <a href="#">
-            <span className="icon"> <i className=" fas fa-solid fa-briefcase" /></span>
+            <span className="icon"> <i class="fas fa-solid fa-building"></i></span>
             <span className="title">Companies</span>
+          </a>
+          </Link>
+          </li>
+
+          <li>
+        <Link to='/events'>
+        <a href="#">
+            <span className="icon"><i class="fas fa-solid fa-calendar"></i></span>
+            <span className="title">Events</span>
           </a>
           </Link>
           </li>

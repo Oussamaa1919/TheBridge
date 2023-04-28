@@ -1,13 +1,12 @@
 import React, { useEffect,useState } from 'react';
 import { connect } from 'react-redux';
-import { getProfiles } from '../../actions/users';
-import formatDate from '../../utils/formatDate';
+import { getProfiles,blockProfile, unblockProfile } from '../../actions/users';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 
 
 
-const Home = ({ getProfiles, profiles }) => {
+const Home = ({ getProfiles,blockProfile, unblockProfile, profiles }) => {
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
@@ -22,7 +21,13 @@ const Home = ({ getProfiles, profiles }) => {
     }
 }
 
-  
+const handleBlock = (userId) => {
+  blockProfile(userId); // Call blockProfile action with profileId as parameter
+}
+
+const handleUnblock = (userId) => {
+  unblockProfile(userId); // Call unblockProfile action with profileId as parameter
+}
 
 
 
@@ -31,7 +36,7 @@ const Home = ({ getProfiles, profiles }) => {
     <div className='main-table2'>
   <div className='userTable '>
   <h1 className='heading'>
-      Companies:
+      Users:
   </h1>
   
   <table className='table2'>
@@ -42,7 +47,8 @@ const Home = ({ getProfiles, profiles }) => {
           <th className='userPhone'>status</th>
           <th className='userAddress'>Loaction</th>
           <th className='userAddress'>company</th>
-          <th className='userAddress'>Blocked</th>
+          <th className='userAddress'>Block</th>
+
 
 
           
@@ -83,12 +89,24 @@ const Home = ({ getProfiles, profiles }) => {
             <td className='userAddress f-weight'>{profile.status}</td>
             <td className='userAddress f-weight'>{profile.location}</td>
 
-      <td className='userBirth f-weight'>{profile.company} </td>
+      <td className='userAddress f-weight'>{profile.company} </td>
       <td className='userAddress f-weight'>
-                  
-                  <button className='contactCTA' >Block</button>
-                </td>
-      
+      {profile.user.blocked ? (
+  <button
+    className='contactCTA'
+    onClick={() => handleUnblock(profile.user._id)}
+  >
+    Unblock
+  </button>
+) : (
+  <button
+    className='contactCTA'
+    onClick={() => handleBlock(profile.user._id)}
+  >
+    Block
+  </button>
+)}
+ </td>
 
       
       
@@ -132,8 +150,10 @@ const Home = ({ getProfiles, profiles }) => {
 )
 }
 
+
+
 const mapStateToProps = state => ({
   profiles: state.users.profiles,
 });
 
-export default connect(mapStateToProps, { getProfiles })(Home);
+export default connect(mapStateToProps, { getProfiles ,blockProfile, unblockProfile })(Home);
