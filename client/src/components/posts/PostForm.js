@@ -3,22 +3,27 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
 import user from '../../img/user-1.png';
-import photo from '../../img/photo.png';
+import photoIcon from '../../img/photo.png';
 import video from '../../img/video.png';
 import event from '../../img/event.png';
 
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
-  const [photos, setPhotos] = useState([]);
+  const [photo, setPhoto] = useState(null);
   
   async function handleOnSubmit(e) {
     e.preventDefault();
-      console.log({photos})
-     await  addPost({ text, photos:[...photos] });
-      setText('');
-      setPhotos([]);
-
+       
+    const formData = new FormData();
+    formData.append('text', text);
+    if (photo) {
+      formData.append('photo', photo);
+    }
+    
+    await addPost(formData);
+    setText('');
+    setPhoto(null);
   }
   return (
     <div className="create-post">
@@ -37,13 +42,19 @@ const PostForm = ({ addPost }) => {
     </div>
     
   <div className="create-post-links">
-      <li><img src={photo} alt=''/>Photo</li>
+  <li>
+          <label htmlFor="photo-upload" style={{ cursor: 'pointer' }}>
+            <img src={photoIcon} alt='' />
+            Photo
+          </label>
+          <input type="file" id="photo-upload" accept="image/*" onChange={e=>setPhoto(e.target.files[0])}    style={{ display: 'none' }} 
+ />
+        </li>
       <li><img src={video} alt=''/>Video</li>
       <li><img src={event} alt=''/>Event</li>
       <li>
       <form  encType='multipart/form-data'
-      onSubmit={e => handleOnSubmit(e)
-      }>
+      onSubmit={handleOnSubmit}>
       <input type='submit' value='POST' />
       
       </form></li>

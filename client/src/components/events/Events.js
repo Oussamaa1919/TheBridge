@@ -1,11 +1,35 @@
-import React from 'react'
+import React ,{ useEffect} from 'react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import EventItem from './EventItem'
+import { getEvents } from '../../actions/event';
 
-const Events = () => {
+const Events = ({getEvents,event:{events}}) => {
+
+  useEffect(() => {
+    getEvents();
+  },[getEvents])
+
   return (
-    <div className='container'>
-      events will be here soon !
-    </div>
+    <section >
+       
+      
+      {events.map((event) =>(<EventItem key={event._id} event={event}/>))
+      
+    }
+      
+    
+      
+      </section>
+    
   )
 }
 
-export default Events
+Events.propTypes ={
+  getEvents: PropTypes.func.isRequired,
+  event: PropTypes.object.isRequired,
+ }
+ const mapStateToProps = (state) => ({
+   event: state.event
+ });
+export default connect(mapStateToProps, { getEvents }) (Events)

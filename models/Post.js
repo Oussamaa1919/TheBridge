@@ -54,9 +54,9 @@ const PostSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  photos: [{
+  photo: {
     type: String,
-  }],
+  },
   originalUserName: {
   type: String
 },

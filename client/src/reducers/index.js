@@ -5,6 +5,7 @@ import profile from './profile';
 import post from './post';
 import training from './training'
 import internship from './internship'
+import event from './event';
 
 export default combineReducers({
   alert,
@@ -12,6 +13,7 @@ export default combineReducers({
   profile,
   post,
   training,
-  internship
+  internship,
+  event
   
 });

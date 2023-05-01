@@ -10,6 +10,13 @@ const InscriptionList = ({ getEvent, events:{event}}) => {
     getEvent(id);
   }, [getEvent ,id]);
 
+  useEffect(() => {
+    if (event && event.inscriptions) {
+      setNumInscriptions(event.inscriptions.length);
+    }
+  }, [event]);
+  const [numInscriptions, setNumInscriptions] = useState(0);
+
   const [page, setPage] = useState(1)
   
   const selectPageHandle = (selectedPage) => { // Pagination Logic
@@ -23,11 +30,12 @@ const InscriptionList = ({ getEvent, events:{event}}) => {
 
   return (
     <div className='container-table2 '>
-    <div className='main-table2'>
+    <div className='main-table3'>
   <div className='userTable '>
   <h1 className='heading'>
-      Inscriptions:
+      Inscriptions:<span className='insnum'>You have: {numInscriptions} Inscriptions</span>
   </h1>
+  
   <Link to='/events'>
   <button className='btn'  type="button">Events</button>  
   </Link>
@@ -57,7 +65,7 @@ const InscriptionList = ({ getEvent, events:{event}}) => {
 
   {/* JSX PArt */}
   {
-      event && event.inscriptions.length > 0 && <div className='pagination'>
+      event && event.inscriptions.length > 0 && <div className='paginationeventlistinscritpion'>
           <div className='arrows' onClick={() => selectPageHandle(page - 1)}>
               <MdKeyboardArrowLeft size={25} />
           </div>

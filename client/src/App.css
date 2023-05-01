@@ -4,7 +4,9 @@
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
-  --success-color: #28a745;
+  --success-color:  rgb(254, 52, 113);
+  --line_color : #555555 ;
+    --back_color : #FFECF6  ;
   
   --yellow: rgb(232, 200, 55);
   --red: rgb(254, 52, 113);;
@@ -47,6 +49,26 @@ body{
 .my-3 {
   margin: 3rem 0;
 }
+/*************************participate-button**********************/
+.btn-participate{
+display: inline-block;
+background: var(--red);
+color: #f3faf7;
+
+font-size: 1rem;
+border: none;
+cursor: pointer;
+margin-right: 0.4rem;
+transition: opacity 0.2s ease-in;
+outline: none;
+border-radius: 50px;
+height: 22px;
+width: 82px;
+}
+/*************************participate-button**********************/
+
+
+
 
 /********************applied-internships*********************/
 .heading{
@@ -182,6 +204,13 @@ th{
   align-items: center;
   justify-content: center;
   margin-left: -300px;
+}
+.paginationevent{
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -590px
 }
 .pageNumbers{
   display: flex;
@@ -1172,6 +1201,7 @@ margin: 20px 0 10px;
   margin-bottom: 3rem; 
   
 }
+
 .post-photo{
   display: inline-block;
   max-width: 35%;
@@ -1374,11 +1404,14 @@ margin: 20px 0 10px;
 .post-author small{
   display: block;
   margin-bottom: -2px;
+  
 }
 .post p{
   font-size: 14px;
   margin-bottom: 15px;
+  
 }
+
 .modal {
   position: fixed;
   top: 0;
@@ -2124,6 +2157,11 @@ border-radius: 50%;
 .alert-primary {
   background: rgb(254, 52, 113);
   color: #fff;
+}
+.alert-wrapper {
+ 
+  right: 4rem;
+  
 }
 
 .btn-light,

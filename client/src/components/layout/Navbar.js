@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import user1 from '../../img/user-1.png'
 
+import events from '../../img/event2.jpg'
 const Navbar = ({ auth: { isAuthenticated ,user}, logout }) => {
   const profileMenu = document.getElementById('profileMenu');
    function toggleMenu(){
@@ -99,6 +100,10 @@ const Navbar = ({ auth: { isAuthenticated ,user}, logout }) => {
         <Link to={`/traininginscriptions/${user && user._id}`} className='profile-menu-link'>
         <img src={require('../../img/tttt.png') } alt=''/>
           <span >Training Inscriptions</span>
+        </Link>
+        <Link to={`/eventslist/${user && user._id}`} className='profile-menu-link'>
+        <img src={events} alt=''/>
+                   <span >Events Inscriptions </span>
         </Link>
         
         <a onClick={logout} href="#!" >

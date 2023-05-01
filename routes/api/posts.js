@@ -38,9 +38,7 @@ router.get('/:id/likes', auth ,checkObjectId('id'),async (req, res) => {
 router.post(
   '/',
   auth,
-   upload.fields([
-    {name: 'photos', maxCount: 20}
-]),
+  upload.single('photo'),
   check('text', 'Text is required').notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -53,11 +51,14 @@ router.post(
 
       const newPost = new Post({
         text: req.body.text,
-        photos: req.files.photos.map(file => file.filename),
         name: user.name,
         avatar: user.avatar,
         user: req.user.id
       });
+
+      if (req.file) {
+        newPost.photo = req.file.path;
+      }
 
       const post = await newPost.save();
 
@@ -267,7 +268,7 @@ router.post('/:postId/share', auth,async (req, res) => {
         text: post.text,
         name: user.name,
         avatar: user.avatar,
-        photos: post.photos,
+        photo: post.photo,
         originalUserName: post.originalUserName ,
         originalUserAvatar: post.originalUserAvatar ,
         originalDate: post.originalDate ,
@@ -286,7 +287,7 @@ router.post('/:postId/share', auth,async (req, res) => {
       text: post.text,
       name: user.name,
       avatar: user.avatar,
-      photos: post.photos,
+      photo: post.photo,
       originalUserName: post.name ,
       originalUserAvatar: post.avatar ,
       originalDate: post.date ,

@@ -9,6 +9,8 @@ import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profile';
+import cover from '../../img/cover-pic.png'
+import RightSideBar from '../layout/RightSideBar';
 
 const Profile = ({ getProfileById, profile: { profile }, auth }) => {
   const { id } = useParams();
@@ -17,25 +19,58 @@ const Profile = ({ getProfileById, profile: { profile }, auth }) => {
   }, [getProfileById, id]);
 
   return (
-    <section className="container-p">
-      {profile === null ? (
-        <Spinner />
-      ) : (
-        <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Back To Profiles
-          </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btnn btn-dark">
-                Edit Profile
-              </Link>
-            )}
-          <div className="profile-grid my-1">
-            <ProfileTop profile={profile} />
-            <ProfileAbout profile={profile} />
-            <div className="profile-exp bg-white p-2">
+   
+        <section >
+      <RightSideBar />
+      <div className='profile-main'>
+      <img src={cover} className='profile-cover' alt=''/>
+       <div className='profile-container-inner'>
+        <img src={profile && profile.user.avatar} alt='' className='profile-pic'/>
+        
+        <h1>{profile && profile.user.name}</h1>
+        
+        <b>{profile && profile.status}</b>
+        
+        <p>{profile && profile.location} &middot; <Link to='/edit-profile' >
+        <i className='fas fa-user-circle ' /> Edit Profile
+        </Link>
+        &middot;
+        
+     
+      </p>
+
+        <div className='social-links'>
+        {profile && profile.social
+          ? Object.entries(profile && profile.social)
+              .filter(([_, value]) => value)
+              .map(([key, value]) => (
+                <a
+                  key={key}
+                  href={value}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className='social-link'
+                >
+                  <i className={`fab fa-${key} fa-2x`}></i>
+                </a>
+              ))
+          : null}
+            </div>
+
+            
+            
+            <div className='profile-description'>
+              <h2>About</h2>
+              <p> {profile && profile.bio}</p>
+              
+            </div>
+
+            
+
+        {profile !== null ? (
+        <>
+          
+          <div className="profile-exp bg-white p-2">
               <h2 className="text-primary">Experience</h2>
               {profile.experience.length > 0 ? (
                 <Fragment>
@@ -67,13 +102,23 @@ const Profile = ({ getProfileById, profile: { profile }, auth }) => {
               )}
             </div>
 
-            {profile.githubusername && (
-              <ProfileGithub username={profile.githubusername} />
-            )}
-          </div>
-        </Fragment>
+          
+          
+        </>
+      ) : (
+        <>
+          <p>You have not yet setup a profile, please add some info</p>
+          <Link to="/create-profile" className="btn btn-primary my-1">
+            Create Profile
+          </Link>
+        </>
       )}
+       </div>
+     
+      </div>
     </section>
+  
+    
   );
 };
 

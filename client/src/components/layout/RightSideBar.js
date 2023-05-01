@@ -7,7 +7,7 @@ import thorsystem from '../../img/thorsystem.png'
 import uxersuser from '../../img/uxers-user.png'
 import uxers from '../../img/uxers.png'
 import logo from '../../img/the-bridge-logo.png'
-
+import Events from '../events/Events'
 
 
 const RightSideBar = () => {
@@ -17,23 +17,7 @@ const RightSideBar = () => {
       <div className="sidebar-news">
         <img src={more} className="info-icon" alt='' />
         <h3>Comming Events</h3>
-        <a > High demand for skilled manpower</a>
-        <span>1d ago & middot; 10,934 readres  </span>
-        
-        <a > Careers growing horizontally too</a>
-        <span>1d ago & middot; 1.552 readres</span>
-
-        <a > less work visa for US,more UK</a>
-        <span>1d ago & middot; 1.600 readres</span>
-
-        <a > More hiring = higher confidance ?</a>
-        <span>18h ago & middot; 8,204 readres</span>
-
-        <a > MGautam adani is the world's third richest</a>
-        <span>12h ago & middot; 6,304 readres</span>
-
-
-        <a  className="read-more-link">Read more</a>
+        <Events />
       </div>
      
       <div className="sidebar-Ad">

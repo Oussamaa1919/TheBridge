@@ -5,7 +5,6 @@ import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost,sharePost } from '../../actions/post';
 import thumb from '../../img/thumbsup.png';
-import post1 from '../../img/post-image-1.png';
 
 import {  useState } from 'react';
 import { getPost } from '../../actions/post';
@@ -19,7 +18,7 @@ const PostItem = ({
   sharePost,
   auth,
   profile:{profile},
-  post: { _id, text, name,avatar, user, likes, shares,comments, date ,photos,originalUserName,originalUserAvatar,originalDate,shared,originalUser,originalPostId},
+  post: { _id, text, name,avatar, user, likes, shares,comments, date ,photo,originalUserName,originalUserAvatar,originalDate,shared,originalUser,originalPostId},
   showActions
 }) => {
   const navigate = useNavigate();
@@ -31,15 +30,7 @@ const PostItem = ({
   }, [getPost, id]);
   
 
-  const [expandedIndex, setExpandedIndex] = useState(null);
-
-  const handlePhotoClick = (index) => {
-    if (expandedIndex === index) {
-      setExpandedIndex(null);
-    } else {
-      setExpandedIndex(index);
-    }
-  };
+ 
 
   const handleClick = () => {
     if (liked) {
@@ -123,18 +114,18 @@ const PostItem = ({
          to={shared ? `/posts/${originalPostId}` : `/posts/${_id}`} 
   className="post-text"
 >
-<p className="my-1">{text}</p>
+<p className="my-1" style={{marginLeft:'26px',marginBottom: '-20px'}}>{text}</p>
  
 </Link>
       
       
       <div className='post'>
       
-      {photos.map((photo, index) => (
-        <div className="photos" key={index}>
-          <img src={`/uploads/${photo}`} alt="Post photo" />
-        </div>
-      ))}
+     
+        
+         {photo &&  <img src={photo} alt="" />}
+        
+    
 
 
       <div className='post-stats'>
@@ -148,7 +139,7 @@ const PostItem = ({
       {likes.length>0 &&  (
       <Link to={`/profile/${firstLike.user}`} >
       
-      <img src={firstLike.avatar} className='like-img'  />
+      <img src={firstLike.avatar} className='like-img' alt='' />
       
         <p>{firstLike.name}</p>
         
@@ -169,7 +160,7 @@ const PostItem = ({
                   
                  
                   <Link to={`/profile/${like.user}`}  className= "likeLink">
-                  <img src={like.avatar}  />
+                  <img src={like.avatar} alt='' />
                   <p>{like.name} </p>
                   
                   </Link>
@@ -207,7 +198,7 @@ const PostItem = ({
                   
                  
                   <Link to={`/profile/${share.user}`}  className= "likeLink">
-                  <img src={share.avatar}  />
+                  <img src={share.avatar} alt='' />
                   <p>{share.name} </p>
                   
                   </Link>

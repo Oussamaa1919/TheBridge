@@ -83,6 +83,10 @@ body
 	margin: 0;
 	
 }
+.insnum{
+  color: #222;
+  font-size: 15px;
+}
 
 #cardcontainer .product-details h1:before{
 	position: absolute;
@@ -976,6 +980,13 @@ color: var(--withe);
   left:300px;
   min-height: 100vh;
 }
+.main-table3{
+  position: absolute;
+  width: calc(100% - 300px);
+  left:700px;
+  min-height: 100vh;
+  
+}
 .table2 {
   border-collapse: collapse;
   width: 100%;
@@ -1080,6 +1091,13 @@ th{
   align-items: center;
   justify-content: center;
   margin-left: -100px;
+}
+.paginationeventlistinscritpion{
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -900px;
 }
 .paginationevents{
   margin-top: 2rem;
