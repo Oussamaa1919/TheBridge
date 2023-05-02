@@ -356,4 +356,43 @@ router.delete('/deleteinternships', companyauth, async (req, res) => {
   }
 });
 
+// @route   PUT api/companies/password
+// @desc    Change a company's password
+// @access  Private
+router.put('/password', [
+  companyauth,
+  check('currentPassword', 'Current password is required').exists(),
+  check(
+    'newPassword',
+    'Please enter a password with 6 or more characters'
+  ).isLength({ min: 6 })
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    const company = await Company.findById(req.company.id);
+    const { currentPassword, newPassword } = req.body;
+
+    const isMatch = await bcrypt.compare(currentPassword, company.password);
+
+    if (!isMatch) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: 'Invalid current password' }] });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    company.password = await bcrypt.hash(newPassword, salt);
+    await company.save();
+
+    res.json({ msg: 'Password updated successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;

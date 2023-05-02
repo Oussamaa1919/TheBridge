@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const p_img = 'C:\\Users\\oussema\\Desktop\\pfe\\TheBridge-main\\images\\profile-img.jpg';
 const CompanySchema = new mongoose.Schema({
  
  
@@ -26,7 +26,11 @@ const CompanySchema = new mongoose.Schema({
   verified: {
     type: Boolean,
     default: false
-  }
+  },
+  profileimage: {
+    type: String,
+    default: p_img
+  },
 });
 
 module.exports = mongoose.model('company', CompanySchema);

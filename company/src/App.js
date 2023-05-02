@@ -14,6 +14,7 @@ import Internships from './components/internships/Internships';
 import InscriptionList from './components/internships/InscriptionList';
 import UpdateForm from './components/internships/UpdateForm'
 import InternshipForm from './components/internships/InternshipForm'
+import PasswordForm from './components/auth/PasswordForm';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -67,6 +68,8 @@ const App = () => {
           path="edit-profile"
           element={<PrivateRoute component={ProfileForm} />}
         />
+         <Route path="passwordform" element={<PrivateRoute component={PasswordForm} />} />
+
             <Route path="internships" element={<PrivateRoute component={Internships} />} />
             <Route path="internshipinscriptions/:id" element={<PrivateRoute component={InscriptionList} />} />
             <Route path="updateform/:id" element={<PrivateRoute component={UpdateForm} />} />

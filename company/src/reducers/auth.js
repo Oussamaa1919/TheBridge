@@ -7,6 +7,8 @@ import {
   //LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED,
+  PASSWORD_CHANGE_SUCCESS,
+  PASSWORD_CHANGE_FAIL
 
 } from '../actions/types';
 
@@ -36,6 +38,15 @@ function authReducer(state = initialState, action) {
         isAuthenticated: true,
         loading: false
       };
+      case PASSWORD_CHANGE_SUCCESS:
+      return {
+        ...state,
+        company: {
+          ...state.company,
+          password: payload.password
+        }
+      };
+      case PASSWORD_CHANGE_FAIL:
     case ACCOUNT_DELETED:
     case AUTH_ERROR:
     case LOGOUT:

@@ -47,6 +47,14 @@ const SideBar = ({ auth: { isAuthenticated , company}, logout }) => {
           </a>
           </Link>
           </li>
+          <li>
+            <Link to='/passwordform'>
+            <a href="#">
+            <span className="icon"><i class="fas fa-solid fa-lock"></i></span>
+            <span className="title">Password</span>
+          </a>
+          </Link>
+          </li>
         <li>
         <a onClick={logout}  href='#'>
        <span className='icon'> <i className="fas fa-sign-out-alt" />{' '} </span>
