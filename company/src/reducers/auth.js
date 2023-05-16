@@ -8,7 +8,9 @@ import {
   LOGOUT,
   ACCOUNT_DELETED,
   PASSWORD_CHANGE_SUCCESS,
-  PASSWORD_CHANGE_FAIL
+  PASSWORD_CHANGE_FAIL,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
 
 } from '../actions/types';
 
@@ -46,6 +48,14 @@ function authReducer(state = initialState, action) {
           password: payload.password
         }
       };
+      case FORGOT_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+        isAuthenticated: false,
+        loading: false
+      };
+      case FORGOT_PASSWORD_FAIL:
       case PASSWORD_CHANGE_FAIL:
     case ACCOUNT_DELETED:
     case AUTH_ERROR:

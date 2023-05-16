@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-import user1 from '../../img/user-1.png'
+import user1 from '../../img/ppg.png'
+import password from '../../img/password8.png'
+
 
 import events from '../../img/event2.jpg'
 const Navbar = ({ auth: { isAuthenticated ,user}, logout }) => {
@@ -83,7 +85,7 @@ const Navbar = ({ auth: { isAuthenticated ,user}, logout }) => {
         <div className="user-info">
           <img src={user1} alt='' />
           <div>
-            <h3>Rayan Walton</h3>
+            <h3>{user && user.name}</h3>
             <Link to="/dashboard">
             <span>See your Profile</span>
             </Link>
@@ -104,6 +106,10 @@ const Navbar = ({ auth: { isAuthenticated ,user}, logout }) => {
         <Link to={`/eventslist/${user && user._id}`} className='profile-menu-link'>
         <img src={events} alt=''/>
                    <span >Events Inscriptions </span>
+        </Link>
+        <Link to={'/passwordform'} className='profile-menu-link'>
+        <img src={password} alt=''/>
+                   <span >Password </span>
         </Link>
         
         <a onClick={logout} href="#!" >

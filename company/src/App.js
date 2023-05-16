@@ -15,6 +15,7 @@ import InscriptionList from './components/internships/InscriptionList';
 import UpdateForm from './components/internships/UpdateForm'
 import InternshipForm from './components/internships/InternshipForm'
 import PasswordForm from './components/auth/PasswordForm';
+import ForgetPasswordForm from './components/auth/ForgetPasswordForm'
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -54,6 +55,7 @@ const App = () => {
       <Routes>
       
       <Route path="login" element={<Login />} />
+      <Route path="forgetpasswordform" element={<ForgetPasswordForm />} />
       <Route path="register" element={<Register />} />
 
       <Route

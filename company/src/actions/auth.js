@@ -9,7 +9,9 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   PASSWORD_CHANGE_SUCCESS,
-  PASSWORD_CHANGE_FAIL
+  PASSWORD_CHANGE_FAIL,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
 } from './types';
 
 /*
@@ -112,6 +114,29 @@ export const changePassword = (currentPassword, newPassword, navigate) => async 
     });
   }
 };
+
+export const forgotPassword = (formData,navigate) => async (dispatch) => {
+  try {
+    const res = await api.post('/company/forgotpassword', formData);
+
+    dispatch({
+      type: FORGOT_PASSWORD_SUCCESS,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Password reset link has been sent to your email', 'success'));
+    navigate('/login');
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: FORGOT_PASSWORD_FAIL,
+    });
+  }
+}; 
 
 // Logout
 export const logout = () => ({ type: LOGOUT });

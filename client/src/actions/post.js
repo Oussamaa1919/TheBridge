@@ -93,19 +93,18 @@ export const deletePost = (id) => async (dispatch) => {
 
 
 // Share post
-export const sharePost = (id,navigate) => async (dispatch) => {
+export const sharePost = (id) => async (dispatch) => {
   try {
     
     const res = await api.post(`/posts/${id}/share`);
+    window.location.reload();
 
     dispatch({
       type: SHARE_POST,
       payload: res.data
     });
-    window.location.reload();
 
     dispatch(setAlert('Post Shared', 'success'));
-    navigate('/posts');
   } catch (err) {
     dispatch({
       type: POST_ERROR,

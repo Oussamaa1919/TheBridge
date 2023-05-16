@@ -35,7 +35,7 @@ const LeftSideBar = ({
           <h3>{profile && profile.status} </h3>
           <ul>
             <li>Company:<span>{profile && profile.company}</span></li>
-            <li>Location:<span>@location</span></li>
+            <li>Location:<span>{profile && profile.location}</span></li>
             <li>Email:<span>{user && user.email}</span></li>           
           </ul>
         </div> 

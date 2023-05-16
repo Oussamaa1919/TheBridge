@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
-import user from '../../img/user-1.png';
+import user from '../../img/ppg.png';
 import photoIcon from '../../img/photo.png';
 import video from '../../img/video.png';
 import event from '../../img/event.png';

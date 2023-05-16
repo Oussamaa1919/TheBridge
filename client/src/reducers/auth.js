@@ -6,7 +6,9 @@ import {
   LOGIN_SUCCESS,
   //LOGIN_FAIL,
   LOGOUT,
-  ACCOUNT_DELETED
+  ACCOUNT_DELETED,
+  PASSWORD_CHANGE_SUCCESS,
+  PASSWORD_CHANGE_FAIL,
 } from '../actions/types';
 
 const initialState = {
@@ -35,6 +37,15 @@ function authReducer(state = initialState, action) {
         isAuthenticated: true,
         loading: false
       };
+      case PASSWORD_CHANGE_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          password: payload.password
+        }
+      };
+      case PASSWORD_CHANGE_FAIL:
     case ACCOUNT_DELETED:
     case AUTH_ERROR:
     case LOGOUT:

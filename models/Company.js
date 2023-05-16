@@ -31,6 +31,10 @@ const CompanySchema = new mongoose.Schema({
     type: String,
     default: p_img
   },
+  resetPasswordToken :{
+    type: String,
+    default:''
+  }
 });
 
 module.exports = mongoose.model('company', CompanySchema);

@@ -9,9 +9,9 @@ const gravatar = require('gravatar');
 const Company = require('../../models/Company');
 const Internship = require('../../models/Internship');
 const checkObjectId = require('../../middleware/checkObjectId');
-
+const crypto = require('crypto');
 const normalize = require('normalize-url');
-
+const nodemailer = require('nodemailer');
 // @route    GET api/auth
 // @desc     Get user by token
 // @access   Private
@@ -394,5 +394,106 @@ router.put('/password', [
     res.status(500).send('Server error');
   }
 });
+// POST /company/forgot-password
+// Public
+// Description: Send a password reset email to company's email
+router.post('/forgotpassword', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Check if company exists
+    let company = await Company.findOne({ email });
+
+    if (!company) {
+      return res.status(400).json({ errors: [{ msg: 'Company not found' }] });
+    }
+
+    // Generate password reset token
+    const token = crypto.randomBytes(20).toString('hex');
+    company.resetPasswordToken = token;
+    company.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+    await company.save();
+
+    // Send password reset email
+    const resetUrl = `http://${req.headers.host}/company/reset-password/${token}`;
+    const transporter = nodemailer.createTransport({
+      port: 465,               // true for 465, false for other ports
+      host: "smtp.gmail.com",
+         auth: {
+              user: 'oussemathebridge@gmail.com',
+              pass: 'rdsopaqfapttkxvq',
+           },
+      secure: true,
+      });
+    const mailOptions = {
+      to: company.email,
+      from: 'oussemathebridge@gmail.com',
+      subject: 'Password Reset Request',
+      text: `Hi ${company.name}, \n\nYou recently requested a password reset. Please click on the link below to reset your password: \n\n${resetUrl}\n\n If you did not request this change, please ignore this email and your password will remain unchanged. \n`
+    };
+    await transporter.sendMail(mailOptions);
+
+    res.json({ msg: 'Password reset email sent successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// GET /company/reset-password/:token
+// Public
+// Description: Render password reset form for company
+router.get('/reset-password/:token', async (req, res) => {
+  try {
+    const { token } = req.params;
+
+    // Check if company exists with the given reset token and is not expired
+    const company = await Company.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!company) {
+      return res.status(400).json({ errors: [{ msg: 'Invalid or expired token' }] });
+    }
+
+    res.render('password-reset-form', { token });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+router.post('/reset-password/:token', async (req, res) => {
+  try {
+    const { token } = req.params;
+    const { password } = req.body;
+
+    // Check if company exists with the given reset token and is not expired
+    let company = await Company.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!company) {
+      return res.status(400).json({ errors: [{ msg: 'Invalid or expired token' }] });
+    }
+
+    // Encrypt password
+    const salt = await bcrypt.genSalt(10);
+    company.password = await bcrypt.hash(password, salt);
+    company.resetPasswordToken = null;
+    company.resetPasswordExpires = null;
+ 
+    await company.save();
+
+    res.json({ msg: 'Password reset successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 
 module.exports = router;

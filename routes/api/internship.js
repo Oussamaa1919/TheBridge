@@ -180,7 +180,7 @@ router.post(
         
         return res
           .status(400)
-          .json({ errors: [{ msg: 'You  applied for this internship' }] });
+          .json({ errors: [{ msg: 'You have already applied for this internship' }] });
       }
 
       const newInscription = {

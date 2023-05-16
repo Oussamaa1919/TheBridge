@@ -165,7 +165,7 @@ router.post(
         
         return res
           .status(400)
-          .json({ errors: [{ msg: 'You  have already participate for this event' }] });
+          .json({ errors: [{ msg: 'You  have already participated to this event' }] });
       }
 
       const newInscription = {

@@ -7,7 +7,9 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  PASSWORD_CHANGE_SUCCESS,
+  PASSWORD_CHANGE_FAIL
 } from './types';
 
 /*
@@ -83,6 +85,32 @@ export const login = (email, password,navigate) => async (dispatch) => {
     });
   }
 };
+// Change Password
+export const changePassword = (currentPassword, newPassword, navigate) => async (
+  dispatch
+) => {
+  const body = { currentPassword, newPassword };
 
+  try {
+    const res = await api.put('/auth/password', body);
+
+    dispatch({
+      type: PASSWORD_CHANGE_SUCCESS,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Password updated successfully', 'success'));
+    navigate('/home');
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: PASSWORD_CHANGE_FAIL,
+    });
+  }
+};
 // Logout
 export const logout = () => ({ type: LOGOUT });

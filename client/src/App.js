@@ -25,6 +25,7 @@ import AppliedInternships from './components/internships/AppliedInternships';
 import TrainingInscriptions from './components/trainings/TrainingInscriptions';
 import Blocked from './components/layout/Blocked';
 import EventsList from './components/events/EventsList'
+import PasswordForm from './components/auth/PasswordForm'
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -67,6 +68,9 @@ const  App = () => {
         <Route
           path="profile/:id"
           element={<PrivateRoute component={Profile} />} />
+          <Route 
+          path="passwordform"
+          element={<PrivateRoute component={PasswordForm}/>} />
 
         <Route 
           path="events"

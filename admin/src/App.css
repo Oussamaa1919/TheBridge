@@ -35,7 +35,7 @@ body
 }
 .alert {
   padding: 0.8rem;
-  margin: 1rem 0;
+  margin: 4rem 0;
   background: #287bff;
   color: #f0f2f5;
 }
@@ -43,6 +43,7 @@ body
   position: fixed;
   right: 4rem;
   display: inline-block;
+
 }
 /****************training-card****************/
 #cardbody{

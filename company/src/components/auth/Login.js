@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link,Navigate,useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../../actions/auth';
+import { login} from '../../actions/auth';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login,isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -20,7 +20,7 @@ const Login = ({ login, isAuthenticated }) => {
     e.preventDefault();
     login(email, password,navigate);
   };
-
+  
 
 
 
@@ -59,8 +59,12 @@ const Login = ({ login, isAuthenticated }) => {
         </div>
         <input type="submit" className="btn btn-login" value="Login" />
       </form>
+      
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
+      </p>
+      <p className="my-1">
+      <Link to="/forgetpasswordform">Forget password ?</Link>
       </p>
       
     </section>
@@ -69,7 +73,9 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+
+
 };
 
 const mapStateToProps = (state) => ({

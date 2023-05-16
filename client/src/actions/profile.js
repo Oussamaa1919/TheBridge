@@ -177,6 +177,7 @@ export const addEducation = (formData, navigate) => async (dispatch) => {
 
 // Delete experience
 export const deleteExperience = (id) => async (dispatch) => {
+  window.confirm('Are you sure? This can NOT be undone!');
   try {
     const res = await api.delete(`/profile/experience/${id}`);
 
@@ -196,6 +197,7 @@ export const deleteExperience = (id) => async (dispatch) => {
 
 // Delete education
 export const deleteEducation = (id) => async (dispatch) => {
+  window.confirm('Are you sure? This can NOT be undone!')
   try {
     const res = await api.delete(`/profile/education/${id}`);
 

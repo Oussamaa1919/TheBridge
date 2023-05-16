@@ -50,6 +50,8 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
           </Link>
           </li>
 
+         
+
         <li>
         <Link to='/internships'>
         <a href="#">
@@ -63,6 +65,14 @@ const SideBar = ({ auth: { isAuthenticated , admin}, logout }) => {
             <a href="#">
             <span className="icon"><i className="fas fa-duotone fa-laptop-code"></i></span>
             <span className="title">Trainings</span>
+          </a>
+          </Link>
+          </li>
+          <li>
+        <Link to='/passwordform'>
+        <a href="#">
+            <span className="icon"><i class="fas fa-solid fa-lock"></i></span>
+            <span className="title">Password</span>
           </a>
           </Link>
           </li>

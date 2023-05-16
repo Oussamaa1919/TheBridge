@@ -124,7 +124,7 @@ const ProfileForm = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="Company"
+            placeholder="Company or University"
             name="company"
             value={company}
             onChange={onChange}
