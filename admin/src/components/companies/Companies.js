@@ -43,11 +43,8 @@ const Companies = ({ getCompanies,verifyCompany, profiles }) => {
           <th className='userAddress'>Loaction</th>
           <th className='userAddress'>website</th>
           <th className='userAddress'>verified</th>
+          <th className='userAddress'>Delete</th>
 
-
-          
-          
-          
       </tr>
       {
          profiles.length > 0 ? profiles.slice(page * 5 - 5, page * 5).map((profile, index) => {
@@ -88,7 +85,8 @@ const Companies = ({ getCompanies,verifyCompany, profiles }) => {
                   {profile.company.verified ? 'Verified' : 
                   <button className='contactCTA' onClick={()=>verifyCompany(profile.company._id)}>Verify</button>}
                 </td>
-      
+                <td className='contact' ><button className='contactCTA DeleteALL ' >Delete</button></td>
+
 
       
       

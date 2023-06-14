@@ -2,6 +2,7 @@ import React from 'react'
 import android from '../../img/azaz.jpeg'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import formatDate from '../../utils/formatDate';
 
 
 const TrainingItem = ({training:{_id,title,description,price,location,date,status,coach,periode}}) => {
@@ -49,6 +50,7 @@ const TrainingItem = ({training:{_id,title,description,price,location,date,statu
 		<li><strong>Location : </strong>{location}</li>
 		<li><strong>Periode : </strong>{periode}</li>
 		<li><strong>Coach: </strong>{coach}</li>
+		<li><strong>Coach: </strong>{formatDate(date)}</li>
 		<li><strong>Achievement Certificate: </strong>YES!!!</li>
 		
 	</ul>
